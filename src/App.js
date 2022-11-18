@@ -1,17 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import * as Pages from './pages';
 
 function App() {
   return (
     <>
-    <Switch>
-    <div className="App">
-      <p>Hello world</p>
-    </div>
+    <Routes>
     
+
     <Route exact path='/'>
             
             <Pages.Home />
@@ -20,9 +18,9 @@ function App() {
 
     <Route path='/ingredients'>
           <Pages.Ingredients />
-          <Header />
+          
         </Route>
-    </Switch>
+    </Routes>
     </>
   );
 }

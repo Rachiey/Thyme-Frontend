@@ -6,7 +6,7 @@ import './Ingredients.css';
 
 
 
-export const Home = () => {
+export const Ingredients = () => {
 
 return (
     <>
@@ -14,3 +14,5 @@ return (
     </>
 )
 }
+
+export default Ingredients;
