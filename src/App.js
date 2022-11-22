@@ -7,20 +7,11 @@ import * as Pages from './pages';
 function App() {
   return (
     <>
-    <Routes>
-    
-
-    <Route exact path='/'>
-            
-            <Pages.Home />
-          
-          </Route>
-
-    <Route path='/ingredients'>
-          <Pages.Ingredients />
-          
-        </Route>
-    </Routes>
+      <Routes>
+        <Route exact path='/' element={<Pages.Home />}></Route>
+        <Route path='/ingredients' element={<Pages.Ingredients/>}></Route>
+        <Route path='/shelf' element={<Pages.Shelf/>}></Route>
+      </Routes>
     </>
   );
 }
