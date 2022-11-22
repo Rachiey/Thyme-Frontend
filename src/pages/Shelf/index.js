@@ -7,6 +7,7 @@ function Shelf() {
     const [quantityValue, setQuantityValue] = useState(1)
     const [expiryDate, setExpiryDate] = useState("")
 
+
     const inputTextHandler = (event) => {
         setInputText(event.target.value);
     }
@@ -35,7 +36,7 @@ function Shelf() {
         <h1>Shelf</h1>
         <form>
             <input type="text" onChange={inputTextHandler} value={inputText}></input>
-            <select name="quantity" onChange={quantityValueHandler} value={quantityValue}>
+            <select name="quantity" onChange={(quantityValueHandler)} value={quantityValue}>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -58,7 +59,8 @@ function Shelf() {
         <ul>
             {items.map((item) =>(
                 <li>
-                   {item.text} x {item.quantity} expires:{item.expiryDate}
+                   {item.text}  x{item.quantity} <br/> expires:{item.expiryDate} <br/>
+                   <button onClick={() => {setItems(items.filter((el) => el.id !== item.id))}}>Delete</button>
                 </li>
             ))}
         </ul>
