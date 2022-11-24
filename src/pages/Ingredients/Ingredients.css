@@ -20,6 +20,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 50px;
 
 }
 .iphoneBackground  {
@@ -108,7 +109,7 @@ body {
     height: 100px;
     background-color: #e9e6dd;
     border-radius: 20px;
-    margin-top: 80px;
+    margin-top: 60px;
     display: flex;
     align-content:center;
     justify-content: space-evenly;

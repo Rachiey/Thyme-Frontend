@@ -12,10 +12,7 @@ export const Ingredients = () => {
 
 return (
     <>
-    <h1 className="ingredientsHeading">Ingredients</h1> 
-    <div className="App">
-      <p>Ingredients</p>
-    </div>
+    
     <div className="iphoneContainer"> 
     <div className="iphoneBackground"> 
     <div className="fridgeTitle"> Username's Fridge </div>
