@@ -10,14 +10,12 @@ function App() {
     <Routes>
     
 
-    <Route exact path='/'>
+    <Route path="/" element={<Pages.Home />} />
             
-            <Pages.Home />
-          
-          </Route>
+            
 
-    <Route path='/ingredients'>
-          <Pages.Ingredients />
+    <Route path="/ingredients" element={<Pages.Ingredients />}>
+          
           
         </Route>
     </Routes>
