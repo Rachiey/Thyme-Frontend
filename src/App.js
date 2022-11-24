@@ -1,7 +1,5 @@
 import React from 'react';
-import Home from './pages/Home/Home';
-import Login from './pages/Login/Login'
-import Register from './pages/Register/Register';
+import * as Pages from './pages';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
@@ -9,9 +7,9 @@ function App() {
   return (
     <div className="App">
       <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
+          <Route path='/' element={<Pages.Home />} />
+          <Route path='/login' element={<Pages.Login />} />
+          <Route path='/register' element={<Pages.Register />} />
 
           <Route path='*' element={<p>nothing to see here</p>} />
       </Routes>
