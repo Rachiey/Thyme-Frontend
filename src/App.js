@@ -5,7 +5,7 @@ import * as Pages from './pages';
 
 function App() {
   return (
-
+    
     <div className="App">
    
       <Routes>
@@ -17,8 +17,8 @@ function App() {
 
         <Route path='*' element={<p>nothing to see here</p>} />
       </Routes>
-    <div/>
-
+    </div>
+    
   );
 }
 
