@@ -1,14 +1,17 @@
 import React from 'react';
 import './Home.css';
 
-const Home = () => {
-    return(
+export const Home = () => {
+
+    return (
         <>
-        <div>Home page</div>
-        <div className='fridge'>Fridge menu</div>
-        <div>Buttons</div>
+    <h1 className="homeHeading">Home</h1> 
+    <div className="App">
+      <p>Hello world</p>
+    </div>
         </>
     )
-}
+    }
+
 
 export default Home;
