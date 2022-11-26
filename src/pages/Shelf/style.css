@@ -8,15 +8,25 @@ ul {
     grid-template-columns:25% 25% 25% 25%;   
     grid-gap: 0.5rem;
     justify-content: space-evenly;
-    padding:2rem;
   }
 
   .grid-item-card {
-    padding: 20px;
+    padding: 0.25rem;
     font-size: 8px;
     text-align: center;
     border-radius: 4px;
     border: 1px solid #eeeeee;
+  }
+
+  .grid-item-card textarea {
+    width:75%;
+    font-size:8px;
+    border-radius:4px
+  }
+
+  .grid-item-card button {
+    border:none;
+    border-radius:4px
   }
 
 span.expires-in-colour[data-status="today"] {
