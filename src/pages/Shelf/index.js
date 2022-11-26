@@ -14,10 +14,10 @@ function Shelf() {
     
     const dateValueHandler = (e) => {
         setExpiryDate(e.target.value)
-            var final = new Date(e.target.value),
-                today = new Date(),
-                diff = final.getTime() - today.getTime(),
-                days = Math.floor(diff / (1000 * 60 * 60 * 24) + 1)
+            var final = new Date(e.target.value)
+            var today = new Date()
+            var diff = final.getTime() - today.getTime()
+            var days = Math.floor(diff / (1000 * 60 * 60 * 24) + 1)
                 switch(true) {
                     case (days === 0):
                         setExpiresIn("today")
@@ -29,7 +29,7 @@ function Shelf() {
                         setExpiresIn("tomorrow")
                         break;
                     case (days >= 1):
-                        setExpiresIn(`${days} days`)
+                        setExpiresIn(`${days} day(s)`)
                         break;
                 }
                 console.log(final)
@@ -45,9 +45,7 @@ function Shelf() {
         ])
         setInputText("")
         setQuantityValue(1);
-        setExpiryDate("")
-
-        
+        setExpiryDate("")      
     }
 
 
@@ -73,13 +71,14 @@ function Shelf() {
                 <option value="14">14</option>
                 <option value="10">15</option>
             </select>
-            <input type="date" onChange={dateValueHandler} value={[expiryDate, expiresIn]}></input>
+            <input type="date" onChange={dateValueHandler} value={expiryDate}></input>
             <button type="submit" onClick={submitItemHandler}>Add</button>
         </form>
         <ul>
             {items.map((item) =>(
                 <li>
                    {item.text}  x{item.quantity} <br/> Expires by: {item.expiryDate} <br/> Left to expire: {item.expiresIn} <br/>
+                   <textarea></textarea><br/>
                    <button onClick={() => {setItems(items.filter((el) => el.id !== item.id))}}>Delete</button>
                 </li>
             ))}
