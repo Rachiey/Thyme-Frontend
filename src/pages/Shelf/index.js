@@ -6,8 +6,8 @@ function Shelf() {
     const [items, setItems] = useState([]);
     const [itemId, setItemId] = useState(1);
     const [quantityValue, setQuantityValue] = useState(1)
-    const [expiryDate, setExpiryDate] = useState("")
-    const [expiresIn, setExpiresIn] = useState("")
+    const [expiryDate, setExpiryDate] = useState("⁉")
+    const [expiresIn, setExpiresIn] = useState("⁉")
 
     const inputTextHandler = (e) => {setInputText(e.target.value)}
     const quantityValueHandler = (e) => {setQuantityValue(e.target.value)}
@@ -32,6 +32,9 @@ function Shelf() {
                     case (days >= 1):
                         setExpiresIn(`${days} day(s)`)
                         break;
+                    default:
+                        setExpiresIn("⁉")
+
                 }
     }
 
@@ -78,9 +81,9 @@ function Shelf() {
             <div className="grid-container">
                 {items.map((item) => (
                 <li className="grid-item-card">
-                   <p>{item.text}  x{item.quantity}</p> <p>Expires by: {item.expiryDate}</p>  <p>Left to expire: <span className="expires-in-colour" data-status={item.expiresIn}>{item.expiresIn}</span></p> <br/>
+                   <p>{item.text}  x{item.quantity}</p> <p> 🔔 Expires by: {item.expiryDate}</p>  <p> 🕓 Left to expire: <span className="expires-in-colour" data-status={item.expiresIn}>{item.expiresIn}</span></p> <br/>
                    <textarea placeholder="notes"></textarea><br/>
-                   <button onClick={() => {setItems(items.filter((el) => el.id !== item.id))}} >Delete</button>
+                   <button onClick={() => {setItems(items.filter((el) => el.id !== item.id))}} >🗑</button>
                 </li>
             ))}
             </div>
