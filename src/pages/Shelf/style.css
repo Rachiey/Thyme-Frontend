@@ -1,0 +1,21 @@
+ul {
+    list-style-type: none;
+    /* display: inline; */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns:25% 25% 25% 25%;   
+    grid-gap: 0.5rem;
+    justify-content: space-evenly;
+    padding:2rem;
+  }
+
+  .grid-item-card {
+    padding: 20px;
+    font-size: 8px;
+    text-align: center;
+    border-radius: 4px;
+    border: 1px solid #eeeeee;
+  }

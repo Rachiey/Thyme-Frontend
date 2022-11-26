@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import './style.css' 
 
 function Shelf() {
     const [inputText, setInputText] = useState("");
@@ -72,15 +73,19 @@ function Shelf() {
             <input type="date" onChange={dateValueHandler} value={expiryDate}></input>
             <button type="submit" onClick={submitItemHandler}>Add</button>
         </form>
-        <ul>
-            {items.map((item) =>(
-                <li>
+        <div>
+        <ul >
+            <div className="grid-container">
+                {items.map((item) => (
+                <li className="grid-item-card">
                    {item.text}  x{item.quantity} <br/> Expires by: {item.expiryDate} <br/> Left to expire: {item.expiresIn} <br/>
                    <textarea></textarea><br/>
                    <button onClick={() => {setItems(items.filter((el) => el.id !== item.id))}}>Delete</button>
                 </li>
             ))}
+            </div>
         </ul>
+        </div>
     </div>
     )
 }
