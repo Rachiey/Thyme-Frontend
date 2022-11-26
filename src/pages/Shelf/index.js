@@ -32,8 +32,6 @@ function Shelf() {
                         setExpiresIn(`${days} day(s)`)
                         break;
                 }
-                console.log(final)
-                console.log(today)
     }
 
     const submitItemHandler = (event) => {
