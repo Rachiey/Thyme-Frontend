@@ -1,6 +1,5 @@
 ul {
     list-style-type: none;
-    /* display: inline; */
 }
 
 .grid-container {
@@ -19,3 +18,23 @@ ul {
     border-radius: 4px;
     border: 1px solid #eeeeee;
   }
+
+span.expires-in-colour[data-status="today"] {
+    content: "";
+    color:red
+}
+
+span.expires-in-colour[data-status="tomorrow"] {
+    content: "";
+    color:orange
+}
+
+span.expires-in-colour[data-status="expired"] {
+    content: "";
+    color:brown
+}
+
+span.expires-in-colour[data-status*="day(s)"] {
+    content: "Expires in:";
+    color: limegreen
+}

@@ -9,16 +9,16 @@ function Shelf() {
     const [expiryDate, setExpiryDate] = useState("")
     const [expiresIn, setExpiresIn] = useState("")
 
-
     const inputTextHandler = (e) => {setInputText(e.target.value)}
     const quantityValueHandler = (e) => {setQuantityValue(e.target.value)}
-    
+
     const dateValueHandler = (e) => {
         setExpiryDate(e.target.value)
             var final = new Date(e.target.value)
             var today = new Date()
             var diff = final.getTime() - today.getTime()
             var days = Math.floor(diff / (1000 * 60 * 60 * 24) + 1)
+  
                 switch(true) {
                     case (days === 0):
                         setExpiresIn("today")
@@ -78,9 +78,9 @@ function Shelf() {
             <div className="grid-container">
                 {items.map((item) => (
                 <li className="grid-item-card">
-                   {item.text}  x{item.quantity} <br/> Expires by: {item.expiryDate} <br/> Left to expire: {item.expiresIn} <br/>
-                   <textarea></textarea><br/>
-                   <button onClick={() => {setItems(items.filter((el) => el.id !== item.id))}}>Delete</button>
+                   <p>{item.text}  x{item.quantity}</p> <p>Expires by: {item.expiryDate}</p>  <p>Left to expire: <span className="expires-in-colour" data-status={item.expiresIn}>{item.expiresIn}</span></p> <br/>
+                   <textarea placeholder="notes"></textarea><br/>
+                   <button onClick={() => {setItems(items.filter((el) => el.id !== item.id))}} >Delete</button>
                 </li>
             ))}
             </div>
