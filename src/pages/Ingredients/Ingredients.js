@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse} from '@fortawesome/free-solid-svg-icons'
 import { faBookOpen} from '@fortawesome/free-solid-svg-icons'
 import { faUser} from '@fortawesome/free-solid-svg-icons'
+
 // import ReactTooltip from 'react-tooltip';
 // import {useState} from 'react';
 // import './Ingredients/fonts/AlphaFridgeMagnets.ttf';
@@ -46,7 +47,9 @@ return (
                                             <span style= {{color: "#F28C28"}}> O</span>
                                             <span style= {{color: "#32CD32"}}> u</span>
                                             <span style= {{color: "#720e9e"}}> t</span></div>
-    <div className="shelfOne"></div>
+    <div className="shelfOne"> <div className="carrot"> <img style ={{objectFit: 'fill'}} src = {require('./images/carrot.png')} alt="carrot" /> </div>
+                                <div className="cheese"> <img style ={{objectFit: 'fill'}} src = {require('./images/cheese.png')} alt="cheese"  /></div> 
+                                <div className="milk"> <img style ={{objectFit: 'fill'}}  src = {require('./images/milk.png')} alt="milk" /></div> </div>
     <div className="shelfTwo"></div>
     <div className="shelfThree"></div>
     <div className="shelfFour">
