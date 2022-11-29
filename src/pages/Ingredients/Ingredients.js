@@ -50,7 +50,9 @@ return (
     <div className="shelfOne"> <div className="carrot"> <img style ={{objectFit: 'fill'}} src = {require('./images/carrot.png')} alt="carrot" /> </div>
                                 <div className="cheese"> <img style ={{objectFit: 'fill'}} src = {require('./images/cheese.png')} alt="cheese"  /></div> 
                                 <div className="milk"> <img style ={{objectFit: 'fill'}}  src = {require('./images/milk.png')} alt="milk" /></div> </div>
-    <div className="shelfTwo"></div>
+    <div className="shelfTwo"><div className="broccoli"> <img style ={{objectFit: 'fill'}} src = {require('./images/broccoli.png')} alt="carrot" /> </div>
+                                <div className="orangeJuice"> <img style ={{objectFit: 'fill'}} src = {require('./images/orange juice.png')} alt="cheese"  /></div> 
+                                <div className="tomato"> <img style ={{objectFit: 'fill'}}  src = {require('./images/tomato.png')} alt="milk" /></div> </div>
     <div className="shelfThree"></div>
     <div className="shelfFour">
         <div className="addButton">+</div>
