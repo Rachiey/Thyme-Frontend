@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
 .ingredientsHeading {
     color: blue;
     /* text-align: center;
@@ -8,3 +10,229 @@
     margin-bottom: 0 !important; */
     
 }
+
+body {
+    background-color: #e9e6dd;
+}
+
+.iphoneContainer {
+    height: 100vh; /* Magic here */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+
+}
+.iphoneBackground  {
+    width: 390px;
+    height: 844px;
+    background-color: #6171b7;
+    border-radius: 20px;
+ 
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-content:center;
+    
+  }
+  .fridgeTitle {
+    width: 400px;
+    height: 75px;
+    margin: 15px;
+    text-align: center;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-family: 'AlphaFridgeMagnets';
+    font-weight:500;
+    color: #e9e6dd;
+    
+    
+   
+  }
+
+  .logOutButton {
+    margin-bottom:20px;
+    width: 150px;
+    height: 40px;
+    background-color:  #47579d;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'AlphaFridgeMagnets';
+    font-size: 25px;
+   
+  }
+
+  .shelfOne {
+    width: 320px;
+    height: 100px;
+    background-color: #e9e6dd;
+    border-radius: 20px;
+    display: flex;
+    align-content:center;
+    justify-content: space-evenly;
+    align-items: center;
+  
+   
+  }
+  .carrot {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    height: 75px;
+    width: 75px;
+
+  }
+
+  .cheese {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    height: 75px;
+    width: 75px;
+  }
+
+  .milk {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+   
+  }
+
+
+  .shelfTwo {
+    width: 320px;
+    height: 100px;
+    background-color: #e9e6dd;
+    border-radius: 20px;
+    margin-top: 35px;
+    display: flex;
+    align-content:center;
+    justify-content: space-evenly;
+    align-items: center;
+  
+  }
+  
+  .broccoli {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    height: 75px;
+    width: 75px;
+
+  }
+
+  .orangeJuice {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    width: 40px;
+  }
+
+  .tomato{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    height: 50px;
+    width: 70px;
+    object-fit: contain;
+   
+  }
+
+  .shelfThree {
+    width: 320px;
+    height: 100px;
+    background-color: #e9e6dd;
+    border-radius: 20px;
+    margin-top: 35px;
+  }
+
+  .shelfFour {
+    width: 320px;
+    height: 100px;
+    background-color: #e9e6dd;
+    border-radius: 20px;
+    margin-top: 35px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .addButton {
+    width: 70px;
+    height: 70px;
+    background-color: #93c572;
+    border-radius: 20px;
+    text-align: center;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-family: 'Varela Round', sans-serif;
+    font-weight:500;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-right: 15px;
+    color: white;
+ 
+
+  }
+
+  .bottomMenu {
+    width: 320px;
+    height: 100px;
+    background-color: #e9e6dd;
+    border-radius: 20px;
+    margin-top: 60px;
+    display: flex;
+    align-content:center;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .homeButton {
+    width: 70px;
+    height: 70px;
+    background-color: #47579d;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    font-size: 35px;
+
+  }
+  .recipeButton {
+    width: 70px;
+    height: 70px;
+    background-color:  #47579d;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    font-size: 35px;
+   
+  }
+  .profileButton {
+    width: 70px;
+    height: 70px;
+    background-color:  #47579d;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    font-size: 35px;
+ 
+  }
