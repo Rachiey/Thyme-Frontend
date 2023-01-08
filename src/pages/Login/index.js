@@ -39,13 +39,16 @@ const Login = () => {
     
     
 
-    return (<div>
-        {(user.email != "") ? (
-            navigate('/ingredients')
-        ) : (
-            <LoginForm Login={Logged} error={error} />
-        )}
+    return (
+    <div className="iphoneContainer"> 
+        <div className="iphoneBackground"> 
+            {(user.email != "") ? (
+                navigate('/ingredients')
+            ) : (
+                <LoginForm Login={Logged} error={error} />
+            )}
         </div>
+    </div>
     )
 }
 
