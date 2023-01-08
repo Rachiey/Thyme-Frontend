@@ -40,14 +40,14 @@ const Register = () => {
             alert('Server Error: failed to register user')
         }
     
-        const result2 = await axios.post('http://localhost:8000/users/login/', {"username": username, "password": password})
+        const result2 = await axios.post('http://localhost:3000/users/login/', {"username": username, "password": password})
         console.log(result2)
 
         sessionStorage.setItem('accessToken', result2.data.access)
         sessionStorage.setItem('refreshToken', result2.data.refresh)
         sessionStorage.setItem('username', username)
 
-        if (result2.status === 200) {navigate('/')
+        if (result2.status === 200) {navigate('/login')
         } else { alert('Server Error: failed to login') }
 
     }
