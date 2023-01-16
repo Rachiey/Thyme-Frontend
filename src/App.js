@@ -15,7 +15,9 @@ function App() {
         <Route path='/login' element={<Pages.Login />} />
         <Route path='/register' element={<Pages.Register />} />
 
-        <Route path='*' element={<p>nothing to see here</p>} />
+        {/* <Route path='*' element={<p>nothing to see here</p>} /> */}
+        <Route path='*' element={<Pages.NotFoundPage />}/>
+                   
       </Routes>
     </div>
     
