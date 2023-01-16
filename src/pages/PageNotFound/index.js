@@ -7,7 +7,7 @@ class NotFoundPage extends React.Component{
         return <div style={{display:"flex", justifyContent:"center", alignItems:"center", height:"800px", flexDirection:"column" }}>
             <img src={PageNotFound} alt="empty fridge" style={{margin:"100px", display:"block"}} />
             <p style={{textAlign:"center"}}>
-                <h1>Oops! The page that you're looking for can't be found. This fridge is empty :(</h1>
+                Oops! The page that you're looking for can't be found. This fridge is empty :(
               <Link to="/">Return Home</Link>
             </p>
           </div>;
