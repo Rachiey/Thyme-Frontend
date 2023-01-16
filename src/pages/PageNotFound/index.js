@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PageNotFound from '../assets/images/404.png';
-import './404.css';
+import './PageNotFound.css';
 class NotFoundPage extends React.Component{
     render(){
         return <div style={{display:"flex", justifyContent:"center", alignItems:"center", height:"800px", flexDirection:"column" }}>
