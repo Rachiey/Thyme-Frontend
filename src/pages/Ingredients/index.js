@@ -42,7 +42,7 @@ return (
         <div className="addButton">+</div>
     </div>
     <div className="bottomMenu">
-    <Link to="/home"> <div className="homeButton"> 
+    <Link to="/"> <div className="homeButton"> 
     < FontAwesomeIcon icon={faHouse} style= {{color:"white"}} />  </div> </Link>
     <Link to="/recipes"> <div className="recipeButton">  <FontAwesomeIcon icon={faBookOpen} style= {{color:"white"}} /></div> </Link>
     <Link to="/profile">  <div className="profileButton"> <FontAwesomeIcon icon={faUser} style= {{color:"white"}}  /> </div> </Link>
