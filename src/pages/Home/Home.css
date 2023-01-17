@@ -2,13 +2,7 @@
 
 .homePage .ingredientsHeading {
     color: blue;
-    /* text-align: center;
-    font-family: Helvetica-Neue, Arial, sans-serif;
-    font-size: 45px;
-    font-weight: 100;
-    margin-top: 170px;
-    margin-bottom: 0 !important; */
-    
+   
 }
 
 .homePage body {
@@ -16,7 +10,7 @@
 }
 
 .homePage .iphoneContainer {
-    height: 100vh; /* Magic here */
+    height: 100vh; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,10 +24,7 @@
     
     border-radius: 20px;
  
-    /* display: flex; */
-    /* align-items: center;
-    flex-direction: column;
-    align-content:center; */
+ 
     
   }
   .homePage .fridgeTitle {
@@ -118,7 +109,7 @@
   .fridgeHandle {
     display: inline-block;
     margin-left: 50px;
-    /* justify-content: flex-end; */
+  
   }
 
   .homePage .fridgeMagnetsButton{
