@@ -6,6 +6,8 @@ body {
     justify-content: center;
     height: 100vh;
     overflow: hidden;
+    background-image: url(../Home/images/background.jpg);
+
   }
 
   .door {
@@ -65,14 +67,78 @@ body {
    
   }
 
-  .fridgeHandle {
-    /* display: inline-block;
-    margin-left: 50px; */
+  .fridgeRow {
+    position: relative;
+  }
+
+  .profilePic {
+    display: inline-block;
+    margin-left: 160px;
+  }
+  .profilePicButton{
+    font-family: 'AlphaFridgeMagnets';
+    font-size: 25px;
+    color:#D5C5E8;
+    margin-left: 160px;
+  }
+
+  .profilePicButton:hover{
+    font-family: 'AlphaFridgeMagnets';
+    font-size: 40px;
+    color:lightpink;
+    margin-left: 160px;
+  }
+
+  .fridgeRow2 {
+    display:flex;
+    flex-direction: row-reverse;
+  }
+
+  .note {
+    position: relative;
+    display:inline-block;
+    text-align: center;
+   
+  }
+ .recipeTextButton{
+    font-family: Permanent Marker;
+    font-size: 25px;
     position: absolute;
-    margin-top: 200px;
-    margin-left: 85px;
+    top: 55%;
+    left: 22%;
+    transform: translate(-50%, -50%);
+    color:#d71d43;
+  }
 
+  .recipeEggs{
+    font-family: Permanent Marker;
+    font-size: 20px;
+    position: absolute;
+    top: 40%;
+    left: 22%;
+    transform: translate(-50%, -50%);
+    text-decoration: line-through;
+  }
+  .recipeMilk{
+    font-family: Permanent Marker;
+    font-size: 20px;
+    position: absolute;
+    top: 30%;
+    left: 22%;
+    transform: translate(-50%, -50%);
+    text-decoration: line-through;
+  }
 
+  .recipeTextButton:hover{
+    font-family: Permanent Marker;
+    font-size: 40px;
+    color:lightskyblue;
+  }
+
+  .fridgeHandle {
+    display: inline-block;
+    position: absolute;
+    margin-left: 80px;
   }
 
   .fridgeHandle:before {
@@ -88,7 +154,18 @@ body {
     visibility:hidden;
   }
 
-  
+  .fridgeMagnetsButton{
+    font-family: 'AlphaFridgeMagnets';
+    font-size: 30px;
+    color: #F7D3BC;
+  }
+
+  .fridgeMagnetsButton:hover{
+    font-family: 'AlphaFridgeMagnets';
+    font-size: 40px;
+    color:lightsalmon;
+  }
+
   .door-back {
     position: relative;
     background:#6171b7;
