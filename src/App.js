@@ -16,6 +16,7 @@ function App() {
         <Route path='/register' element={<Pages.Register />} />
         <Route path='/logout' element={<Pages.LogOut />} />
         <Route path='/profile' element={<Pages.Profile />} />
+        <Route path='/fridge' element={<Pages.Fridge />} />
 
         {/* <Route path='*' element={<p>nothing to see here</p>} /> */}
         <Route path='*' element={<Pages.NotFoundPage />}/>
