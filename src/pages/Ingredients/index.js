@@ -74,10 +74,15 @@ export const Ingredients = () => {
 return (
 <>    
     <div className="iphoneContainer"> 
-        <div className="iphoneBackground"> 
+
+        <div className="iphoneIngredientsBackground"> 
+    // <div className="fridgeTitle"> Username's  &nbsp; <span style= {{color: "red"}}> F</span>
+=======
+  //  <div className="iphoneBackground"> 
 
             <div className="fridgeTitle"> {username}'s  &nbsp; 
                 <span style= {{color: "red"}}> F</span>
+
                 <span style= {{color: "#FDDA0D"}}> r</span>
                 <span style= {{color: "blue"}}> i</span>
                 <span style= {{color: "#F28C28"}}> d</span>
@@ -164,7 +169,7 @@ return (
             </div>
 
             <div className="bottomMenu">
-                <Link to="/home"> <div className="homeButton"> 
+                <Link to="/"> <div className="homeButton"> 
                 <FontAwesomeIcon icon={faHouse} style= {{color:"white"}} />  </div> </Link>
                 <Link to="/recipes"> <div className="recipeButton">  <FontAwesomeIcon icon={faBookOpen} style= {{color:"white"}} /></div> </Link>
                 <Link to="/profile">  <div className="profileButton"> <FontAwesomeIcon icon={faUser} style= {{color:"white"}}  /> </div> </Link>
