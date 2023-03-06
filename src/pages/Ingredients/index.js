@@ -24,15 +24,14 @@ const LoggedOut = () => {
     navigate('/login')
     
 }
-return (<>
+return (
+<>
     
 
     <div className="iphoneContainer"> 
 
     <div className="iphoneIngredientsBackground"> 
-    // <div className="fridgeTitle"> Username's  &nbsp; <span style= {{color: "red"}}> F</span>
-=======
-  //  <div className="iphoneBackground"> 
+ 
     <div className="fridgeTitle"> {username}'s  &nbsp; <span style= {{color: "red"}}> F</span>
 
                                             <span style= {{color: "#FDDA0D"}}> r</span>
