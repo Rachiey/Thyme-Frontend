@@ -15,6 +15,7 @@ const [user, setUser] = useState({username: "", email: ""});
 
 
 const username = localStorage.getItem("username")
+
 const navigate = useNavigate();
 
 const LoggedOut = () => {
@@ -32,21 +33,22 @@ return (
 
     <div className="iphoneIngredientsBackground"> 
  
-    <div className="fridgeTitle"> {username}'s  &nbsp; <span style= {{color: "red"}}> F</span>
-
-                                            <span style= {{color: "#FDDA0D"}}> r</span>
-                                            <span style= {{color: "blue"}}> i</span>
-                                            <span style= {{color: "#F28C28"}}> d</span>
-                                            <span style= {{color: "#32CD32"}}> g</span>
-                                            <span style= {{color: "#720e9e"}}> e</span>
+    <div className="fridgeTitle"> {username}'s  &nbsp; <span style= {{color: "#31BFF3"}}> F</span>
+                                            <span style= {{color: "#A484E9"}}> r</span>
+                                            <span style= {{color: "#F4889A"}}> i</span>
+                                            <span style= {{color: "#FFAF68"}}> d</span>
+                                            <span style= {{color: "#F6E683"}}> g</span>
+                                            <span style= {{color: "#79D45E"}}> e</span>
                                             </div>
-    <button onClick={LoggedOut}><div className="logOutButton">  <span style= {{color: "red"}}> L</span>
-                                            <span style= {{color: "#FDDA0D"}}> o</span>
-                                            <span style= {{color: "blue"}}> g</span>
+                                            
+    <button className="logOutButton" cursor={"pointer"} onClick={LoggedOut}> <span style= {{color: "#FFAF68"}}> L</span>
+                                            <span style= {{color: "#F6E683"}}> o</span>
+                                            <span style= {{color: "#A484E9"}}> g</span>
                                             &nbsp; 
-                                            <span style= {{color: "#F28C28"}}> O</span>
-                                            <span style= {{color: "#32CD32"}}> u</span>
-                                            <span style= {{color: "#720e9e"}}> t</span></div> </button>
+                                            <span style= {{color: "#31BFF3"}}> O</span>
+                                            <span style= {{color: "#79D45E"}}> u</span>
+                                            <span style= {{color: "#F4889A"}}> t</span> </button>
+  
     <div className="shelfOne"> <div className="carrot"> <img style ={{objectFit: 'fill'}} src = {require('./images/carrot.png')} alt="carrot" /> </div>
                                 <div className="cheese"> <img style ={{objectFit: 'fill'}} src = {require('./images/cheese.png')} alt="cheese"  /></div> 
                                 <div className="milk"> <img style ={{objectFit: 'fill'}}  src = {require('./images/milk.png')} alt="milk" /></div> </div>
@@ -58,7 +60,7 @@ return (
         <div className="addButton">+</div>
     </div>
     <div className="bottomMenu">
-    <Link to="/"> <div className="homeButton"> 
+    <Link to="/fridge"> <div className="homeButton"> 
     < FontAwesomeIcon icon={faHouse} style= {{color:"white"}} />  </div> </Link>
     <Link to="/recipes"> <div className="recipeButton">  <FontAwesomeIcon icon={faBookOpen} style= {{color:"white"}} /></div> </Link>
     <Link to="/profile">  <div className="profileButton"> <FontAwesomeIcon icon={faUser} style= {{color:"white"}}  /> </div> </Link>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
-import axios from 'axios'
+// import axios from 'axios'
 import LoginForm from '../../components/LoginForm/LoginForm'
 
 
@@ -21,7 +21,7 @@ const Login = () => {
     const Logged = details => {
         console.log(details);
     
-        if (details.email == adminUser.email && details.password == adminUser.passsword) {
+        if (details.email === adminUser.email && details.password === adminUser.passsword) {
             console.log("Logged in")
             setUser({
                 username: details.username,
@@ -40,8 +40,8 @@ const Login = () => {
     
 
     return (<div>
-        {(user.email != "") ? (
-            navigate('/ingredients')
+        {(user.email !== "") ? (
+            navigate('/fridge')
         ) : (
             <LoginForm Login={Logged} error={error} />
         )}

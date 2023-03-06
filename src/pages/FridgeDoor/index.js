@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './fridge.css';
 import { Link } from 'react-router-dom'
 import 'semantic-ui-css/semantic.min.css'
@@ -7,18 +7,33 @@ import fridgemagnet from '../Home/images/fridgemagnet.png';
 import fridgemagnets from '../Home/images/fridgemagnets.png';
 import note from '../Home/images/note.png';
 import fridgehandle from '../Home/images/fridgehandle.png';
-
+import { useNavigate } from 'react-router'
 
 
 
 
 export const Fridge = () => {
 
+    const [user, setUser] = useState({username: "", email: ""});
+
+
+    const username = localStorage.getItem("username")
+    
+    const navigate = useNavigate();
+    
+    const LoggedOut = () => {
+        console.log("Log out")
+        console.log(user)
+        setUser({ username: "", email: ""});
+        navigate('/login')
+        
+    }
+    
     return (
         <>
         <div className="door">
   <div className="door-front">
-  <div className="fridgeTitle"> Username's  &nbsp; <span style= {{color: "#31BFF3"}}> F</span>
+  <div className="fridgeTitle"> {username}'s  &nbsp; <span style= {{color: "#31BFF3"}}> F</span>
                                             <span style= {{color: "#A484E9"}}> r</span>
                                             <span style= {{color: "#F4889A"}}> i</span>
                                             <span style= {{color: "#FFAF68"}}> d</span>
@@ -26,13 +41,13 @@ export const Fridge = () => {
                                             <span style= {{color: "#79D45E"}}> e</span>
                                             </div>
     <div className ="logOutBox">
-    <Link to="/logout"><div className="logOutButton">  <span style= {{color: "#FFAF68"}}> L</span>
+    <button className="logOutButton" onClick={LoggedOut}> <span style= {{color: "#FFAF68"}}> L</span>
                                             <span style= {{color: "#F6E683"}}> o</span>
                                             <span style= {{color: "#A484E9"}}> g</span>
                                             &nbsp; 
                                             <span style= {{color: "#31BFF3"}}> O</span>
                                             <span style= {{color: "#79D45E"}}> u</span>
-                                            <span style= {{color: "#F4889A"}}> t</span></div> </Link>
+                                            <span style= {{color: "#F4889A"}}> t</span> </button>
     </div>
     <div className="fridgeRow">
     <div className="fridgeMagnet" ><img src={fridgemagnet} alt="fridge magnet" style={{height: "150px", marginRight:"150px"}}/></div>
