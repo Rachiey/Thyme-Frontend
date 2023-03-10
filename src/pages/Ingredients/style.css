@@ -36,6 +36,44 @@ body {
     align-content:center;
     
   }
+
+  /* Registration page */
+  .registrationForm {
+    width: 85%;
+    display: grid;
+    grid-template-rows: auto;
+    margin-bottom: 2rem;
+  }
+
+  .registrationLabel {
+    font-family: 'Varela Round', sans-serif;
+    color: #e9e6dd;
+    font-size: 1.5rem;
+  }
+
+  .registrationtextInputField {
+    height: 3rem;
+    border-radius: 8px;
+    border:none;  
+    margin: .2rem;
+    font-family: 'Varela Round', sans-serif;
+  } 
+
+  .passwordSettingBar{
+    margin:auto;
+  }
+
+  .registrationButton {
+    padding:1.5rem;
+    border-radius: 8px;
+    border:none;
+    margin: 2rem;
+  }
+
+  .registrationButton:hover{
+    cursor: pointer;
+  }
+
   .fridgeTitle {
 
     height: 75px;
@@ -64,7 +102,62 @@ body {
     align-items: center;
     font-family: 'AlphaFridgeMagnets';
     font-size: 25px;
-   
+
+  }
+
+  .logOutButton{
+    cursor: pointer;
+  }
+  .formInput{
+    width: 85%;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns:50% 15% 25% 10%; 
+    margin-bottom: 2rem;
+  }
+
+  .textInputField {
+    height: 3rem;
+    border-radius: 8px;
+    border:none;  
+    margin: .2rem;
+    font-family: 'Varela Round', sans-serif;
+  }
+
+  .quantityOption {
+    height: 3rem;
+    border-radius: 8px;
+    border:none;  
+    margin: .2rem;
+    font-family: 'Varela Round', sans-serif;
+  }
+  .datePicker{
+    height: 3rem;
+    border-radius: 8px;
+    border:none;  
+    margin: .2rem;
+    font-family: 'Varela Round', sans-serif;
+  }
+
+  .addButton {
+    width: 3rem;
+    height: 3rem;
+    background-color: #93c572;
+    border-radius: 10px;
+    text-align: center;
+    /* display:flex; */
+    /* align-items: center;
+    justify-content: center; */
+    font-size: 25px;
+    font-family: 'Varela Round', sans-serif;
+    font-weight:500;
+    margin: .2rem;
+    color: white;
+    border:none;
+  }
+
+  .addButton:hover{
+    cursor: pointer;
   }
 
   .shelfOne {
@@ -169,32 +262,13 @@ body {
     display: flex;
     justify-content: flex-end;
   }
-  .addButton {
-    width: 70px;
-    height: 70px;
-    background-color: #93c572;
-    border-radius: 20px;
-    text-align: center;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 25px;
-    font-family: 'Varela Round', sans-serif;
-    font-weight:500;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    margin-right: 15px;
-    color: white;
- 
-
-  }
 
   .bottomMenu {
     width: 320px;
     height: 100px;
     background-color: #e9e6dd;
     border-radius: 20px;
-    margin-top: 60px;
+    margin: 2rem;
     display: flex;
     align-content:center;
     justify-content: space-evenly;
