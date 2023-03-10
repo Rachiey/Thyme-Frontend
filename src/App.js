@@ -1,9 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, BrowserRouter, Switch} from 'react-router-dom';
 import * as Pages from './pages';
+import Dashboard from './components/Dashboard/dashboard';
+import Login from './components/Login/Login';
+import Preferences from './components/Preferences/preferences';
+import useToken from './components/App/useToken';
+
 
 function App() {
+
+  const { token, setToken } = useToken();
+
+  if(!token) {
+    return <Login setToken={setToken} />
+  }
 
 
   return (
@@ -19,6 +30,8 @@ function App() {
         <Route path='/logout' element={<Pages.LogOut />} />
         <Route path='/profile' element={<Pages.Profile />} />
         <Route path='/fridge' element={<Pages.Fridge />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/preferences' element={<Preferences/>} />
 
         {/* <Route path='*' element={<p>nothing to see here</p>} /> */}
         <Route path='*' element={<Pages.NotFoundPage />}/>
