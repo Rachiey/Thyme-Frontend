@@ -53,26 +53,29 @@ const Register = () => {
     }
 
     return (
-        <div>
-            <form>
-                <label>Username:</label>
-                <input onChange={handleUsername}></input><br></br>
-                <label>First name:</label>
-                <input onChange={handleFirstName}></input><br></br>
-                <label>Last name:</label>
-                <input onChange={handleLastName}></input><br></br>
-                <label>Email:</label>
-                <input onChange={handleEmail}></input><br></br>
-                <label>Password:</label>
-                <input type="password" onChange={handlePassword}></input><br></br>
-                <label>Confirm Password</label>
-                <input type="password" onChange={handlePassword2}></input><br></br>
+    <div className="iphoneContainer"> 
+        <div className="iphoneBackground"> 
+        <h1>Register</h1>
+            <form className="registrationForm">
+                <label className="registrationLabel">Username</label>
+                <input className="registrationtextInputField" onChange={handleUsername}></input><br/>
+                <label className="registrationLabel" >First name</label>
+                <input className="registrationtextInputField" onChange={handleFirstName}></input><br/>
+                <label className="registrationLabel" >Last name</label>
+                <input className="registrationtextInputField" onChange={handleLastName}></input><br/>
+                <label className="registrationLabel" >Email</label>
+                <input className="registrationtextInputField" onChange={handleEmail}></input><br/><br/>
+                <label className="registrationLabel" >Password</label>
+                <input className="registrationtextInputField" type="password" onChange={handlePassword}></input><br/>
+                <label className="registrationLabel" >Confirm Password</label>
+                <input className="registrationtextInputField" type="password" onChange={handlePassword2}></input><br/>
 
-                <PasswordStrength password={password} />
+                <PasswordStrength password={password} /><br/>
 
-                <button onClick={newUser}>Register</button>
+                <button className="registrationButton" onClick={newUser}>Register</button>
             </form>
         </div>
+    </div>
     )
 }
 
