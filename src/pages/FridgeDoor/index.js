@@ -7,7 +7,7 @@ import fridgemagnet from '../Home/images/fridgemagnet.png';
 import fridgemagnets from '../Home/images/fridgemagnets.png';
 import note from '../Home/images/note.png';
 import fridgehandle from '../Home/images/fridgehandle.png';
-import { useNavigate } from 'react-router'
+// import { useNavigate } from 'react-router'
 
 
 
@@ -19,13 +19,13 @@ export const Fridge = () => {
 
     const username = localStorage.getItem("username")
     
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     
     const LoggedOut = () => {
         console.log("Log out")
         console.log(user)
         setUser({ username: "", email: ""});
-        navigate('/login')
+        // navigate('/login')
         
     }
     

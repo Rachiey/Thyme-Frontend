@@ -24,10 +24,6 @@ export const Ingredients = () => {
     const navigate = useNavigate();
 
 
-const username = localStorage.getItem("username")
-
-const navigate = useNavigate();
-
 const LoggedOut = () => {
     console.log("Log out")
     console.log(user)
@@ -35,16 +31,6 @@ const LoggedOut = () => {
     navigate('/login')
     
 }
-return (
-<>
-    
-
-    const LoggedOut = () => {
-        console.log("Log out")
-        console.log(user)
-        setUser({ username: "", email: ""});
-        navigate('/login')
-    }
 
     const inputTextHandler = (e) => {setInputText(e.target.value)}
     const quantityValueHandler = (e) => {setQuantityValue(e.target.value)}
