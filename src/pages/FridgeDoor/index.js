@@ -50,20 +50,22 @@ export const Fridge = () => {
                                             <span style= {{color: "#F4889A"}}> t</span> </button>
     </div>
     <div className="fridgeRow">
-    <div className="fridgeMagnet" ><img src={fridgemagnet} alt="fridge magnet" style={{height: "150px", marginRight:"150px"}}/></div>
-    <div className="profilePic">  <Link to="/profile"><img src={profilepic} alt="polaroid photos" style={{height: "150px"}}/> </Link></div>
-    <div className="profilePicButton"> <Link to="/profile" style={{ color: 'inherit', textDecoration: 'inherit'}}>Profile </Link></div>
     <div className="fridgeHandle" > <img src={fridgehandle} alt="fridge handle" style={{height: "200px"}} /> </div>
+    <div className="fridgeMagnet" ><img src={fridgemagnet} alt="fridge magnet" style={{height: "150px", marginRight:"150px"}}/></div>
+   
   </div>
   
   
   <div className="fridgeRow2">
-    <div className="note"> <img className="notePic" src={note} alt="post it note" style={{height: "175px", marginRight: "200px", transform: 'rotate(20deg)'}}/>  
+    <div className="note"> <img className="notePic" src={note} alt="post it note" style={{height: "175px", transform: 'rotate(20deg)'}}/>  
     <div className="recipeEggs"> <Link to="/recipes" style={{ color: 'inherit', textDecoration: 'inherit'}}>Eggs </Link></div>
     <div className="recipeMilk"> <Link to="/recipes" style={{ color: 'inherit', textDecoration: 'inherit'}}>Milk </Link></div>
-        <div className="recipeTextButton"> <Link to="/recipes" style={{ color: 'inherit', textDecoration: 'inherit'}}>Recipes </Link></div>
+    <div className="recipeTextButton"> <Link to="/recipes" style={{ color: 'inherit', textDecoration: 'inherit'}}>Recipes </Link></div>
     </div>
-   
+    <div className="profilePic">  <Link to="/profile"><img src={profilepic} alt="polaroid photos" style={{height: "150px"}}/> </Link></div>
+    <div className="profilePicButton"> <Link to="/profile" style={{ color: 'inherit', textDecoration: 'inherit'}}>Profile </Link></div>
+
+
     
     </div>
    <div className="fridgeMagnets"> <Link to="/ingredients"> <img src={fridgemagnets} alt="fruit fridge magnets" style={{height: "120px"}} /> </Link> </div>
