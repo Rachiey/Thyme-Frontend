@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
+
 body {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
     overflow: hidden;
-    background-image: url(../Home/images/background.jpg);
+    background-image: url('./images/background.jpg');
   }
 
   .door {

@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url('../src/pages/Home/images/background.jpg');
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -14,7 +23,6 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
