@@ -9,16 +9,10 @@ import note from '../Home/images/note.png';
 import fridgehandle from '../Home/images/fridgehandle.png';
 import { useNavigate } from 'react-router'
 
-
-
-
 export const Fridge = () => {
 
     const [user, setUser] = useState({username: "", email: ""});
-
-
     const username = localStorage.getItem("username")
-    
     const navigate = useNavigate();
     
     const LoggedOut = () => {
@@ -26,14 +20,14 @@ export const Fridge = () => {
         console.log(user)
         setUser({ username: "", email: ""});
         navigate('/logout')
-        
     }
     
     return (
+
         <>
-        <div className="door">
-  <div className="door-front">
-  <div className="fridgeTitle"> {username}'s  &nbsp; <span style= {{color: "#31BFF3"}}> F</span>
+    <div className="door">
+        <div className="door-front">
+        <div className="fridgeTitle"> {username}'s  &nbsp; <span style= {{color: "#31BFF3"}}> F</span>
                                             <span style= {{color: "#A484E9"}}> r</span>
                                             <span style= {{color: "#F4889A"}}> i</span>
                                             <span style= {{color: "#FFAF68"}}> d</span>
@@ -90,15 +84,18 @@ export const Fridge = () => {
         <div className="orangeJuice"> <img style ={{objectFit: 'fill'}} src = {require('../Ingredients/images/orange juice.png')} alt="cheese"  /></div> 
         <div className="tomato"> <img style ={{objectFit: 'fill'}}  src = {require('../Ingredients/images/tomato.png')} alt="milk" /></div> </div>
     </div></a>
-    <div className='bottomFridge'>   
-       <div className="note"> <img className="notePic" src={note} alt="post it note" style={{height: "175px", transform: 'rotate(20deg)'}}/>  
-    <div className="recipeEggs"> <Link to="/recipes" style={{ color: 'inherit', textDecoration: 'inherit'}}>Eggs </Link></div>
-    <div className="recipeMilk"> <Link to="/recipes" style={{ color: 'inherit', textDecoration: 'inherit'}}>Milk </Link></div>
-    <div className="recipeTextButton"> <Link to="/recipes" style={{ color: 'inherit', textDecoration: 'inherit'}}>Recipes </Link></div>
+    <div className='bottomFridge'>
+        <div className="note"> <img className="notePic" src={note} alt="post it note" />  
+        <div className="noteWriting">
+        <div className="recipeEggs"> <Link to="/recipes" style={{ color: 'inherit', textDecoration: 'inherit'}}>Eggs </Link></div>
+        <div className="recipeMilk"> <Link to="/recipes" style={{ color: 'inherit', textDecoration: 'inherit'}}>Milk </Link></div>
+        <div className="recipeTextButton"> <Link to="/recipes" style={{ color: 'inherit', textDecoration: 'inherit'}}>Recipes </Link></div>
+        </div>
     </div>
-    <div className="profilePic">  <Link to="/profile"><img src={profilepic} alt="polaroid photos" style={{height: "150px"}}/> </Link></div>
+
+    <div className="profilePic">  <Link to="/profile"><img src={profilepic} alt="polaroid photos" style={{height: "150px"}}/> </Link>
     <div className="profilePicButton"> <Link to="/profile" style={{ color: 'inherit', textDecoration: 'inherit'}}>Profile </Link></div></div></div></div>
-</div>
+    </div></div>
 
         </>
     
