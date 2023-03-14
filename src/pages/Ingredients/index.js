@@ -73,9 +73,10 @@ const LoggedOut = () => {
         setInputText("")
         setQuantityValue(1);
         setExpiryDate("")      
-    }}
+    }
 
-return (
+return ( 
+
 <>    
     <div className="iphoneContainer"> 
 
@@ -195,7 +196,7 @@ return (
 
     
 </>
-)
+) }
 
 
 export default Ingredients;
