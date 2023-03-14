@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Routes, Route, BrowserRouter, Switch} from 'react-router-dom';
+import { Routes, Route} from 'react-router-dom';
 import * as Pages from './pages';
 import Dashboard from './components/Dashboard/dashboard';
 import Login from './components/Login/Login';
@@ -29,7 +29,6 @@ function App() {
         <Route path='/register' element={<Pages.Register />} />
         <Route path='/logout' element={<Pages.LogOut />} />
         <Route path='/profile' element={<Pages.Profile />} />
-        <Route path='/fridge' element={<Pages.Fridge />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/preferences' element={<Preferences/>} />
 
