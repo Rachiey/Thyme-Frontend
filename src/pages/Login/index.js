@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
-// import axios from 'axios'
 import LoginForm from '../../components/LoginForm/LoginForm'
 
 
@@ -43,8 +42,8 @@ const Login = () => {
     return (
       <div className="iphoneContainer"> 
         <div className="iphoneBackground"> 
-            {(user.email != "") ? (
-                navigate('/ingredients')
+            {(user.email !== "") ? (
+                navigate('/')
             ) : (
                 <LoginForm Login={Logged} error={error} />
             )}

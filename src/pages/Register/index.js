@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router'
 import PasswordStrength from '../../components/PasswordStrength/PasswordStrength'
+import './register.css';
+import { Link } from 'react-router-dom'
 
 const Register = () => {
     const navigate = useNavigate();
@@ -53,29 +55,27 @@ const Register = () => {
     }
 
     return (
-    <div className="iphoneContainer"> 
-        <div className="iphoneBackground"> 
-        <h1>Register</h1>
-            <form className="registrationForm">
+
+        <div className="doorBack"> 
+        <div className="thymeLogo">Logo Here</div>
+       <div className="registerTitle">Register</div>
+            <form className="registerForm">
                 <label className="registrationLabel">Username</label>
                 <input className="registrationtextInputField" onChange={handleUsername}></input><br/>
-                <label className="registrationLabel" >First name</label>
-                <input className="registrationtextInputField" onChange={handleFirstName}></input><br/>
-                <label className="registrationLabel" >Last name</label>
-                <input className="registrationtextInputField" onChange={handleLastName}></input><br/>
                 <label className="registrationLabel" >Email</label>
-                <input className="registrationtextInputField" onChange={handleEmail}></input><br/><br/>
+                <input className="registrationtextInputField" onChange={handleEmail}></input><br/>
                 <label className="registrationLabel" >Password</label>
                 <input className="registrationtextInputField" type="password" onChange={handlePassword}></input><br/>
                 <label className="registrationLabel" >Confirm Password</label>
                 <input className="registrationtextInputField" type="password" onChange={handlePassword2}></input><br/>
 
-                <PasswordStrength password={password} /><br/>
+                <div className="passwordStrength"><PasswordStrength password={password}/><br/></div>
 
                 <button className="registrationButton" onClick={newUser}>Register</button>
+                <Link to="/login"><button className="loginButton">Login</button></Link>
             </form>
         </div>
-    </div>
+
     )
 }
 
