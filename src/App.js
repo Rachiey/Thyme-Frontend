@@ -30,6 +30,7 @@ function App() {
         <Route path='/logout' element={<Pages.LogOut />} />
         <Route path='/profile' element={<Pages.Profile />} />
         <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/recipes' element={<Pages.Recipes />} />
         <Route path='/preferences' element={<Preferences/>} />
 
         {/* <Route path='*' element={<p>nothing to see here</p>} /> */}
