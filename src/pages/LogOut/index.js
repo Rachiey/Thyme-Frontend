@@ -1,16 +1,37 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './logout.css';
+import { useNavigate} from 'react-router';
 
 export const LogOut = () => {
-        return <div style={{display:"flex", justifyContent:"center", alignItems:"center", height:"800px", flexDirection:"column" }}>
-           
-            <p style={{textAlign:"center"}}>
-                <h1>You have successfully logged out. What now?</h1>
-              <Link to="/">Home</Link>
-              <Link to="/login">Log In</Link>
-            </p>
-          </div>;
-    }
+  const navigate = useNavigate();
+
+  const LogIn = () => {
+    navigate('/login')
+}
+
+
+  return (
+
+      <>
+<div className="doorBack">  
+
+                                          
+<div className="logOutTitle"> You have successfully logged out. What now?</div>
+<div className ="logInBox">
+    <button className="logInButton" onClick={LogIn}> <span style= {{color: "#FFAF68"}}> L</span>
+                                            <span style= {{color: "#F6E683"}}> o</span>
+                                            <span style= {{color: "#A484E9"}}> g</span>
+                                            &nbsp; 
+                                            <span style= {{color: "#31BFF3"}}> I</span>
+                                            <span style= {{color: "#79D45E"}}> n</span>
+                                          </button>
+    </div>
+
+  </div>
+
+      </>
+  
+ ) }
 
 export default LogOut;
+
