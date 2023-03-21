@@ -50,12 +50,7 @@ export const Fridge = () => {
   </div>
   
   
-  <div className="fridgeRow2">
-    
 
-
-    
-    </div>
    <div className="fridgeMagnets"> <Link to="/ingredients"> <img src={fridgemagnets} alt="fruit fridge magnets" style={{height: "100px"}} /> </Link> </div>
 
   </div>

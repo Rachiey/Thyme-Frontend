@@ -1,6 +1,9 @@
 import React from 'react';
 import './logout.css';
 import { useNavigate} from 'react-router';
+import fridgemagnet from '../Home/images/fridgemagnet.png';
+import fridgemagnets from '../Home/images/fridgemagnets.png';
+import fridgehandle from '../Home/images/fridgehandle.png';
 
 export const LogOut = () => {
   const navigate = useNavigate();
@@ -14,6 +17,15 @@ export const LogOut = () => {
 
       <>
 <div className="doorBack">  
+<div className="fridgeRow">
+    <div className="fridgeHandle" > <img src={fridgehandle} alt="fridge handle" style={{height: "200px"}} /> </div>
+    <div className="fridgeMagnet" ><img src={fridgemagnet} alt="fridge magnet" style={{height: "150px", marginRight:"150px"}}/></div>
+   
+  </div>
+  
+  
+
+   <div className="fridgeMagnets">  <img src={fridgemagnets} alt="fruit fridge magnets" style={{height: "100px"}} /> </div>
 
                                           
 <div className="logOutTitle"> You have successfully logged out. What now?</div>

@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
+import './login.css';
 import LoginForm from '../../components/LoginForm/LoginForm'
+import fridgemagnet from '../Home/images/fridgemagnet.png';
+import fridgemagnets from '../Home/images/fridgemagnets.png';
+import fridgehandle from '../Home/images/fridgehandle.png';
 
 
 
@@ -31,25 +35,33 @@ const Login = () => {
             console.log(localStorage)
         } else {
             console.log("Details do not match")
+            setError('registerInput', { type: 'custom', message: 'custom message' });
         }
     
     
     }
     
-    
-
-
     return (
-      <div className="iphoneContainer"> 
-        <div className="iphoneBackground"> 
-            {(user.email !== "") ? (
-                navigate('/')
-            ) : (
-                <LoginForm Login={Logged} error={error} />
-            )}
-
-        </div>
-    </div>
+        
+        <>
+        <div className="doorBack">  
+        <div className="fridgeRow">
+            <div className="fridgeHandle" > <img src={fridgehandle} alt="fridge handle" style={{height: "200px", marginTop: "110px"}} /> </div>
+            <div className="fridgeMagnet" ><img src={fridgemagnet} alt="fridge magnet" style={{height: "150px", marginRight:"150px", marginTop: "80px"}}/></div>
+           
+          </div>
+          
+          
+        
+           <div className="fridgeMagnets">  <img src={fridgemagnets} alt="fruit fridge magnets" style={{height: "100px"}} /> </div>
+        
+                                                  
+        <div className="logIn"> {(user.email !== "") ? ( navigate('/') ) : ( <LoginForm Login={Logged} error={error} /> )}</div>
+       
+        
+          </div>
+        
+              </>
     )
 }
 
