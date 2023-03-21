@@ -2,6 +2,14 @@ import React, { useState } from 'react';
 import './recipes.css';
 import 'semantic-ui-css/semantic.min.css'
 import { useNavigate } from 'react-router'
+import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse } from '@fortawesome/free-solid-svg-icons'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faUtensils } from '@fortawesome/free-solid-svg-icons'
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+
 
 export const Recipes = () => {
 
@@ -15,6 +23,11 @@ export const Recipes = () => {
         setUser({ username: "", email: ""});
         navigate('/logout')
     }
+
+    const homeIcon = <FontAwesomeIcon icon={faHouse} />
+    const profileIcon = <FontAwesomeIcon icon={faUser} />
+    const ingredientsIcon = <FontAwesomeIcon icon={faUtensils} />
+
     
     return (
 
@@ -37,11 +50,25 @@ export const Recipes = () => {
                                             <span style= {{color: "#F4889A"}}> t</span> </button>
     </div>
 <div className="recipesTitle"> Recipes </div>
-   <div> <a href="/ingredients"><div className="fridgeShelves"><div className="shelfOne"> </div>
+   <div> <div className="fridgeShelves"><div className="shelfOne"> </div>
     <div className="shelfTwo"> </div>
-    <div className="bottomNavBar"> </div> 
+    <div className="bottomNavBar">  <Tooltip title='Home'>
+      <IconButton style={{color: 'white', fontSize: '50px'}}>
+      <Link to='/'>{homeIcon} </Link>
+      </IconButton>
+      </Tooltip>
+      <Tooltip title='Profile'>
+      <IconButton style={{color: 'white', fontSize: '50px'}}>
+      <Link to='/recipes'>{profileIcon} </Link>
+      </IconButton>
+    </Tooltip>  
+    <Tooltip title='Ingredients'>
+      <IconButton style={{color: 'white', fontSize: '50px'}}>
+      <Link to='/ingredients'>{ingredientsIcon} </Link>
+      </IconButton>
+    </Tooltip>  </div> 
  
-    </div></a>
+    </div>
    </div>
     </div>
 

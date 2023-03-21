@@ -12,15 +12,11 @@ const Register = () => {
     const [ email, setEmail ] = useState("")
     const [ password, setPassword ] = useState("")
     const [ password2, setPassword2 ] = useState("")
-    const [ firstName, setFirstName ] = useState("")
-    const [ lastName, setLastName ] = useState("")
 
     const handleUsername = (e) => setUsername(e.target.value)
     const handleEmail = (e) => setEmail(e.target.value)
     const handlePassword = (e) => setPassword(e.target.value)
     const handlePassword2 = (e) => setPassword2(e.target.value)
-    const handleFirstName = (e) => setFirstName(e.target.value)
-    const handleLastName = (e) => setLastName(e.target.value)
 
     const newUser = async () => {
         if (password !== password2){
@@ -31,8 +27,6 @@ const Register = () => {
             "username": username,
             "email": email,
             "password": password,
-            "first_name": firstName,
-            "last_name": lastName
         }
 
         const result = await axios.post('http://localhost:3000/users/register/', data)
