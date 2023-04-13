@@ -6,7 +6,9 @@ import Dashboard from './components/Dashboard/dashboard';
 import Login from './components/Login/Login';
 import Preferences from './components/Preferences/preferences';
 import useToken from './components/App/useToken';
-
+// import Login from './views/auth/login';
+// import Signup from './views/auth/Signup';
+// import Logout from './views/auth/Logout';
 
 
 function App() {
