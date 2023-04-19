@@ -64,17 +64,24 @@ class LoginForm extends Component {
     render() {
         return (
             <div id="content">
-                <h2>Login</h2>
+                <div className="logInTitle">
+         <span style= {{color: "#FFAF68"}}> L</span>
+         <span style= {{color: "#F6E683"}}> o</span>
+       <span style= {{color: "#A484E9"}}> g</span>
+                                             &nbsp; 
+        <span style= {{color: "#31BFF3"}}> I</span>
+        <span style= {{color: "#79D45E"}}> n</span>
+                                             </div>
                 <form onSubmit={this.login}>
                     <div className="loginInput">
-                        <label htmlFor="username">Enter your username</label>
+                        <label htmlFor="username">Enter your username:</label>
                         <input type="text" name="username" value={this.state.username} onChange={this.handleInput} />
                     </div>
                     <div className="loginInput">
-                        <label htmlFor="password">Enter your password</label>
+                        <label htmlFor="password">Enter your password:</label>
                         <input type="password" name="password" value={this.state.password} onChange={this.handleInput} />
                     </div>
-                    <div className="loginInput">
+                    <div className="logInInput">
                         <input type="submit" className={this.formIncomplete() ? 'disabled' : 'enabled'} disabled={this.formIncomplete()} value="Login" />
                     </div>
                 </form>

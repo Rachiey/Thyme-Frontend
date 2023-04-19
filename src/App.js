@@ -48,8 +48,11 @@ render() {
             <Route element={<Pages.Ingredients/>} path="/ingredients"/>
             <Route element={<Pages.Profile/>} path="/profile"/>
         </Route>
+        <Route element={<LoggedOutRoute />}>
         <Route element={<Pages.Login/>} path="/login"/>
         <Route element={<Pages.Register/>} path="/register"/>
+        </Route>
+        
         <Route element={<Pages.LogOut/>} path="/logout"/>
       </Routes>
   </Router>
