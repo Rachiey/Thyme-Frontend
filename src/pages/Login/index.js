@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
 import './login.css';
-import LoginForm from '../../components/LoginForm/LoginForm'
+import LoginForm from '../../components/LoginForm/LoginForm';
 import fridgemagnet from '../Home/images/fridgemagnet.png';
 import fridgemagnets from '../Home/images/fridgemagnets.png';
 import fridgehandle from '../Home/images/fridgehandle.png';
@@ -10,7 +10,7 @@ import fridgehandle from '../Home/images/fridgehandle.png';
 
 const adminUser = {
     username: "admin1",
-    email: "admin@admin.com",
+    // email: "admin@admin.com",
     passsword: "test1"
 }
 
@@ -56,7 +56,7 @@ const Login = () => {
            <div className="fridgeMagnets">  <img src={fridgemagnets} alt="fruit fridge magnets" style={{height: "100px"}} /> </div>
         
                                                   
-        <div className="logIn"> {(user.email !== "") ? ( navigate('/') ) : ( <LoginForm Login={Logged} error={error} /> )}</div>
+        <div className="logIn"> {(user.email !== "") ? ( navigate('/') ) : ( <LoginForm login={Logged} error={error} /> )}</div>
        
         
           </div>
@@ -65,4 +65,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Login;
