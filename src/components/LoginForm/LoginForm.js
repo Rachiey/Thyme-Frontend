@@ -21,7 +21,7 @@ function LoginForm({ Login, error }) {
                                             <span style= {{color: "#31BFF3"}}> I</span>
                                             <span style= {{color: "#79D45E"}}> n</span>
                                             </div>
-            {/* ERROR! */}
+           
             <div className='username'>
                 <label className='usernameTitle' htmlFor="username">Username:</label>
                 <input type="text" username="username" id="username" onChange={e => setDetails({...details, username: e.target.value})} value={details.username}/>
