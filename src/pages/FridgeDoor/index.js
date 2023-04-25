@@ -73,12 +73,12 @@ export const Fridge = () => {
   </div>
 <div className="door-back">  <div className="ingredientsTitle"> Ingredients<a href="/ingredients">
       <span className="link"></span>
-   </a>  <div className="fridgeShelves"><div className="shelfOne"> <div className="carrot"> <img style ={{objectFit: 'fill'}} src = {require('../Ingredients/images/carrot.png')} alt="carrot" /> </div>
-                                <div className="cheese"> <img style ={{objectFit: 'fill'}} src = {require('../Ingredients/images/cheese.png')} alt="cheese"  /></div> 
-                                <div className="milk"> <img style ={{objectFit: 'fill'}}  src = {require('../Ingredients/images/milk.png')} alt="milk" /></div> </div>
-    <div className="shelfTwo"><div className="broccoli"> <img style ={{objectFit: 'fill'}} src = {require('../Ingredients/images/broccoli.png')} alt="carrot" /> </div>
-                                <div className="orangeJuice"> <img style ={{objectFit: 'fill'}} src = {require('../Ingredients/images/orange juice.png')} alt="cheese"  /></div> 
-                                <div className="tomato"> <img style ={{objectFit: 'fill'}}  src = {require('../Ingredients/images/tomato.png')} alt="milk" /></div> </div>
+   </a>  <div className="fridgeShelves"><div className="shelfOne"> <div className="carrot"> <img style ={{objectFit: 'fill'}} src = {require('../ItemInfo/images/carrot.png')} alt="carrot" /> </div>
+                                <div className="cheese"> <img style ={{objectFit: 'fill'}} src = {require('../ItemInfo/images/cheese.png')} alt="cheese"  /></div> 
+                                <div className="milk"> <img style ={{objectFit: 'fill'}}  src = {require('../ItemInfo/images/milk.png')} alt="milk" /></div> </div>
+    <div className="shelfTwo"><div className="broccoli"> <img style ={{objectFit: 'fill'}} src = {require('../ItemInfo/images/broccoli.png')} alt="carrot" /> </div>
+                                <div className="orangeJuice"> <img style ={{objectFit: 'fill'}} src = {require('../ItemInfo/images/orange juice.png')} alt="cheese"  /></div> 
+                                <div className="tomato"> <img style ={{objectFit: 'fill'}}  src = {require('../ItemInfo/images/tomato.png')} alt="milk" /></div> </div>
     <div className="shelfThree"></div>
     <div className="shelfFour"> </div></div></div></div>
 </div>

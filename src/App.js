@@ -24,7 +24,7 @@ function App() {
    
       <Routes>
         <Route exact path='/' element={<Pages.Home />}></Route>
-        <Route path='/ingredients' element={<Pages.Ingredients />} ></Route>
+        <Route path='/item-info' element={<Pages.ItemInfo />} ></Route>
         <Route path='/shelf' element={<Pages.Shelf/>}></Route>
         {/* <Route path='/login' element={<Pages.Login />} /> */}
         <Route path='/register' element={<Pages.Register />} />
