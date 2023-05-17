@@ -9,7 +9,7 @@ import { PrivateRoute, LoggedOutRoute } from './components';
 class App extends Component {
 
   state = {
-    isLoggedIn: false, // must change back to false
+    isLoggedIn: false,
     currentUser: {}
 }
 
@@ -25,7 +25,7 @@ login = async (userData) => {
       const data = await r.json();
       if (data.err){ throw Error(data.err) }
       this.setState({ isLoggedIn: true, currentUser: data })
-      this.props.history.push('./habits')
+      this.props.history.push('./profile')
   } catch (err) {
       console.warn(`Error: ${err}`);
   }
