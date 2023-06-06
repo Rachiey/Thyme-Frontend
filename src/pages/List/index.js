@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from "uuid";
 import Item from "../../components/Item";
-import './recipes.css';
+import './shoppinglist.css';
 import 'semantic-ui-css/semantic.min.css'
 import { useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
@@ -15,7 +15,7 @@ import Tooltip from '@mui/material/Tooltip';
 
 
 
-export const Recipes = () => {
+export const List = () => {
 
   
 
@@ -33,7 +33,7 @@ export const Recipes = () => {
     const homeIcon = <FontAwesomeIcon icon={faHouse} />
     const profileIcon = <FontAwesomeIcon icon={faUser} />
     const ingredientsIcon = <FontAwesomeIcon icon={faUtensils} />
-    
+
     const arr = () => {
       let data = localStorage.getItem("data");
       if (data) return JSON.parse(localStorage.getItem("data"));
@@ -104,8 +104,9 @@ export const Recipes = () => {
                                             <span style= {{color: "#79D45E"}}> u</span>
                                             <span style= {{color: "#F4889A"}}> t</span> </button>
     </div>
-    <div className="GroceryList">
-      <h1>Grocery List</h1>
+    <div className="shoppingList">
+      <h1 className="shoppingTitle">Grocery List</h1>
+  
       <form onSubmit={handleSubmit}>
         <input
           className="input"
@@ -169,4 +170,4 @@ export const Recipes = () => {
    ) }
 
 
-export default Recipes;
+export default List;

@@ -79,12 +79,13 @@ export const Fridge = () => {
         <div className="orangeJuice"> <img style ={{objectFit: 'fill'}} src = {require('../Ingredients/images/orange juice.png')} alt="cheese"  /></div> 
         <div className="tomato"> <img style ={{objectFit: 'fill'}}  src = {require('../Ingredients/images/tomato.png')} alt="milk" /></div> </div>
     </div></a>
+
     <div className='bottomFridge'>
         <div className="note"> <img className="notePic" src={note} alt="post it note" />  
         <div className="noteWriting">
-        <div className="recipeEggs"> <Link to="/recipes" style={{ color: 'inherit', textDecoration: 'inherit'}}>Eggs </Link></div>
-        <div className="recipeMilk"> <Link to="/recipes" style={{ color: 'inherit', textDecoration: 'inherit'}}>Milk </Link></div>
-        <div className="recipeTextButton"> <Link to="/recipes" style={{ color: 'inherit', textDecoration: 'inherit'}}>Recipes </Link></div>
+        <div className="recipeEggs"> <Link to="/list" style={{ color: 'inherit', textDecoration: 'inherit'}}>Eggs </Link></div>
+        <div className="recipeMilk"> <Link to="/list" style={{ color: 'inherit', textDecoration: 'inherit'}}>Milk </Link></div>
+        <div className="recipeTextButton"> <Link to="/list" style={{ color: 'inherit', textDecoration: 'inherit'}}>Shopping List</Link></div>
         </div>
     </div>
 

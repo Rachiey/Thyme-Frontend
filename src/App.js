@@ -44,7 +44,7 @@ render() {
       <Routes>
         <Route element={<PrivateRoute />}>
             <Route element={<Pages.Home/>} path="/" exact/>
-            <Route element={<Pages.Recipes/>} path="/recipes"/>
+            <Route element={<Pages.List/>} path="/list"/>
             <Route element={<Pages.Ingredients/>} path="/ingredients"/>
             <Route element={<Pages.Profile/>} path="/profile"/>
         </Route>

@@ -42,13 +42,17 @@
     z-index: 1;
   }
 
-  .recipesTitle {
+  .shoppingTitle {
 
     margin: 15px;
     font-size: 32px;
     font-family: 'AlphaFridgeMagnets';
     font-weight:500;
     color: #e9e6dd;
+  }
+
+  .shoppingInput {
+    margin: 15px;
   }
 
 .fridgeShelves {
