@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './recipefinder.css';
 import 'semantic-ui-css/semantic.min.css'
 import { useNavigate } from 'react-router'
@@ -32,6 +33,29 @@ export const RecipeFinder = () => {
     const profileIcon = <FontAwesomeIcon icon={faUser} />
     const ingredientsIcon = <FontAwesomeIcon icon={faUtensils} />
 
+    const [ingredients, setIngredients] = useState('');
+  const [recipes, setRecipes] = useState([]);
+
+  const handleInputChange = (e) => {
+    setIngredients(e.target.value);
+  };
+
+  const searchRecipes = () => {
+    // Here, you can make an API call to fetch recipes based on the user's ingredients
+    // You can use libraries like Axios or fetch for making the API call
+    // Once you receive the recipes data, you can update the 'recipes' state
+
+    // Mocking the recipes data for demonstration purposes
+    const mockRecipes = [
+      { id: 1, name: 'Pasta with Tomato Sauce' },
+      { id: 2, name: 'Chicken Stir-Fry' },
+      { id: 3, name: 'Vegetable Curry' },
+    ];
+
+    setRecipes(mockRecipes); 
+
+};
+
  
 
 
@@ -58,6 +82,23 @@ export const RecipeFinder = () => {
     </div>
     <div className="shoppingList">
       <h1 className="shoppingTitle">Recipe Finder</h1>
+    </div>
+    <div>
+    
+      <input
+        type="text"
+        value={ingredients}
+        onChange={handleInputChange}
+        placeholder="Enter your ingredients"
+      />
+      <button onClick={searchRecipes}>Search</button>
+
+      <h2>Recipes</h2>
+      <ul>
+        {recipes.map((recipe) => (
+          <li key={recipe.id}>{recipe.name}</li>
+        ))}
+      </ul>
     </div>
    
 
