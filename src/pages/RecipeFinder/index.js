@@ -40,19 +40,22 @@ export const RecipeFinder = () => {
     setIngredients(e.target.value);
   };
 
-  const searchRecipes = () => {
-    // Here, you can make an API call to fetch recipes based on the user's ingredients
-    // You can use libraries like Axios or fetch for making the API call
-    // Once you receive the recipes data, you can update the 'recipes' state
+  const searchRecipes = async () => {
+    const appId = 'ee012a65';
+    const appKey = '2f95ba7f90bafcbddc6bbf5d1f61c15b';
+    const apiUrl = `https://api.edamam.com/search?q=${encodeURIComponent(
+      ingredients
+    )}&app_id=${appId}&app_key=${appKey}`;
 
-    // Mocking the recipes data for demonstration purposes
-    const mockRecipes = [
-      { id: 1, name: 'Pasta with Tomato Sauce' },
-      { id: 2, name: 'Chicken Stir-Fry' },
-      { id: 3, name: 'Vegetable Curry' },
-    ];
+    try {
+        const response = await axios.get(apiUrl);
+        setRecipes(response.data.hits);
+      } catch (error) {
+        console.error('Error fetching recipes:', error);
+        setRecipes([]);
+      }
 
-    setRecipes(mockRecipes); 
+    
 
 };
 
@@ -96,7 +99,7 @@ export const RecipeFinder = () => {
       <h2>Recipes</h2>
       <ul>
         {recipes.map((recipe) => (
-          <li key={recipe.id}>{recipe.name}</li>
+          <li key={recipe.recipe.uri}>{recipe.recipe.label}</li>
         ))}
       </ul>
     </div>
