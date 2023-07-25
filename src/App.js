@@ -47,6 +47,7 @@ render() {
             <Route element={<Pages.List/>} path="/list"/>
             <Route element={<Pages.Ingredients/>} path="/ingredients"/>
             <Route element={<Pages.Profile/>} path="/profile"/>
+            <Route element={<Pages.RecipeFinder/>} path="/recipefinder"/>
         </Route>
         <Route element={<LoggedOutRoute />}>
         <Route element={<Pages.Login/>} path="/login"/>

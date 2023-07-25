@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+  .logOutBox {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .logOutButton {
+    margin-bottom:20px;
+    width: 150px;
+    height: 40px;
+    background-color:  #47579d;
+    border-radius: 10px;
+    font-family: 'AlphaFridgeMagnets';
+    font-size: 25px;
+    cursor: pointer;
+  }
+
+  .logOutButton:hover{
+    font-size: 40px;
+    color:white;
+    background-color:white;
+  }
+
+  .door-back {
+    position: relative;
+    background:#6171b7;
+    width: 390px;
+    height: 844px;
+    border-radius: 20px;
+    overflow: hidden;
+    outline: 10px solid #5867a8;
+  }
+
+  .link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .shoppingTitle {
+
+    margin: 15px;
+    font-size: 32px;
+    font-family: 'AlphaFridgeMagnets';
+    font-weight:500;
+    color: #e9e6dd;
+  }
+
+  .shoppingInput {
+    margin: 15px;
+  }
+
+.fridgeShelves {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+  .shelfOne {
+    width: 320px;
+    height: 500px;
+    background-color: #e9e6dd;
+    border-radius: 20px;
+    display: flex;
+    align-content:center;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .shelfThree {
+    width: 320px;
+    height: 100px;
+    background-color: #e9e6dd;
+    border-radius: 20px;
+    margin-top: 35px;
+  }
+
+  .shelfFour {
+    width: 320px;
+    height: 100px;
+    background-color: #e9e6dd;
+    border-radius: 20px;
+    margin-top: 35px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .bottomNavBar {
+    width: 320px;
+    height: 100px;
+    background-color: #374ba6;
+    color:white;
+    border-radius: 20px;
+    margin-top: 290px;
+    margin-left: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 50px;
+  }
+ 
+  a { 
+    color:white;
+  }
+
+
+ 
+
+ 
