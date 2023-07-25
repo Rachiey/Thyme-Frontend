@@ -7,6 +7,7 @@ import fridgemagnet from '../Home/images/fridgemagnet.png';
 import fridgemagnets from '../Home/images/fridgemagnets.png';
 import note from '../Home/images/note.png';
 import fridgehandle from '../Home/images/fridgehandle.png';
+import recipeimage from '../Home/images/recipe.png';
 import { useNavigate } from 'react-router'
 
 export const Fridge = () => {
@@ -88,6 +89,9 @@ export const Fridge = () => {
         <div className="recipeTextButton"> <Link to="/list" style={{ color: 'inherit', textDecoration: 'inherit'}}>Shopping List</Link></div>
         </div>
     </div>
+    </div>
+
+    <div><div className="recipeimage">  <Link to="/recipefinder"><img className="recipeimage" src={recipeimage} alt="recipe paper" /> </Link></div>
 
     <div className="profilePic">  <Link to="/profile"><img src={profilepic} alt="polaroid photos" style={{height: "150px"}}/> </Link>
     <div className="profilePicButton"> <Link to="/profile" style={{ color: 'inherit', textDecoration: 'inherit'}}>Profile </Link></div></div></div></div>
