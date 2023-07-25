@@ -6,6 +6,7 @@ import { PrivateRoute, LoggedOutRoute } from './components';
 
 
 
+
 class App extends Component {
 
   state = {
@@ -46,8 +47,9 @@ render() {
             <Route element={<Pages.Home/>} path="/" exact/>
             <Route element={<Pages.List/>} path="/list"/>
             <Route element={<Pages.Ingredients/>} path="/ingredients"/>
-            <Route element={<Pages.Profile/>} path="/profile"/>
-            <Route element={<Pages.RecipeFinder/>} path="/recipefinder"/>
+            <Route element={<Pages.Profile/> } path="/profile"  />
+            <Route element={<Pages.SavedRecipes/>} path="/savedrecipes"/>
+            <Route element={<Pages.RecipeFinder/>} path="/recipefinder" />
         </Route>
         <Route element={<LoggedOutRoute />}>
         <Route element={<Pages.Login/>} path="/login"/>

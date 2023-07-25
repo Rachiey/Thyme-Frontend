@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import './profile.css';
 import 'semantic-ui-css/semantic.min.css'
 import { useNavigate } from 'react-router'
@@ -9,6 +9,7 @@ import { faRectangleList } from '@fortawesome/free-solid-svg-icons'
 import { faUtensils } from '@fortawesome/free-solid-svg-icons'
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
+import SavedRecipes from '../SavedRecipes';
 
 
 export const Profile = () => {
@@ -52,7 +53,11 @@ export const Profile = () => {
 <div className="profileTitle"> Profile </div>
    <div> <div className="fridgeShelves"><div className="shelfOne"> 
                                  </div>
-    <div className="shelfTwo">
+    
+    <div className="savedRecipesContainer">
+      <SavedRecipes />
+      </div>
+      
          
         </div>
         <div className="bottomNavBarProfile"> 
@@ -74,7 +79,7 @@ export const Profile = () => {
     </div> 
     </div>
    </div>
-    </div>
+    
 
         </>
     
