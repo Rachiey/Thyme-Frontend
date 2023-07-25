@@ -38,8 +38,8 @@ logout = () => {
 
 render() {
   return (
-
-    <div className="App">
+  
+  <div className="App">
     <Router>
       <Routes>
         <Route element={<PrivateRoute />}>
@@ -55,8 +55,8 @@ render() {
         
         <Route element={<Pages.LogOut/>} path="/logout"/>
       </Routes>
-  </Router>
-</div>
+    </Router>
+  </div>
 
     
     
