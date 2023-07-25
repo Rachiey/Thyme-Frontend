@@ -103,8 +103,8 @@ export const RecipeFinder = () => {
             <a href={recipe.recipe.url} target="_blank" rel="noopener noreferrer">
               {recipe.recipe.label}
             </a>
-            <button>
-              <Link to={`/savedrecipes?url=${encodeURIComponent(recipe.recipe.url)}`}>
+            <button className="saveRecipeButton">
+              <Link to={`/Profile?url=${encodeURIComponent(recipe.recipe.url)}`}>
                 Save Recipe
               </Link>
             </button>
