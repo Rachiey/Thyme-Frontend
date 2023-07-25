@@ -86,7 +86,7 @@ export const RecipeFinder = () => {
     <div className="shoppingList">
       <h1 className="shoppingTitle">Recipe Finder</h1>
     </div>
-    <div>
+    <div className="recipeBox">
     
       <input
         type="text"
@@ -94,12 +94,16 @@ export const RecipeFinder = () => {
         onChange={handleInputChange}
         placeholder="Enter your ingredients"
       />
-      <button onClick={searchRecipes}>Search</button>
+      <button onClick={searchRecipes}>Find Recipes</button>
 
-      <h2>Recipes</h2>
+      <h2 className="shoppingTitle">Recipes</h2>
       <ul>
         {recipes.map((recipe) => (
-          <li key={recipe.recipe.uri}>{recipe.recipe.label}</li>
+            <li key={recipe.recipe.uri}>
+            <a href={recipe.recipe.url} target="_blank" rel="noopener noreferrer">
+              {recipe.recipe.label}
+            </a>
+          </li>
         ))}
       </ul>
     </div>
