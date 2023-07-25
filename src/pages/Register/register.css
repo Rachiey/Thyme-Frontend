@@ -63,7 +63,7 @@
     height: 100px;
     background-color: #374ba6;
     border-radius: 20px;
-    margin-top: 290px;
+    /* margin-top: 290px; */
     display: flex;
     justify-content: flex-end;
   }

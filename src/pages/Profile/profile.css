@@ -36,17 +36,20 @@
     align-items: center;
   }
 
-  .bottomNavBar {
+  .bottomNavBarProfile {
     width: 320px;
     height: 100px;
     background-color: #374ba6;
     color:white;
     border-radius: 20px;
-    margin-top: 290px;
     display: flex;
+    margin-bottom: 35px;
     align-items: center;
     justify-content: space-evenly;
     font-size: 50px;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
   }
 
   .homeIcon {

@@ -55,7 +55,7 @@ export const Profile = () => {
     <div className="shelfTwo">
          
         </div>
-        <div className="bottomNavBar"> 
+        <div className="bottomNavBarProfile"> 
       <Tooltip title="Home"> 
       <IconButton style={{color:'white', fontSize:'50px'}}>
       <Link to='/'>{homeIcon} </Link>

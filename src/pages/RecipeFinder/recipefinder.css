@@ -96,13 +96,13 @@
     background-color: #374ba6;
     color:white;
     border-radius: 20px;
-    margin-top: 290px;
+
     margin-left: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+
     font-size: 50px;
+    overflow: hidden;
     position: fixed;
+    bottom: 0;
   }
  
   a { 
@@ -113,9 +113,9 @@
     display:flex;
     display: flex;
     flex-direction: column;
-
     align-content: space-around;
     flex-wrap: wrap;
+    margin:10px;
 }
 
 ul {
