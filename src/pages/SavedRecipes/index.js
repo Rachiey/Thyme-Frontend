@@ -53,7 +53,7 @@ export const SavedRecipes = () => {
         ))}
       </ul>
       {savedRecipeURL && (
-        <button onClick={handleSaveRecipe}>Save Recipe</button>
+        <button className="saveRecipeButton" onClick={handleSaveRecipe}>Save Recipe</button>
       )}
     </div>
    
