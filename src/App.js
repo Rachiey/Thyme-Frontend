@@ -3,6 +3,8 @@ import './App.css';
 import { BrowserRouter as Router,Routes, Route} from 'react-router-dom';
 import * as Pages from './pages';
 import { PrivateRoute, LoggedOutRoute } from './components';
+import Preferences from './components/Preferences/preferences';
+import useToken from './components/App/useToken';
 
 
 
@@ -38,6 +40,7 @@ logout = () => {
 }
 
 render() {
+
   return (
   
   <div className="App">
@@ -45,6 +48,7 @@ render() {
       <Routes>
         <Route element={<PrivateRoute />}>
             <Route element={<Pages.Home/>} path="/" exact/>
+            <Route path='/item-info' element={<Pages.ItemInfo />} ></Route>
             <Route element={<Pages.List/>} path="/list"/>
             <Route element={<Pages.Ingredients/>} path="/ingredients"/>
             <Route element={<Pages.Profile/> } path="/profile"  />
@@ -62,38 +66,7 @@ render() {
   </div>
 
     
-    
-    // <div className="App">
-    //   <Router>
-
-    //   <Routes>
-    //     <Route element={<PrivateRoute />}>
-    //       <Route element={<Pages.Home/>} path ="/" exact/>
-    //       <Route element={<Pages.Profile/>} path ="/profile" />
-    //       <Route element={<Pages.Recipes/>} path ="/recipes" />
-    //       <Route element={<Pages.Ingredients/>} path ="/ingredients" />
-    //     </Route>
-    //   {/* <Route exact path='/' component={()=> <Pages.Home login={this.login}/>} /> */}
-
-    //     {/* <Route path='/ingredients' element={<Pages.Ingredients />} ></Route>
-    //     <Route path='/shelf' element={<Pages.Shelf/>}></Route> */}
-    //     {/* <LoggedOutRoute path='/login' isLoggedIn={this.state.isLoggedIn} component={()=> <Pages.Login login={this.login}/>} /> */}
-    //     {/* <Route path='/login' element={<Pages.Login />} /> */}
-    //     {/* <Route path='/register' element={<Pages.Register />} /> */}
-    //     {/* <LoggedOutRoute path='/register' isLoggedIn={this.state.isLoggedIn} element={<Pages.Register/>} />  */}
-    //     {/* <Route path='/logout' element={<Pages.LogOut />} /> */}
-    //     {/* <PrivateRoute path='/profile' isLoggedIn={this.state.isLoggedIn} component={()=> <Pages.Profile user={this.state.currentUser}/>} /> */}
-    //     {/* <Route path='/profile' element={<Pages.Profile />} /> */}
-    //     {/* <Route path='/recipes' element={<Pages.Recipes />} /> */}
-        
-
-    //     {/* <Route path='*' element={<p>nothing to see here</p>} /> */}
-    //     {/* <Route path='*' element={<Pages.NotFoundPage />}/> */}
-                   
-    //   </Routes>
-    //   </Router>
-    
-    // </div>
+ 
     
   );
 }
