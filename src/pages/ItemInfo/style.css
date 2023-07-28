@@ -80,7 +80,6 @@ body {
   }
 
   .fridgeTitle {
-
     height: 75px;
     margin: 15px;
     text-align: center;
@@ -95,7 +94,7 @@ body {
     
    
   }
-
+/* 
   .logOutButton {
     margin-bottom:20px;
     width: 150px;
@@ -112,7 +111,7 @@ body {
 
   .logOutButton{
     cursor: pointer;
-  }
+  } */
   .formInput{
     width: 85%;
     display: grid;
