@@ -73,7 +73,7 @@ export const Profile = () => {
     </Tooltip>  
     <Tooltip title="Ingredients">
       <IconButton style={{color: 'white', fontSize: '50px'}}>
-      <Link to='/ingredients'>{ingredientsIcon} </Link>
+      <Link to='/item-info'>{ingredientsIcon} </Link>
       </IconButton>
     </Tooltip> 
     </div> 

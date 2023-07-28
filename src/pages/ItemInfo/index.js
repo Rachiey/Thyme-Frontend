@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
 // import './Ingredients.css';
 import './style.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse} from '@fortawesome/free-solid-svg-icons'
-import { faBookOpen} from '@fortawesome/free-solid-svg-icons'
-import { faUser} from '@fortawesome/free-solid-svg-icons'
+
 import 'semantic-ui-css/semantic.min.css'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router'
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse } from '@fortawesome/free-solid-svg-icons'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faRectangleList} from '@fortawesome/free-solid-svg-icons'
 
 
 export const ItemInfo = () => {
+
+    const homeIcon = <FontAwesomeIcon icon={faHouse} />
+    const profileIcon = <FontAwesomeIcon icon={faUser} />
+    const recipesIcon = <FontAwesomeIcon icon={faRectangleList} />
+
+
 
     const [user, setUser] = useState({username: "", email: ""});
     const [inputText, setInputText] = useState("");
@@ -77,7 +86,30 @@ const LoggedOut = () => {
 
 return (
 <>    
-    <div className="iphoneContainer">             
+<div className="door-back">  
+    <div className="iphoneContainer">  
+    <div className="iphoneIngredientsBackground">  
+    
+    <div className="fridgeTitle"> {username}'s  &nbsp; 
+                <span style= {{color: "red"}}> F</span>
+
+                <span style= {{color: "#FDDA0D"}}> r</span>
+                <span style= {{color: "blue"}}> i</span>
+                <span style= {{color: "#F28C28"}}> d</span>
+                <span style= {{color: "#32CD32"}}> g</span>
+                <span style= {{color: "#720e9e"}}> e</span>
+            </div>
+
+            <button className="logOutButton" onClick={LoggedOut}>
+                    <span style= {{color: "red"}}> L</span>
+                    <span style= {{color: "#FDDA0D"}}> o</span>
+                    <span style= {{color: "blue"}}> g</span>
+                    &nbsp; 
+                    <span style= {{color: "#F28C28"}}> O</span>
+                    <span style= {{color: "#32CD32"}}> u</span>
+                    <span style= {{color: "#720e9e"}}> t</span>
+            </button>
+
             <form className='formInput'>
                 <input className="textInputField" type="text" onChange={inputTextHandler} value={inputText}></input>
                 <select className="quantityOption" name="quantity" onChange={quantityValueHandler} value={quantityValue}>
@@ -132,12 +164,28 @@ return (
 
             <div className="shelfFour">
             </div>
-
+            <div className="bottomNavBarItems"> 
+      <Tooltip title="Home"> 
+      <IconButton style={{color:'white', fontSize:'50px'}}>
+      <Link to='/'>{homeIcon} </Link>
+      </IconButton>
+      </Tooltip>
+      <Tooltip title="Recipes">
+      <IconButton style={{color: 'white', fontSize: '50px'}}>
+      <Link to='/recipefinder'>{recipesIcon} </Link>
+      </IconButton>
+    </Tooltip>  
+    <Tooltip title="Profile">
+      <IconButton style={{color: 'white', fontSize: '50px'}}>
+      <Link to='/profile'>{profileIcon} </Link>
+      </IconButton>
+    </Tooltip> 
+    </div> 
             
         </div>
+</div>
 
-
-    
+    </div>
 </>
 )
 }
