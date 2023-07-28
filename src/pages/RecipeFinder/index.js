@@ -89,25 +89,30 @@ export const RecipeFinder = () => {
     <div className="recipeBox">
     
       <input
+        class="enterIngredients"
         type="text"
         value={ingredients}
         onChange={handleInputChange}
         placeholder="Enter your ingredients"
       />
-      <button onClick={searchRecipes}>Find Recipes</button>
+      <button class="enterIngredientsButton" onClick={searchRecipes}>Find Recipes</button>
 
-      <h2 className="shoppingTitle">Recipes</h2>
+      <h2 className="recipeTitle">Recipes</h2>
       <ul>
-        {recipes.map((recipe) => (
-            <li key={recipe.recipe.uri}>
-            <a href={recipe.recipe.url} target="_blank" rel="noopener noreferrer">
-              {recipe.recipe.label}
-            </a>
-            <button className="saveRecipeButton">
-              <Link to={`/Profile?url=${encodeURIComponent(recipe.recipe.url)}`}>
-                Save Recipe
-              </Link>
-            </button>
+      {recipes.slice(0, 5).map((recipe) => (
+          <li key={recipe.recipe.uri}>
+            <div>
+              <a href={recipe.recipe.url} target="_blank" rel="noopener noreferrer">
+                {recipe.recipe.label}
+              </a>
+            </div>
+            <div>
+              <button className="saveRecipeButton">
+                <Link to={`/saved-recipes?url=${encodeURIComponent(recipe.recipe.url)}`}>
+                  Save Recipe
+                </Link>
+              </button>
+            </div>
           </li>
         ))}
       </ul>
