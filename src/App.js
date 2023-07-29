@@ -1,76 +1,34 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
-import { BrowserRouter as Router,Routes, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import * as Pages from './pages';
-import { PrivateRoute, LoggedOutRoute } from './components';
-// import Preferences from './components/Preferences/preferences';
-// import useToken from './components/App/useToken';
+import { PrivateRoute, LoggedOutRoute } from './components/';
+import Login from './components/LoginForm/LoginForm';
 
 
-
-
-class App extends Component {
-
-  state = {
-    isLoggedIn: false,
-    currentUser: {}
-}
-
-
-login = async (userData) => {
-  try {
-      const options = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(userData)
-      }
-      const r = await fetch(`http://localhost:3000/auth/login`, options)
-      const data = await r.json();
-      if (data.err){ throw Error(data.err) }
-      this.setState({ isLoggedIn: true, currentUser: data })
-      this.props.history.push('./profile')
-  } catch (err) {
-      console.warn(`Error: ${err}`);
-  }
-}
-
-logout = () => {
-  this.setState({ isLoggedIn: false })
-  this.props.history.push('/')
-}
-
-render() {
-
+const App = () => {
   return (
-  
-  <div className="App">
-    <Router>
-      <Routes>
-        <Route element={<PrivateRoute />}>
-            <Route element={<Pages.Home/>} path="/" exact/>
-            <Route element={<Pages.ItemInfo/>} path="/item-info"/>
-            <Route element={<Pages.List/>} path="/list"/>
-            <Route element={<Pages.Profile/> } path="/profile"  />
-            <Route element={<Pages.SavedRecipes/>} path="/savedrecipes"/>
-            <Route element={<Pages.RecipeFinder/>} path="/recipefinder" />
-    
-            {/* <Route path='/preferences' element={<Preferences/>} /> */}
-        </Route>
-        <Route element={<LoggedOutRoute />}>
-        <Route element={<Pages.Login/>} path="/login"/>
-        <Route element={<Pages.Register/>} path="/register"/>
-        </Route>
-        
-        <Route element={<Pages.LogOut/>} path="/logout"/>
-      </Routes>
-    </Router>
-  </div>
-
-    
- 
-    
+    <div className="App">
+      <Router>
+        <Routes>
+{/*         
+          <Route element={<PrivateRoute />}> */}
+            <Route element={<Pages.Home />} path="/" />
+            <Route element={<Pages.ItemInfo />} path="/item-info" />
+            <Route element={<Pages.List />} path="/list" />
+            <Route element={<Pages.Profile />} path="/profile" />
+            <Route element={<Pages.SavedRecipes />} path="/savedrecipes" />
+            <Route element={<Pages.RecipeFinder />} path="/recipefinder" />
+          {/* </Route> */}
+          <Route element={<LoggedOutRoute />}>
+            <Route element={<Login />} path="/login" />
+            <Route element={<Pages.Register />} path="/register" />
+          </Route>
+          <Route element={<Pages.LogOut />} path="/logout" />
+        </Routes>
+      </Router>
+    </div>
   );
-}
-}
+};
 
 export default App;

@@ -1,93 +1,59 @@
-// import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-// function LoginForm({ Login, error }) {
+const LoginForm = () => {
+    const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-//     const [details, setDetails] = useState({username: "", email: "", password: ""});
-    
-//     const submitHandler = e => {
-//         e.preventDefault();
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
 
-//         Login(details);
-//     }
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
 
-//   return (
-//     <form onSubmit={submitHandler}>
-//         <div className="form-inner">
-//             <div className="logInTitle">
-//         <span style= {{color: "#FFAF68"}}> L</span>
-//                                             <span style= {{color: "#F6E683"}}> o</span>
-//                                             <span style= {{color: "#A484E9"}}> g</span>
-//                                             &nbsp; 
-//                                             <span style= {{color: "#31BFF3"}}> I</span>
-//                                             <span style= {{color: "#79D45E"}}> n</span>
-//                                             </div>
-//             ERROR!
-//             <div className='username'>
-//                 <label className='usernameTitle' htmlFor="username">Username:</label>
-//                 <input type="text" username="username" id="username" onChange={e => setDetails({...details, username: e.target.value})} value={details.username}/>
-//             </div>
-//             <div className='email'>
-//                 <label className='emailTitle' htmlFor="email">Email:</label>
-//                 <input type="email" name="email" id="email" onChange={e => setDetails({...details, email: e.target.value})} value={details.email} />
-//             </div>
-//             <div className='password'>
-//                 <label className= 'passwordTitle' htmlFor="password">Password:</label>
-//                 <input type="password" name="password" id="password" onChange={e => setDetails({...details, password: e.target.value})} value={details.password} />
-//             </div>
-//             <input className='logInButton' type="submit" value="Login" />
-//         </div>
-//     </form>
-//   )
-// }
-
-// export default LoginForm
-
-import React, { Component } from 'react';
-
-
-class LoginForm extends Component {
-
-    state = {
-        username: "",
-        password: ""
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  
+    // Assuming there is a predefined valid username and password
+    const validUsername = 'admin1';
+    const validPassword = 'password';
+  
+    if (username === validUsername && password === validPassword) {
+      // Save the login status to local storage
+      localStorage.setItem('isLoggedIn', 'true');
+      navigate('/');
+      // Redirect to the desired page (e.g., dashboard or home page)
+      // Use React Router or any other method to handle page navigation
+      // For example: history.push('/dashboard');
+    } else {
+      alert('Invalid username or password. Please try again.');
     }
+  };
+  
 
-    handleInput = e => this.setState({ [e.target.name]: e.target.value });
-
-    formIncomplete = () => Object.values(this.state).some(v => !v);
-
-    login = e => {
-        e.preventDefault();
-        this.props.login(this.state);
-    }
-
-    render() {
-        return (
-            <div id="content">
-                <div className="logInTitle">
-         <span style= {{color: "#FFAF68"}}> L</span>
-         <span style= {{color: "#F6E683"}}> o</span>
-       <span style= {{color: "#A484E9"}}> g</span>
-                                             &nbsp; 
-        <span style= {{color: "#31BFF3"}}> I</span>
-        <span style= {{color: "#79D45E"}}> n</span>
-                                             </div>
-                <form onSubmit={this.login}>
-                    <div className="loginInput">
-                        <label htmlFor="username">Enter your username:</label>
-                        <input type="text" name="username" value={this.state.username} onChange={this.handleInput} />
-                    </div>
-                    <div className="loginInput">
-                        <label htmlFor="password">Enter your password:</label>
-                        <input type="password" name="password" value={this.state.password} onChange={this.handleInput} />
-                    </div>
-                    <div className="logInInput">
-                        <input type="submit" className={this.formIncomplete() ? 'disabled' : 'enabled'} disabled={this.formIncomplete()} value="Login" />
-                    </div>
-                </form>
-            </div>
-        )
-    }
-}
+  return (
+    <div>
+      <h1>Login Page</h1>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <label>
+          Username:
+          <input type="text" value={username} onChange={handleUsernameChange} />
+        </label>
+        <br />
+        <label>
+          Password:
+          <input type="password" value={password} onChange={handlePasswordChange} />
+        </label>
+        <br />
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  );
+};
 
 export default LoginForm;
