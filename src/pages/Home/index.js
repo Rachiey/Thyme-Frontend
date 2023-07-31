@@ -10,7 +10,7 @@ import fridgehandle from '../Home/images/fridgehandle.png';
 import recipeimage from '../Home/images/recipe.png';
 import { useNavigate } from 'react-router'
 
-export const Fridge = () => {
+export const Home = () => {
 
     const [user, setUser] = useState({username: "", email: ""});
     const username = localStorage.getItem("username")
@@ -94,4 +94,4 @@ export const Fridge = () => {
    ) }
 
 
-export default Fridge;
+export default Home;

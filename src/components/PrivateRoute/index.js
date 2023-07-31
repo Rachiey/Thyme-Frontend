@@ -1,27 +1,23 @@
-// import { Outlet, Navigate } from 'react-router-dom'
-
-// const PrivateRoutes = ({ isLoggedIn }) => {
-//     let auth = {'token':true}
-//     return(
-//         auth.token ? <Outlet/> : <Navigate to="/login"/>
-//     )
-// }
-
-// export default PrivateRoutes
 import React from 'react';
-import { Route, Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 
 const PrivateRoute = ({ element: Element, ...rest }) => {
-  // Check the login status from local storage
-  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  // Check if the user is logged in using local storage or any other authentication logic
+  const isLoggedIn = !!localStorage.getItem('isLoggedIn');
+//   const navigate = useNavigate();
 
+  if (!isLoggedIn) {
+    // If user is not logged in, redirect to login page
+    return <Navigate to="/login" replace />;
+  }
+
+  // If user is logged in, render the child routes inside Outlet
   return (
-    <Route
-      {...rest}
-      element={isLoggedIn ? <Element /> : <Navigate to="/login" replace />}
-    />
+    <>
+      <Element />
+      <Outlet />
+    </>
   );
 };
 
 export default PrivateRoute;
-
