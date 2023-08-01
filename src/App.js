@@ -12,20 +12,26 @@ const App = () => {
       <Router>
       <Routes>
           {/* Public Routes */}
-          <Route element={<Login />} path="/login" />
-          <Route element={<Pages.Register />} path="/register" />
-          <Route element={<LoggedOutRoute />} path="/logout" />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Pages.Register />} />
+          <Route path="/logout" element={<LoggedOutRoute />} />
 
-          {/* Private Routes */}
-          <Route exact path='/' element={<PrivateRoute/>}>
-            <Route exact path='/' element={<Pages.Home/>}/>
-            </Route>
-          <PrivateRoute path="/list" element={<Pages.List />} />
-          <PrivateRoute path="/profile" element={<Pages.Profile />} />
-          <PrivateRoute path="/savedrecipes" element={<Pages.SavedRecipes />} />
-          <PrivateRoute path="/recipefinder" element={<Pages.RecipeFinder />} />
-          <PrivateRoute path="/item-info" element={<Pages.ItemInfo />} />
-          {/* Add other private routes */}
+
+          <Route
+            path="/"
+            element={
+              <PrivateRoute>
+                {/* Nested child routes */}
+                <Route index element={<Pages.Home />} />
+                <Route path="/list" element={<Pages.List />} />
+                <Route path="/profile" element={<Pages.Profile />} />
+                <Route path="/savedrecipes" element={<Pages.SavedRecipes />} />
+                <Route path="/recipefinder" element={<Pages.RecipeFinder />} />
+                <Route path="/item-info" element={<Pages.ItemInfo />} />
+                {/* Add other private routes */}
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </Router>
     </div>
