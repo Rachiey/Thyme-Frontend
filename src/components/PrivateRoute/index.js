@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react';
 import { useNavigate, Outlet } from 'react-router-dom';
 
-const PrivateRoute = ({ element: Element, ...rest }) => {
+// const PrivateRoute = ({ element: Element, ...rest }) => {
+    const PrivateRoute = () => {
   // Check if the user is logged in using local storage or any other authentication logic
   const isLoggedIn = !!localStorage.getItem('isLoggedIn');
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ useEffect (() => {
   // If user is logged in, render the child routes inside Outlet
   return (
     <>
-      <Element />
+      {/* <Element /> */}
       <Outlet />
     </>
   );

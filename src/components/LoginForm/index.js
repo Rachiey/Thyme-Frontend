@@ -47,7 +47,7 @@ const LoginForm = () => {
         <br />
         <label>
           Password:
-          <input type="password" value={password} onChange={handlePasswordChange} />
+          <input type="password" value={password} autocomplete="on" onChange={handlePasswordChange} />
         </label>
         <br />
         <button type="submit">Login</button>
