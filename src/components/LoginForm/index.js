@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import './loginForm.css';
 
 const LoginForm = () => {
     const navigate = useNavigate();
@@ -19,7 +20,7 @@ const LoginForm = () => {
     e.preventDefault();
   
     // Assuming there is a predefined valid username and password
-    const validUsername = 'admin1';
+    const validUsername = 'admin';
     const validPassword = 'password';
   
     if (username === validUsername && password === validPassword) {
@@ -47,10 +48,16 @@ const LoginForm = () => {
         <br />
         <label>
           Password:
-          <input type="password" value={password} autocomplete="on" onChange={handlePasswordChange} />
+          <input type="password" value={password} autoComplete="on" onChange={handlePasswordChange} />
         </label>
         <br />
-        <button type="submit">Login</button>
+        <div className="buttonMenu">
+        <button className= "logOutButton" type="submit" >Login</button>
+              {/* Add a link to the registration page */}
+      <button className= "logOutButton" ><Link to="/register">Register</Link></button>
+      </div>
+
+
       </form>
     </div>
   );

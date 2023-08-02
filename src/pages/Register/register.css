@@ -103,3 +103,9 @@
     background-color:#374ba6;
     color: white;
   }
+
+
+ .buttonMenu {
+  display: flex;
+  flex-direction: column;
+ }

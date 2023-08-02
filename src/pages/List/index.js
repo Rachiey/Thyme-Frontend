@@ -19,16 +19,16 @@ export const List = () => {
 
   
 
-    const [user, setUser] = useState({username: "", email: ""});
+
     const username = localStorage.getItem("username")
     const navigate = useNavigate();
     
-    const LoggedOut = () => {
-        console.log("Log out")
-        console.log(user)
-        setUser({ username: "", email: ""});
-        navigate('/logout')
-    }
+    const handleLogout = () => {
+      // Reset the local storage session and navigate to the login page
+      localStorage.removeItem('isLoggedIn');
+      navigate('/login');
+    };
+
 
     const homeIcon = <FontAwesomeIcon icon={faHouse} />
     const profileIcon = <FontAwesomeIcon icon={faUser} />
@@ -96,7 +96,7 @@ export const List = () => {
                                             <span style= {{color: "#79D45E"}}> e</span>
                                             </div>
                                             <div className ="logOutBox">
-    <button className="logOutButton" onClick={LoggedOut}> <span style= {{color: "#FFAF68"}}> L</span>
+    <button className="logOutButton" onClick={handleLogout}> <span style= {{color: "#FFAF68"}}> L</span>
                                             <span style= {{color: "#F6E683"}}> o</span>
                                             <span style= {{color: "#A484E9"}}> g</span>
                                             &nbsp; 

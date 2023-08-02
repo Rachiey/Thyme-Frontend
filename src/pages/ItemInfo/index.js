@@ -21,7 +21,7 @@ export const ItemInfo = () => {
 
 
 
-    const [user, setUser] = useState({username: "", email: ""});
+
     const [inputText, setInputText] = useState("");
     const [items, setItems] = useState([]);
     const [itemId, setItemId] = useState(1);
@@ -33,14 +33,12 @@ export const ItemInfo = () => {
     const username = localStorage.getItem("username")
     const navigate = useNavigate();
 
+    const handleLogout = () => {
+        // Reset the local storage session and navigate to the login page
+        localStorage.removeItem('isLoggedIn');
+        navigate('/login');
+      };
 
-const LoggedOut = () => {
-    console.log("Log out")
-    console.log(user)
-    setUser({ username: "", email: ""});
-    navigate('/login')
-    
-}
 
     const inputTextHandler = (e) => {setInputText(e.target.value)}
     const quantityValueHandler = (e) => {setQuantityValue(e.target.value)}
@@ -100,7 +98,7 @@ return (
                 <span style= {{color: "#720e9e"}}> e</span>
             </div>
 
-            <button className="logOutButton" onClick={LoggedOut}>
+            <button className="logOutButton" onClick={handleLogout}>
                     <span style= {{color: "red"}}> L</span>
                     <span style= {{color: "#FDDA0D"}}> o</span>
                     <span style= {{color: "blue"}}> g</span>

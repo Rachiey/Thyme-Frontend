@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './home.scss';
 import { Link } from 'react-router-dom'
 import 'semantic-ui-css/semantic.min.css'
@@ -12,8 +12,9 @@ import { useNavigate } from 'react-router'
 
 export const Home = () => {
 
-    // const [user, setUser] = useState({username: "", email: ""});
-    const username = localStorage.getItem("username")
+
+
+    const [username, setUsername] = useState(localStorage.getItem('username'));
     const navigate = useNavigate();
     
     const handleLogout = () => {

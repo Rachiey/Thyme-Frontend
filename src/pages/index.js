@@ -4,7 +4,6 @@ export { default as ItemInfo } from './ItemInfo';
 export { default as Shelf } from './Shelf';
 export { default as Register } from './Register';
 export { default as NotFoundPage } from './PageNotFound';
-export { default as LogOut } from './LogOut';
 export { default as List } from './List';
 export { default as Profile } from './Profile';
 export { default as RecipeFinder } from './RecipeFinder';
