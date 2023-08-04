@@ -38,27 +38,44 @@ const LoginForm = () => {
 
   return (
     <div>
+       <div className="door">
+        <div className="backLogin">
       <h1>Login Page</h1>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <label>
           Username:
-          <input type="text" value={username} onChange={handleUsernameChange} />
+          <input type="text" value={username} autoComplete="current-username" onChange={handleUsernameChange} />
         </label>
         <br />
         <label>
           Password:
-          <input type="password" value={password} autoComplete="on" onChange={handlePasswordChange} />
+          <input type="password" value={password} autoComplete="current-password" onChange={handlePasswordChange} />
         </label>
         <br />
         <div className="buttonMenu">
-        <button className= "logOutButton" type="submit" >Login</button>
+        <button className= "logOutButton" type="submit" ><span style= {{color: "#FFAF68"}}> L</span>
+                                            <span style= {{color: "#F6E683"}}> o</span>
+                                            <span style= {{color: "#A484E9"}}> g</span>
+                                            &nbsp; 
+                                            <span style= {{color: "#31BFF3"}}> I</span>
+                                            <span style= {{color: "#79D45E"}}> n</span>
+                                            </button>
               {/* Add a link to the registration page */}
-      <button className= "logOutButton" ><Link to="/register">Register</Link></button>
+      <button className= "logOutButton" ><Link to="/register"><span style= {{color: "#FFAF68"}}> R</span>
+                                            <span style= {{color: "#F6E683"}}> e</span>
+                                            <span style= {{color: "#A484E9"}}> g</span>
+                                            <span style= {{color: "#31BFF3"}}> i</span>
+                                            <span style= {{color: "#79D45E"}}> s</span>
+                                            <span style= {{color: "#A484E9"}}> t</span>
+                                            <span style= {{color: "#31BFF3"}}> e</span>
+                                            <span style= {{color: "#79D45E"}}> r</span></Link></button>
       </div>
 
 
       </form>
+    </div>
+    </div>
     </div>
   );
 };

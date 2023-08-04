@@ -86,13 +86,13 @@ export const RecipeFinder = () => {
     <div className="recipeBox">
     
       <input
-        class="enterIngredients"
+        className="enterIngredients"
         type="text"
         value={ingredients}
         onChange={handleInputChange}
         placeholder="Enter your ingredients"
       />
-      <button class="enterIngredientsButton" onClick={searchRecipes}>Find Recipes</button>
+      <button className="enterIngredientsButton" onClick={searchRecipes}>Find Recipes</button>
 
       <h2 className="recipeTitle">Recipes</h2>
       <ul>

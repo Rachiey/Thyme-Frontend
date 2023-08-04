@@ -2,3 +2,34 @@
     display: flex;
     flex-direction: column;
    }
+/* 
+  .door {
+    position: relative;
+    width: 390px;
+    height: 844px;
+    border-radius: 20px;
+    transform-style: preserve-3d;
+    transform: perspective(2500px);
+   
+  } */
+
+  .backLogin {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    background:#6171b7;
+    width: 390px;
+    height: 844px;
+    border-radius: 20px;
+    overflow: hidden;
+    outline: 10px solid #5867a8;
+  }
+
+  .buttonMenu {
+    align-items: center;
+  }
+
+  .logOutButton {
+    width: 70%;
+  }

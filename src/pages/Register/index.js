@@ -48,6 +48,8 @@ const RegistrationForm = () => {
   return (
 
     <form onSubmit={handleSubmit}>
+        <div className="door">
+        <div className="backLogin">
       <div>
         <h1>Register</h1>
         <label>
@@ -62,14 +64,29 @@ const RegistrationForm = () => {
         </label>
       </div>
       <div className="buttonMenu">
-      <button type="submit" className= "logOutButton" >Register</button>
-      <button className= "logOutButton" ><Link to="/login">Log In</Link></button>
+      <button type="submit" className= "logOutButton" ><span style= {{color: "#FFAF68"}}> R</span>
+                                            <span style= {{color: "#F6E683"}}> e</span>
+                                            <span style= {{color: "#A484E9"}}> g</span>
+                                            <span style= {{color: "#31BFF3"}}> i</span>
+                                            <span style= {{color: "#79D45E"}}> s</span>
+                                            <span style= {{color: "#A484E9"}}> t</span>
+                                            <span style= {{color: "#31BFF3"}}> e</span>
+                                            <span style= {{color: "#79D45E"}}> r</span></button>
+      <button className= "logOutButton" ><Link to="/login"><span style= {{color: "#FFAF68"}}> L</span>
+                                            <span style= {{color: "#F6E683"}}> o</span>
+                                            <span style= {{color: "#A484E9"}}> g</span>
+                                            &nbsp; 
+                                            <span style= {{color: "#31BFF3"}}> I</span>
+                                            <span style= {{color: "#79D45E"}}> n</span></Link></button>
       </div>
 
 
       {/* Display success message if user is registered */}
       {isRegistered && <div>User registered successfully!</div>}
+      </div>
+    </div>
     </form>
+   
   );
 };
 
