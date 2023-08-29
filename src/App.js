@@ -4,11 +4,13 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import * as Pages from './pages';
 import { PrivateRoute } from './components/index';
 import Login from './components/LoginForm';
+import { ItemProvider } from './pages/itemcontext/itemcontext';
 
 
 const App = () => {
   return (
     <div className="App">
+     <ItemProvider>
       <Router>
       <Routes>
           {/* Public Routes */}
@@ -27,6 +29,7 @@ const App = () => {
           </Route>
         </Routes>
       </Router>
+     </ItemProvider>
     </div>
   );
 };
