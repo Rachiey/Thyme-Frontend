@@ -173,6 +173,5 @@ button {
   justify-content: space-evenly;
   font-size: 50px;
   overflow: hidden;
-  /* position: fixed; */
   bottom: 0;
 }

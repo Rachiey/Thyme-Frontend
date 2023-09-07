@@ -50,6 +50,7 @@ const Item = ({
           backgroundColor: "transparent",
           color: "white",
           fontSize: "20px",
+          fontFamily: "Permanent Marker",
         }}
         className={complete ? "complete" : ""}
       />

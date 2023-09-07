@@ -87,7 +87,7 @@ export const List = () => {
     return (
 
         <>
-<div className="door-back">  
+<div className="shoppingListBackground">  
 <div className="fridgeTitleBack"> {username}'s  &nbsp; <span style= {{color: "#31BFF3"}}> F</span>
                                             <span style= {{color: "#A484E9"}}> r</span>
                                             <span style= {{color: "#F4889A"}}> i</span>
@@ -105,14 +105,14 @@ export const List = () => {
                                             <span style= {{color: "#F4889A"}}> t</span> </button>
     </div>
     <div className="shoppingList">
-      <h1 className="shoppingTitle">Grocery List</h1>
+      <h1 className="shoppingTitle"> Shopping List</h1>
   
       <form onSubmit={handleSubmit}>
         <input
           className="input"
           type="text"
           value={item}
-          placeholder="Enter the items"
+          placeholder="Add to your list"
           onChange={handleChange}
         />
         {edit ? (
@@ -128,8 +128,9 @@ export const List = () => {
       </form>
       <div>
         {list.map((c, id) => (
+           
           <Item
-            key={id}
+            key={id} 
             id={c.id}
             item={c.item}
             list={list}
@@ -139,13 +140,14 @@ export const List = () => {
             setEdit={setEdit}
             setEditId={setEditId}
           />
+        
         ))}
       </div>
     </div>
-    {/* <div className="shelfTwo"> </div> */}
+    
 
 
-    <div className="bottomNavBarProfile">  <Tooltip title='Home'>
+    <div className="bottomNavBarShoppingList">  <Tooltip title='Home'>
       <IconButton style={{color: 'white', fontSize: '50px'}}>
       <Link to='/'>{homeIcon} </Link>
       </IconButton>
