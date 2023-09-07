@@ -117,7 +117,7 @@ export const RecipeFinder = () => {
    
 
 
-    <div className="bottomNavBar">  <Tooltip title='Home'>
+    <div className="bottomNavBarProfile">  <Tooltip title='Home'>
       <IconButton style={{color: 'white', fontSize: '50px'}}>
       <Link to='/'>{homeIcon} </Link>
       </IconButton>

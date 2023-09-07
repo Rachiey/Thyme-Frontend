@@ -12,7 +12,7 @@ body {
 }
 
 .iphoneContainer {
-    height: 100vh; /* Magic here */
+    /* height: 100vh;  */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -274,8 +274,6 @@ body {
     justify-content: space-evenly;
     font-size: 50px;
     bottom: 0;
-    position: fixed;
-    margin-bottom: 75px;
   }
 
   .grid-item-card{

@@ -52,7 +52,7 @@
     justify-content: space-evenly;
     font-size: 50px;
     overflow: hidden;
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
   }
 

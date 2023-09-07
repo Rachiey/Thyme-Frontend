@@ -90,20 +90,6 @@
     justify-content: flex-end;
   }
 
-  .bottomNavBar {
-    width: 320px;
-    height: 100px;
-    background-color: #374ba6;
-    color:white;
-    border-radius: 20px;
-    /* margin-top: 290px; */
-    margin-bottom: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    font-size: 50px;
-  }
- 
   a { 
     color:white;
   }

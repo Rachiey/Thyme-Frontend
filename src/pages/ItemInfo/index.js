@@ -24,7 +24,7 @@ export const ItemInfo = () => {
   const [quantityValue, setQuantityValue] = useState(1);
   const [expiryDate, setExpiryDate] = useState('');
   const [expiresIn, setExpiresIn] = useState('');
-  const [showItemInfo, setShowItemInfo] = useState(false);
+  // const [showItemInfo, setShowItemInfo] = useState(false);
   const [nextItemId, setNextItemId] = useState(1);
 
   const username = localStorage.getItem('username');
@@ -36,10 +36,10 @@ export const ItemInfo = () => {
     navigate('/login');
   };
 
-  const initialItems = items.map((item) => ({
-    ...item,
-    showInfo: false,
-  }));
+  // const initialItems = items.map((item) => ({
+  //   ...item,
+  //   showInfo: false,
+  // }));
 
   const inputTextHandler = (e) => {
     setInputText(e.target.value);
@@ -161,7 +161,7 @@ return (
                                             <span style= {{color: "#F6E683"}}> g</span>
                                             <span style= {{color: "#79D45E"}}> e</span>
             </div>
-
+            <div className="ingredientsTitle"> Ingredients </div>
             <button className="logOutButton" onClick={handleLogout}>
             <span style= {{color: "#FFAF68"}}> L</span>
                                             <span style= {{color: "#F6E683"}}> o</span>
@@ -208,8 +208,9 @@ return (
  {items.map((item, index) => ( // Use index as a fallback key
    <li className="grid-item-card" 
    key={`${item.id}_${index}`} 
-   onMouseEnter={() => handleMouseEnter(item.id)}
-      onMouseLeave={() => handleMouseLeave(item.id)}>
+  //  onMouseEnter={() => handleMouseEnter(item.id)}
+  //     onMouseLeave={() => handleMouseLeave(item.id)}
+  >
      <p>{item.text}</p>
      {/* <img></img> */}
      <p><span className="expires-in-colour" data-status={item.expiresIn}>{item.expiresIn}</span></p> 
@@ -222,7 +223,8 @@ return (
                          <p>No items to display.</p>
                        )}
                     
-                    {showItemInfo &&
+                    {/* {
+                    // showItemInfo &&
                     
                     <div className="grid-container">
                         {items.map((item, index) => (
@@ -233,7 +235,7 @@ return (
 
                             </li>
                         ))}
-                    </div>}
+                    </div>} */}
                 </ul>
             </div>
 

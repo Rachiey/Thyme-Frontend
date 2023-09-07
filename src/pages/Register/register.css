@@ -58,16 +58,7 @@
     align-items: center;
   }
 
-  .bottomNavBar {
-    width: 320px;
-    height: 100px;
-    background-color: #374ba6;
-    border-radius: 20px;
-    /* margin-top: 290px; */
-    display: flex;
-    justify-content: flex-end;
-  }
- 
+
   .registrationButton {
     font-family: AlphaFridgeMagnets;
     font-size: 30px;
