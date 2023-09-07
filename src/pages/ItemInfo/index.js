@@ -153,7 +153,7 @@ return (
     <div className="iphoneContainer">  
     <div className="iphoneIngredientsBackground">  
     
-    <div className="fridgeTitle"> {username}'s  &nbsp; 
+    <div className="fridgeTitleItems"> {username}'s  &nbsp; 
     <span style= {{color: "#31BFF3"}}> F</span>
                                             <span style= {{color: "#A484E9"}}> r</span>
                                             <span style= {{color: "#F4889A"}}> i</span>

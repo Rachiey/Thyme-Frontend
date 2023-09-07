@@ -68,9 +68,9 @@ body {
     cursor: pointer;
   }
 
-  .fridgeTitle {
+  .fridgeTitleItems {
     height: 75px;
-    margin: 15px;
+    /* margin: 15px; */
     text-align: center;
     display:flex;
     align-items: center;
@@ -90,7 +90,7 @@ body {
     justify-content: stretch;
     grid-template-rows: auto;
     grid-template-columns:50% 15% 25% 10%; 
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     margin-top: 1rem;
   }
 
@@ -274,6 +274,7 @@ body {
     justify-content: space-evenly;
     font-size: 50px;
     bottom: 0;
+    margin-top: 1.5rem;
   }
 
   .grid-item-card{
