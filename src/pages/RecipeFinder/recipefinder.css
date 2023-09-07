@@ -7,7 +7,7 @@
   }
 
 
-  .door-back {
+  .recipeFinderBackground {
     position: relative;
     background:#6171b7;
     width: 390px;
@@ -15,6 +15,9 @@
     border-radius: 20px;
     overflow: hidden;
     outline: 10px solid #5867a8;
+    display: flex;
+    flex-direction: column;
+ 
   }
 
   .link {
@@ -83,7 +86,7 @@
     align-content: space-around;
     flex-wrap: wrap;
     align-items: center;
-
+    flex-grow: 1; 
 
 }
 
@@ -156,3 +159,20 @@ button {
   box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
 }
  
+
+.bottomNavBarRecipeFinder {
+  width: 320px;
+  height: 100px;
+  background-color: #374ba6;
+  color:white;
+  border-radius: 20px;
+  display: flex;
+  margin-bottom: 15px;
+  margin-left: 35px;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 50px;
+  overflow: hidden;
+  /* position: fixed; */
+  bottom: 0;
+}

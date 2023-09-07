@@ -149,10 +149,8 @@ export const ItemInfo = () => {
 
 return (
 <>    
-<div className="door-back">  
-    <div className="iphoneContainer">  
-    <div className="iphoneIngredientsBackground">  
-    
+<div className="fridgeBackground">  
+
     <div className="fridgeTitleItems"> {username}'s  &nbsp; 
     <span style= {{color: "#31BFF3"}}> F</span>
                                             <span style= {{color: "#A484E9"}}> r</span>
@@ -162,6 +160,7 @@ return (
                                             <span style= {{color: "#79D45E"}}> e</span>
             </div>
             <div className="ingredientsTitle"> Ingredients </div>
+            
             <button className="logOutButton" onClick={handleLogout}>
             <span style= {{color: "#FFAF68"}}> L</span>
                                             <span style= {{color: "#F6E683"}}> o</span>
@@ -201,7 +200,7 @@ return (
                 <button className="addButton" type="submit" onClick={submitItemHandler}>+</button>
             </form>
 
-            <div className="itemShelf">
+            <div className="itemShelfItems">
                 <ul>
                 {items && items.length > 0 ? (
  <div className="grid-container">
@@ -263,9 +262,9 @@ return (
     </div> 
             
         </div>
-</div>
 
-    </div>
+
+
 </>
 )
 }

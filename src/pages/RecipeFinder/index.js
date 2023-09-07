@@ -63,7 +63,8 @@ export const RecipeFinder = () => {
     return (
 
         <>
-<div className="door-back">  
+       
+<div className="recipeFinderBackground">  
 <div className="fridgeTitleBack"> {username}'s  &nbsp; <span style= {{color: "#31BFF3"}}> F</span>
                                             <span style= {{color: "#A484E9"}}> r</span>
                                             <span style= {{color: "#F4889A"}}> i</span>
@@ -117,7 +118,7 @@ export const RecipeFinder = () => {
    
 
 
-    <div className="bottomNavBarProfile">  <Tooltip title='Home'>
+    <div className="bottomNavBarRecipeFinder">  <Tooltip title='Home'>
       <IconButton style={{color: 'white', fontSize: '50px'}}>
       <Link to='/'>{homeIcon} </Link>
       </IconButton>
