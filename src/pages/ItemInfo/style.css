@@ -11,7 +11,7 @@ body {
   background-image: url('../Home/images/background.jpg');
 }
 
-.fridgeBackground {
+.fridgeItemBackground {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -255,17 +255,17 @@ body {
   }
 
   .bottomNavBarItems {
-    width: 320px;
-    height: 100px;
+
+    width: 320px; /* Full width */
     background-color: #374ba6;
-    color:white;
+    color: white;
     border-radius: 20px;
     display: flex;
-    align-items: center;
     justify-content: space-evenly;
     font-size: 50px;
-    bottom: 0;
-    margin-top: 1.5rem;
+    padding: 15px; /* Add padding for better appearance */
+    margin-bottom: 20px;
+    margin-top: 30px;
   }
 
   .grid-item-card{

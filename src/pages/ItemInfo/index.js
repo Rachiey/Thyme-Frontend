@@ -149,7 +149,7 @@ export const ItemInfo = () => {
 
 return (
 <>    
-<div className="fridgeBackground">  
+<div className="fridgeItemBackground">  
 
     <div className="fridgeTitleItems"> {username}'s  &nbsp; 
     <span style= {{color: "#31BFF3"}}> F</span>
