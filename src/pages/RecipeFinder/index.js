@@ -83,38 +83,39 @@ export const RecipeFinder = () => {
     </div>
     <div className="shoppingList">
       <h1 className="shoppingTitle">Recipe Finder</h1>
-    </div>
-    <div className="recipeBox">
+      <div className="recipeBox">
     
-      <input
-        className="enterIngredients"
-        type="text"
-        value={ingredients}
-        onChange={handleInputChange}
-        placeholder="Enter your ingredients"
-      />
-      <button className="enterIngredientsButton" onClick={searchRecipes}>Find Recipes</button>
+    <input
+      className="enterIngredients"
+      type="text"
+      value={ingredients}
+      onChange={handleInputChange}
+      placeholder="Enter your ingredients"
+    />
+    <button className="enterIngredientsButton" onClick={searchRecipes}>Find Recipes</button>
 
-      <h2 className="recipeTitle">Recipes</h2>
-      <ul>
-      {recipes.slice(0, 5).map((recipe) => (
-          <li key={recipe.recipe.uri}>
-            <div>
-              <a href={recipe.recipe.url} target="_blank" rel="noopener noreferrer">
-                {recipe.recipe.label}
-              </a>
-            </div>
-            <div>
-              <button className="saveRecipeButton">
-                <Link to={`/profile?url=${encodeURIComponent(recipe.recipe.url)}`}>
-                  Save Recipe
-                </Link>
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
+    <h2 className="recipeTitle">Recipes</h2>
+    <ul>
+    {recipes.slice(0, 5).map((recipe) => (
+        <li key={recipe.recipe.uri}>
+          <div>
+            <a href={recipe.recipe.url} target="_blank" rel="noopener noreferrer">
+              {recipe.recipe.label}
+            </a>
+          </div>
+          <div>
+            <button className="saveRecipeButton">
+              <Link to={`/profile?url=${encodeURIComponent(recipe.recipe.url)}`}>
+                Save Recipe
+              </Link>
+            </button>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
     </div>
+ 
    
 
 

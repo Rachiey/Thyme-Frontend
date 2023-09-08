@@ -41,7 +41,8 @@ useEffect(() => {
     return (
 
         <>
-<div className="door-back">  
+<div className="profileBackground">  
+
 <div className="fridgeTitleBack"> {username}'s  &nbsp; <span style= {{color: "#31BFF3"}}> F</span>
                                             <span style= {{color: "#A484E9"}}> r</span>
                                             <span style= {{color: "#F4889A"}}> i</span>
@@ -60,7 +61,7 @@ useEffect(() => {
     </div>
 <div className="profileTitle"> Profile </div>
    <div> <div className="fridgeShelves">
-   <h2>Items Expiring Soon (2 days or less)</h2>
+   <h2 className="expiringTitle">Items Expiring Soon (2 days or less)</h2>
   
    <div className="shelfOne">
   
@@ -92,9 +93,7 @@ useEffect(() => {
       <SavedRecipes />
       </div>
       
-         
-        </div>
-        <div className="bottomNavBarProfile"> 
+      <div className="bottomNavBarProfile"> 
       <Tooltip title="Home"> 
       <IconButton style={{color:'white', fontSize:'50px'}}>
       <Link to='/'>{homeIcon} </Link>
@@ -111,6 +110,9 @@ useEffect(() => {
       </IconButton>
     </Tooltip> 
     </div> 
+        </div>
+        
+
     </div>
    </div>
     

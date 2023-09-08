@@ -64,7 +64,7 @@ export const ItemInfo = () => {
   
     switch (true) {
       case days === 0:
-        setExpiresIn('eat me today');
+        setExpiresIn('eat today');
         break;
       case days < -1:
         setExpiresIn('expired');
@@ -76,7 +76,7 @@ export const ItemInfo = () => {
         setExpiresIn(`${days} day(s) left`);
         break;
       default:
-        setExpiresIn('⁉');
+        setExpiresIn('error');
     }
   };
   

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
-  .door-back {
+  .profileBackground {
     position: relative;
     background:#6171b7;
     width: 390px;
@@ -9,6 +9,9 @@
     border-radius: 20px;
     overflow: hidden;
     outline: 10px solid #5867a8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .profileTitle {
@@ -23,13 +26,7 @@
     display:flex;
     flex-direction: column;
     align-items: center;
-}
-.grid-container {
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: 33% 33% 33%;
-  grid-gap: 0.5rem;
-  justify-content: space-evenly;
+    flex-grow: 1;  
 }
 
   .shelfOne {
@@ -40,26 +37,29 @@
   }
 
   .bottomNavBarProfile {
-    width: 320px;
-    height: 100px;
+    position: absolute; /* Set position to absolute */
+    bottom: 0; /* Position it at the bottom of profileBackground */
+    width: 320px; /* Full width */
     background-color: #374ba6;
-    color:white;
+    color: white;
     border-radius: 20px;
     display: flex;
-    margin-bottom: 75px;
-    margin-left: 35px;
-    align-items: center;
     justify-content: space-evenly;
     font-size: 50px;
-    overflow: hidden;
-    /* position: fixed; */
-    bottom: 0;
+    padding: 15px; /* Add padding for better appearance */
+    margin-bottom: 20px;
   }
-
+ 
   .homeIcon {
     display:flex;
   }
 
   .savedRecipesContainer {
     margin-top: 20px;
+    margin-bottom:40px;
+    
+  }
+
+  .expiringTitle {
+    font-size: 20px;
   }

@@ -88,19 +88,17 @@
   }
 
   .bottomNavBarShoppingList {
-    width: 320px;
-    height: 100px;
+    position: absolute; /* Set position to absolute */
+    bottom: 0; /* Position it at the bottom of profileBackground */
+    width: 320px; /* Full width */
     background-color: #374ba6;
-    color:white;
+    color: white;
     border-radius: 20px;
     display: flex;
-    margin-bottom: 15px;
-    margin-left: 35px;
-    align-items: center;
     justify-content: space-evenly;
     font-size: 50px;
-    overflow: hidden;
-    bottom: 0;
+    padding: 15px; /* Add padding for better appearance */
+    margin-bottom: 20px;
   }
  
 
