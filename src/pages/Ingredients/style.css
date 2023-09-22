@@ -86,6 +86,13 @@ body {
     margin-top: 1rem;
   }
 
+  .noItemsMessage {
+    font-family: 'Varela Round', sans-serif; /* Replace 'Your Desired Font' with your preferred font family */
+    font-size: 16px; /* Adjust the font size as needed */
+    color: #555; /* Adjust the text color as needed */
+    /* Add any additional styles you want */
+  }
+
   .textInputField {
     height: 3rem;
     border-radius: 8px;

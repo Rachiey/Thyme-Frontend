@@ -6,16 +6,12 @@ import { useItemContext } from '../itemcontext/itemcontext';
 import BottomNavbar from '../../components/BottomNavbar/BottomNavbar'; 
 
 export const Ingredients = () => {
-
   const { items, setItems, filterItemsExpiringSoon } = useItemContext();
-
+  const [displayedItems, setDisplayedItems] = useState([]); // Initialize displayedItems state
   const [inputText, setInputText] = useState('');
-  // const [itemId, setItemId] = useState(1);
   const [quantityValue, setQuantityValue] = useState(1);
   const [expiryDate, setExpiryDate] = useState('');
   const [expiresIn, setExpiresIn] = useState('');
-  // const [nextItemId, setNextItemId] = useState(1);
-
   const username = localStorage.getItem('username');
   const navigate = useNavigate();
 
@@ -24,7 +20,6 @@ export const Ingredients = () => {
     localStorage.removeItem('isLoggedIn');
     navigate('/login');
   };
-
 
   const inputTextHandler = (e) => {
     setInputText(e.target.value);
@@ -35,66 +30,55 @@ export const Ingredients = () => {
 
   const dateValueHandler = (e) => {
     const selectedDate = e.target.value; // Store the selected date as entered by the user
+    const currentDate = new Date(); // Get the current date
+    
     setExpiryDate(selectedDate);
   
     const final = new Date(selectedDate);
-  final.setHours(23, 59, 59, 999); // Set time to the last millisecond of the day
-  const today = new Date();
-  today.setHours(0, 0, 0, 0); // Set time to midnight
-
-  // Calculate expiresIn based on the selected date
-  const diff = final.getTime() - today.getTime();
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-
+    final.setHours(23, 59, 59, 999); // Set time to the last millisecond of the day
   
-    switch (true) {
-      case days === 0:
-        setExpiresIn('eat today');
-        break;
-      case days < -1:
-        setExpiresIn('expired');
-        break;
-      case days === 1:
-        setExpiresIn('expires tomorrow');
-        break;
-      case days >= 1:
-        setExpiresIn(`${days} day(s) left`);
-        break;
-      default:
-        setExpiresIn('error');
+    // Calculate expiresIn based on the selected date
+    const diff = final.getTime() - currentDate.getTime();
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  
+    if (days === 0) {
+      setExpiresIn('eat today');
+    } else if (days < 0) {
+      setExpiresIn(`expired ${Math.abs(days)} day${Math.abs(days) === 1 ? '' : 's'} ago`);
+    } else if (days === 1) {
+      setExpiresIn('expires tomorrow');
+    } else {
+      setExpiresIn(`expires in ${days} day${days === 1 ? '' : 's'}`);
     }
   };
   
+  useEffect(() => {
+    const savedItems = JSON.parse(localStorage.getItem('items'));
+    if (savedItems) {
+      setItems(savedItems);
+      setDisplayedItems(savedItems); // Initialize displayedItems with saved items
+    }
+  }, [setItems]);
 
   const handleDeleteItem = (itemToDelete) => {
-    // Filter out the item to delete
-    const updatedItems = items.filter((item) => item.id !== itemToDelete.id);
+    // Filter out the item to delete based on the previous state
+    setItems((prevItems) => prevItems.filter((item) => item.id !== itemToDelete.id));
     
-    // Update the state with the filtered items
-    setItems(updatedItems);
-  
+    // Update displayedItems based on the filtered items using a functional update
+    setDisplayedItems((prevDisplayedItems) => prevDisplayedItems.filter((item) => item.id !== itemToDelete.id));
+
     // Save the updated items to local storage
-    saveItemsToLocalStorage(updatedItems);
-
+    saveItemsToLocalStorage(items.filter((item) => item.id !== itemToDelete.id));
+  
     // Filter items expiring soon
-    const expiringSoonItems = filterItemsExpiringSoon(updatedItems);
+    const expiringSoonItems = filterItemsExpiringSoon(items);
     setItems(expiringSoonItems); // Update the 'items' state
-
-    // The useEffect will automatically save the updated items to local storage
+    setDisplayedItems(expiringSoonItems); // Update the displayedItems state
   };
 
   const saveItemsToLocalStorage = (items) => {
     localStorage.setItem('items', JSON.stringify(items));
   };
-
-  // Load items from local storage on component mount
-  useEffect(() => {
-    const savedItems = JSON.parse(localStorage.getItem('items'));
-    if (savedItems) {
-      setItems(savedItems);
-      console.log(savedItems);
-    }
-  }, [setItems]);
 
   const submitItemHandler = (event) => {
     event.preventDefault();
@@ -111,12 +95,14 @@ export const Ingredients = () => {
       expiresIn: expiresIn,
     };
   
-    // Update the items state with the new item
-    const updatedItems = [...items, newItem];
-    setItems(updatedItems);
-  
-  
-    saveItemsToLocalStorage(updatedItems);
+    // Update the items state with the new item using a functional update
+    setItems((prevItems) => [...prevItems, newItem]);
+
+    // Update displayedItems with the new item using a functional update
+    setDisplayedItems((prevDisplayedItems) => [...prevDisplayedItems, newItem]);
+    
+    // Save the updated items to local storage
+    saveItemsToLocalStorage([...items, newItem]);
   
     // Clear the input fields
     setInputText('');
@@ -124,8 +110,9 @@ export const Ingredients = () => {
     setExpiryDate('');
   
     // Filter items expiring soon
-    const expiringSoonItems = filterItemsExpiringSoon(updatedItems);
+    const expiringSoonItems = filterItemsExpiringSoon([...items, newItem]);
     setItems(expiringSoonItems); // Update the 'items' state
+    setDisplayedItems(expiringSoonItems);
   };
 
 
@@ -183,28 +170,26 @@ return (
             </form>
 
             <div className="itemShelfItems">
-                <ul>
-                {items && items.length > 0 ? (
- <div className="grid-container">
- {items.map((item, index) => ( // Use index as a fallback key
-   <li className="grid-item-card" 
-   key={`${item.id}_${index}`} 
-  //  onMouseEnter={() => handleMouseEnter(item.id)}
-  //     onMouseLeave={() => handleMouseLeave(item.id)}
-  >
-     <p>{item.text}</p>
-     {/* <img></img> */}
-     <p><span className="expires-in-colour" data-status={item.expiresIn}>{item.expiresIn}</span></p> 
-     <br/>
-     <button className="trashButton" onClick={() => handleDeleteItem(item)}>🗑</button>
-   </li>
- ))}
-</div>
-                       ) : (
-                         <p>No items to display.</p>
-                       )}
-             
-                </ul>
+            <ul>
+          {displayedItems && displayedItems.length > 0 ? (
+            <div className="grid-container">
+              {displayedItems.map((item, index) => (
+                <li
+                  className="grid-item-card"
+                  key={`${item.id}_${index}`}
+                >
+                  <p>{item.text}</p>
+                  <p><span className="expires-in-colour" data-status={item.expiresIn}>{item.expiresIn}</span></p>
+                  <br />
+                  <button className="trashButton" onClick={() => handleDeleteItem(item)}>🗑</button>
+                </li>
+              ))}
+            </div>
+          ) : (
+            <p className="noItemsMessage">No items to display.</p>
+
+          )}
+        </ul>
             </div>
 
             <div className="itemShelfTwo">
