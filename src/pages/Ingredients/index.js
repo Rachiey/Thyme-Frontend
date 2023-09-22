@@ -1,31 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './style.css';
-
 import 'semantic-ui-css/semantic.min.css';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import { useItemContext } from '../itemcontext/itemcontext';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse } from '@fortawesome/free-solid-svg-icons';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { faRectangleList } from '@fortawesome/free-solid-svg-icons';
+import BottomNavbar from '../../components/BottomNavbar/BottomNavbar'; 
 
-export const ItemInfo = () => {
-  const homeIcon = <FontAwesomeIcon icon={faHouse} />;
-  const profileIcon = <FontAwesomeIcon icon={faUser} />;
-  const recipesIcon = <FontAwesomeIcon icon={faRectangleList} />;
+export const Ingredients = () => {
 
   const { items, setItems, filterItemsExpiringSoon } = useItemContext();
 
   const [inputText, setInputText] = useState('');
-  const [itemId, setItemId] = useState(1);
+  // const [itemId, setItemId] = useState(1);
   const [quantityValue, setQuantityValue] = useState(1);
   const [expiryDate, setExpiryDate] = useState('');
   const [expiresIn, setExpiresIn] = useState('');
-  // const [showItemInfo, setShowItemInfo] = useState(false);
-  const [nextItemId, setNextItemId] = useState(1);
+  // const [nextItemId, setNextItemId] = useState(1);
 
   const username = localStorage.getItem('username');
   const navigate = useNavigate();
@@ -36,10 +25,6 @@ export const ItemInfo = () => {
     navigate('/login');
   };
 
-  // const initialItems = items.map((item) => ({
-  //   ...item,
-  //   showInfo: false,
-  // }));
 
   const inputTextHandler = (e) => {
     setInputText(e.target.value);
@@ -111,39 +96,36 @@ export const ItemInfo = () => {
     }
   }, [setItems]);
 
-  // Submit item handler
   const submitItemHandler = (event) => {
     event.preventDefault();
-    setItemId(itemId + 1);
-
+  
+    // Generate a unique ID for the new item based on the length of the items array
+    const newId = items.length > 0 ? Math.max(...items.map((item) => item.id)) + 1 : 1;
+  
     // Create a new item object
     const newItem = {
       text: inputText,
-      id: nextItemId,
+      id: newId,
       quantity: quantityValue,
       expiryDate: expiryDate,
       expiresIn: expiresIn,
     };
-
-    setNextItemId(nextItemId + 1);
-
+  
     // Update the items state with the new item
     const updatedItems = [...items, newItem];
-    setItems([updatedItems]);
-
+    setItems(updatedItems);
+  
+  
     saveItemsToLocalStorage(updatedItems);
-
+  
     // Clear the input fields
     setInputText('');
     setQuantityValue(1);
     setExpiryDate('');
-
+  
     // Filter items expiring soon
     const expiringSoonItems = filterItemsExpiringSoon(updatedItems);
-  setItems(expiringSoonItems); // Update the 'items' state
-
-  
-
+    setItems(expiringSoonItems); // Update the 'items' state
   };
 
 
@@ -221,20 +203,7 @@ return (
                        ) : (
                          <p>No items to display.</p>
                        )}
-                    
-                    {/* {
-                    // showItemInfo &&
-                    
-                    <div className="grid-container">
-                        {items.map((item, index) => (
-                            <li className="grid-item-card" key={`${item.id}_${index}`}>
-                                <p>{item.text}  x{item.quantity}</p> 
-                                <p> 🔔 Expires by: {item.expiryDate}</p>  
-                                <br/>
-
-                            </li>
-                        ))}
-                    </div>} */}
+             
                 </ul>
             </div>
 
@@ -243,23 +212,8 @@ return (
 </div>
             <div className="itemShelfThree">
             </div>
-            <div className="bottomNavBarItems"> 
-      <Tooltip title="Home"> 
-      <IconButton style={{color:'white', fontSize:'50px'}}>
-      <Link to='/'>{homeIcon} </Link>
-      </IconButton>
-      </Tooltip>
-      <Tooltip title="Recipes">
-      <IconButton style={{color: 'white', fontSize: '50px'}}>
-      <Link to='/recipefinder'>{recipesIcon} </Link>
-      </IconButton>
-    </Tooltip>  
-    <Tooltip title="Profile">
-      <IconButton style={{color: 'white', fontSize: '50px'}}>
-      <Link to='/profile'>{profileIcon} </Link>
-      </IconButton>
-    </Tooltip> 
-    </div> 
+
+            <BottomNavbar />
             
         </div>
 
@@ -269,4 +223,4 @@ return (
 )
 }
 
-export default ItemInfo;
+export default Ingredients;

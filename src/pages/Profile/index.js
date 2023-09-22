@@ -106,7 +106,7 @@ useEffect(() => {
     </Tooltip>  
     <Tooltip title="Ingredients">
       <IconButton style={{color: 'white', fontSize: '50px'}}>
-      <Link to='/item-info'>{ingredientsIcon} </Link>
+      <Link to='/ingredients'>{ingredientsIcon} </Link>
       </IconButton>
     </Tooltip> 
     </div> 

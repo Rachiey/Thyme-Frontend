@@ -1,6 +1,6 @@
 // import React from 'react';
 export { default as Home } from './Home';
-export { default as ItemInfo } from './ItemInfo';
+export { default as Ingredients} from './Ingredients';
 export { default as Shelf } from './Shelf';
 export { default as Register } from './Register';
 export { default as NotFoundPage } from './PageNotFound';
