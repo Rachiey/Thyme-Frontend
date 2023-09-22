@@ -278,16 +278,50 @@ body {
   .grid-item-card{
     font-size: 15px;
     z-index: 1; 
+    position: relative; 
   }
 
-  .grid-item-card p {
-    font-size: 15px;
+  .expire{
+    font-size: 20px;
     font-family: 'Courgette', sans-serif;
     margin: -8px 0;
     padding: 5px;
+    z-index: 1;
+    
+    
     
   }
 
+  .expire,
+  .trashButton {
+    display: none; /* Hide by default */
+    position: absolute; /* Position it absolutely */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center it perfectly */
+    text-align: center; /* Center the text horizontally */
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+    border-radius: 15px;
+  }
+  
+
   .trashButton {
     cursor: pointer;
+    z-index: 2;
+    margin-top: 45px;
+  }
+
+  .emoji {
+    font-size: 65px;
+    margin: 0px;
+  }
+
+  .card-content {
+    position: relative; /* Make sure it's a positioned element for child absolute positioning */
+  }
+  
+
+  .grid-item-card:hover .expire,
+  .grid-item-card:hover .trashButton {
+    display: block; /* Show on hover */
   }

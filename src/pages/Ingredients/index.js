@@ -13,7 +13,48 @@ export const Ingredients = () => {
   const [expiryDate, setExpiryDate] = useState('');
   const [expiresIn, setExpiresIn] = useState('');
   const username = localStorage.getItem('username');
+
   const navigate = useNavigate();
+
+  const replaceTextWithEmoji = (text) => {
+    const emojiMap = {
+      // Define your mappings here, for example:
+      'pizza': '🍕',
+      'carrot': '🥕',
+      'egg': '🍳',
+      'eggs': '🍳',
+      'broccoli': '🥦',
+      'fish': '🐟',
+      'chicken': '🍗',
+      'bacon': '🥓',
+      'tomato':'🍅',
+      'apple':'🍎',
+      'orange':'🍊',
+      'lemon':'🍋',
+      'banana':'🍌',
+      'cucumber':'🥒',
+      'bell pepper':'🫑',
+      'milk':'🥛',
+      'cheese':'🧀',
+      'onion':'🧅',
+      'potato':'🥔',
+      'avocado':'🥑',
+      'steak':'🥩',
+      'salad':'🥗',
+      'corn':'🌽',
+      'peas':'🫛',
+      'lettuce':'🥬',
+      'chilli':'🌶️',
+      
+
+
+
+      // Add more mappings as needed
+    };
+  
+    // Check if the text exists in the map, if so, return the corresponding emoji, otherwise return the original text
+    return emojiMap[text.toLowerCase()] || text;
+  };
 
   const handleLogout = () => {
     // Reset the local storage session and navigate to the login page
@@ -24,6 +65,9 @@ export const Ingredients = () => {
   const inputTextHandler = (e) => {
     setInputText(e.target.value);
   };
+
+
+  
   const quantityValueHandler = (e) => {
     setQuantityValue(e.target.value);
   };
@@ -83,12 +127,11 @@ export const Ingredients = () => {
   const submitItemHandler = (event) => {
     event.preventDefault();
   
-    // Generate a unique ID for the new item based on the length of the items array
     const newId = items.length > 0 ? Math.max(...items.map((item) => item.id)) + 1 : 1;
   
-    // Create a new item object
+    // Use the replaceTextWithEmoji function to convert the inputText to an emoji
     const newItem = {
-      text: inputText,
+      text: replaceTextWithEmoji(inputText),
       id: newId,
       quantity: quantityValue,
       expiryDate: expiryDate,
@@ -140,7 +183,10 @@ return (
                                             <span style= {{color: "#F4889A"}}> t</span> 
             </button>
 
-            <form className='formInput'>
+            <form className='formInput' onSubmit={(e) => {
+  e.preventDefault();
+
+}}>
                 <input className="textInputField" type="text" onChange={inputTextHandler} value={inputText}></input>
                 <select className="quantityOption" name="quantity" onChange={quantityValueHandler} value={quantityValue}>
                     <option value="1">1</option>
@@ -173,17 +219,15 @@ return (
             <ul>
           {displayedItems && displayedItems.length > 0 ? (
             <div className="grid-container">
-              {displayedItems.map((item, index) => (
-                <li
-                  className="grid-item-card"
-                  key={`${item.id}_${index}`}
-                >
-                  <p>{item.text}</p>
-                  <p><span className="expires-in-colour" data-status={item.expiresIn}>{item.expiresIn}</span></p>
-                  <br />
-                  <button className="trashButton" onClick={() => handleDeleteItem(item)}>🗑</button>
-                </li>
-              ))}
+            {displayedItems.map((item, index) => (
+              <div className="grid-item-card" key={`${item.id}_${index}`}>
+  <div className="card-content">
+    <p className='emoji'>{item.text}</p> {/* Display the emoji here */}
+    <button className="trashButton" onClick={() => handleDeleteItem(item)}>🗑</button>
+  </div>
+  <p className='expire'><span className="expires-in-colour" data-status={item.expiresIn}>{item.expiresIn}</span></p>
+</div>
+))}
             </div>
           ) : (
             <p className="noItemsMessage">No items to display.</p>
