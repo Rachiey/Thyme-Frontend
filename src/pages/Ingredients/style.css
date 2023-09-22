@@ -316,11 +316,15 @@ body {
     margin: 0px;
   }
 
+  .text {
+    font-size: 25px;
+    font-family: 'Courgette', sans-serif;
+  }
+
   .card-content {
     position: relative; /* Make sure it's a positioned element for child absolute positioning */
   }
   
-
   .grid-item-card:hover .expire,
   .grid-item-card:hover .trashButton {
     display: block; /* Show on hover */

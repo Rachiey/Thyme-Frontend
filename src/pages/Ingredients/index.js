@@ -56,6 +56,12 @@ export const Ingredients = () => {
     return emojiMap[text.toLowerCase()] || text;
   };
 
+  const isEmoji = (text) => {
+    const emojiRegex = /(?:[\uD800-\uDBFF][\uDC00-\uDFFF])|(?:[\u2194-\u21AA\u2B05\u2B06\u2934\u2935\u25AA\u25FE\u25FD\u25FB\u2B05\u2B06\u2934\u2935\u25AA\u25FE\u25FD\u25FB\u231A\u23F3\u231B\u23F0\u2670-\u2672\u2702\u26A1\u26AA\u26AB\u26B0\u26B1\u26BD\u26BE\u26C4\u26C5\u26CE\u26CF\u26D1\u26D3\u26E9\u26EA\u26F0\u26F1\u26F2\u26F3\u26F4\u26F5\u26F7\u26F8\u26F9\u26FA\u26FD\u2705\u2708\u2709\u270A-\u270D\u270F\u2712\u2714\u2716\u271D\u2721\u2728\u2733\u2734\u2744\u2747\u274C\u274E\u2753\u2754\u2755\u2757\u2763\u2764\u2795\u2796\u2797\u27A1\u27B0\u27BF\u2934\u2935\u2B05\u2B06\u2B50\u2B55\u3030\u303D\u3297\u3299\u23F0\u23F3])|(?:[#*0-9]\uFE0F\u20E3[\uFE0F\u20E3])|(?:[\uD83C][\uDC04\uDCCF\uDD70\uDD71\uDD7E\uDD7F\uDD8E\uDD91-\uDD9A\uDDA2\uDDA4\uDDA5\uDDE6\uDDE8-\uDDEF\uDDF1-\uDDF4\uDDF7-\uDDF9\uDE01-\uDE03\uDE05\uDE06\uDE09\uDE0A\uDE0C-\uDE0F\uDE14\uDE16\uDE18\uDE1A\uDE1C\uDE1D\uDE1E\uDE20-\uDE24\uDE27\uDE29\uDE2A\uDE2C-\uDE3A\uDE3C-\uDE44\uDE46-\uDE49\uDE4C-\uDE4F\uDE80-\uDE83\uDE85\uDE86\uDE88\uDE8A\uDE8D-\uDE8F\uDE92-\uDE96\uDE98\uDE99\uDE9B\uDE9D-\uDE9F\uDEA1-\uDEA3\uDEA5-\uDEA9\uDEAB-\uDEBB\uDECD-\uDECF\uDFF4\uDFF8\uDFF9\uDC00-\uDFFF])|(?:[\uD83D\uDC00-\uDDFF\uDE80-\uDEFF])/;
+    return emojiRegex.test(text);
+  };
+  
+
   const handleLogout = () => {
     // Reset the local storage session and navigate to the login page
     localStorage.removeItem('isLoggedIn');
@@ -216,25 +222,28 @@ return (
             </form>
 
             <div className="itemShelfItems">
-            <ul>
-          {displayedItems && displayedItems.length > 0 ? (
-            <div className="grid-container">
-            {displayedItems.map((item, index) => (
-              <div className="grid-item-card" key={`${item.id}_${index}`}>
-  <div className="card-content">
-    <p className='emoji'>{item.text}</p> {/* Display the emoji here */}
-    <button className="trashButton" onClick={() => handleDeleteItem(item)}>🗑</button>
-  </div>
-  <p className='expire'><span className="expires-in-colour" data-status={item.expiresIn}>{item.expiresIn}</span></p>
-</div>
-))}
-            </div>
-          ) : (
-            <p className="noItemsMessage">No items to display.</p>
+  <ul>
 
-          )}
-        </ul>
+    {displayedItems && displayedItems.length > 0 ? (
+      <div className="grid-container">
+        {displayedItems.map((item, index) => (
+          <div className="grid-item-card" key={`${item.id}_${index}`}>
+            <div className="card-content">
+              <p className={isEmoji(item.text) ? 'emoji' : 'text'}>{item.text}</p>
+              <button className="trashButton" onClick={() => handleDeleteItem(item)}>🗑</button>
             </div>
+  
+            <p className='expire'>
+              <span className="expires-in-colour" data-status={item.expiresIn}>{item.expiresIn}</span>
+            </p>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <p className="noItemsMessage">No items to display.</p>
+    )}
+  </ul>
+</div>
 
             <div className="itemShelfTwo">
 
