@@ -3,14 +3,9 @@ import { useItemContext } from '../itemcontext/itemcontext';
 import './profile.css';
 import 'semantic-ui-css/semantic.min.css'
 import { useNavigate } from 'react-router'
-import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse } from '@fortawesome/free-solid-svg-icons'
-import { faRectangleList } from '@fortawesome/free-solid-svg-icons'
-import { faUtensils } from '@fortawesome/free-solid-svg-icons'
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
+
 import SavedRecipes from '../SavedRecipes';
+import BottomNavbar from '../../components/BottomNavbar/BottomNavbar'; 
 
 
 export const Profile = () => {
@@ -33,9 +28,6 @@ useEffect(() => {
     };
 
 
-    const homeIcon = <FontAwesomeIcon icon={faHouse} />
-    const recipesIcon = <FontAwesomeIcon icon={faRectangleList} />
-    const ingredientsIcon = <FontAwesomeIcon icon={faUtensils} />
 
     
     return (
@@ -93,23 +85,7 @@ useEffect(() => {
       <SavedRecipes />
       </div>
       
-      <div className="bottomNavBarProfile"> 
-      <Tooltip title="Home"> 
-      <IconButton style={{color:'white', fontSize:'50px'}}>
-      <Link to='/'>{homeIcon} </Link>
-      </IconButton>
-      </Tooltip>
-      <Tooltip title="Recipes">
-      <IconButton style={{color: 'white', fontSize: '50px'}}>
-      <Link to='/recipefinder'>{recipesIcon} </Link>
-      </IconButton>
-    </Tooltip>  
-    <Tooltip title="Ingredients">
-      <IconButton style={{color: 'white', fontSize: '50px'}}>
-      <Link to='/ingredients'>{ingredientsIcon} </Link>
-      </IconButton>
-    </Tooltip> 
-    </div> 
+      <BottomNavbar />
         </div>
         
 

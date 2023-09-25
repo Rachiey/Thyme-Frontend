@@ -4,13 +4,7 @@ import Item from "../../components/Item";
 import './shoppinglist.css';
 import 'semantic-ui-css/semantic.min.css'
 import { useNavigate } from 'react-router'
-import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse } from '@fortawesome/free-solid-svg-icons'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
-import { faUtensils } from '@fortawesome/free-solid-svg-icons'
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
+import BottomNavbar from '../../components/BottomNavbar/BottomNavbar'; 
 
 
 
@@ -30,9 +24,7 @@ export const List = () => {
     };
 
 
-    const homeIcon = <FontAwesomeIcon icon={faHouse} />
-    const profileIcon = <FontAwesomeIcon icon={faUser} />
-    const ingredientsIcon = <FontAwesomeIcon icon={faUtensils} />
+
 
     const arr = () => {
       let data = localStorage.getItem("data");
@@ -147,21 +139,7 @@ export const List = () => {
     
 
 
-    <div className="bottomNavBarShoppingList">  <Tooltip title='Home'>
-      <IconButton style={{color: 'white', fontSize: '50px'}}>
-      <Link to='/'>{homeIcon} </Link>
-      </IconButton>
-      </Tooltip>
-      <Tooltip title='Profile'>
-      <IconButton style={{color: 'white', fontSize: '50px'}}>
-      <Link to='/profile'>{profileIcon} </Link>
-      </IconButton>
-    </Tooltip>  
-    <Tooltip title='Ingredients'>
-      <IconButton style={{color: 'white', fontSize: '50px'}}>
-      <Link to='/ingredients'>{ingredientsIcon} </Link>
-      </IconButton>
-    </Tooltip>  </div> 
+    <BottomNavbar />
  
     </div>
 
