@@ -24,22 +24,22 @@ export const List = () => {
     };
 
    
-    const animateButton = function(e)  {
-      e.preventDefault();
-      //reset animation
-      e.target.classList.remove('animate');
+    // const animateButton = function(e)  {
+    //   e.preventDefault();
+    //   //reset animation
+    //   e.target.classList.remove('animate');
       
-      e.target.classList.add('animate');
-      setTimeout(function(){
-        e.target.classList.remove('animate');
-      },700);
-    };
+    //   e.target.classList.add('animate');
+    //   setTimeout(function(){
+    //     e.target.classList.remove('animate');
+    //   },700);
+    // };
     
-    var bubblyButtons = document.getElementsByClassName("addItemBtn");
+    // const bubblyButtons = document.getElementsByClassName("addItemBtn");
     
-    for (var i = 0; i < bubblyButtons.length; i++) {
-      bubblyButtons[i].addEventListener('click', animateButton, false);
-    }
+    // for (var i = 0; i < bubblyButtons.length; i++) {
+    //   bubblyButtons[i].addEventListener('click', animateButton, false);
+    // }
 
 
     const arr = () => {
@@ -125,11 +125,11 @@ export const List = () => {
         />
         
         {edit ? (
-          <button className="btn" type="submit">
+          <button className="addItemBtn" type="submit">
             Edit Item
           </button>
         ) : (
-          <button className="btn" type="submit">
+          <button className="addItemBtn" type="submit">
             Add Item
           </button>
         )}
