@@ -39,6 +39,12 @@ const Item = ({
     setEditId(id);
   };
 
+  const handleInputChange = (e) => {
+    // Update the item value in the parent component using setItem
+    setItem(e.target.value);
+  };
+
+
   return (
     <div className="item">
       <input
@@ -53,6 +59,7 @@ const Item = ({
           fontFamily: "Permanent Marker",
         }}
         className={complete ? "complete" : ""}
+        onChange={handleInputChange}
       />
       <img
         style={{ cursor: "pointer" }}

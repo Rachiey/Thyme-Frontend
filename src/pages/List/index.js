@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from "uuid";
 import Item from "../../components/Item";
-import './shoppinglist.css';
+import './shoppinglist.scss';
 import 'semantic-ui-css/semantic.min.css'
 import { useNavigate } from 'react-router'
 import BottomNavbar from '../../components/BottomNavbar/BottomNavbar'; 
@@ -23,7 +23,23 @@ export const List = () => {
       navigate('/login');
     };
 
-
+   
+    const animateButton = function(e)  {
+      e.preventDefault();
+      //reset animation
+      e.target.classList.remove('animate');
+      
+      e.target.classList.add('animate');
+      setTimeout(function(){
+        e.target.classList.remove('animate');
+      },700);
+    };
+    
+    var bubblyButtons = document.getElementsByClassName("addItemBtn");
+    
+    for (var i = 0; i < bubblyButtons.length; i++) {
+      bubblyButtons[i].addEventListener('click', animateButton, false);
+    }
 
 
     const arr = () => {
@@ -101,12 +117,13 @@ export const List = () => {
   
       <form onSubmit={handleSubmit}>
         <input
-          className="input"
+          className="shoppingInput"
           type="text"
           value={item}
           placeholder="Add to your list"
           onChange={handleChange}
         />
+        
         {edit ? (
           <button className="btn" type="submit">
             Edit Item
