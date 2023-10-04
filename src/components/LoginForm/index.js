@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './loginForm.css';
 
+
 const LoginForm = () => {
     const navigate = useNavigate();
   const [username, setUsername] = useState('');
@@ -26,6 +27,7 @@ const LoginForm = () => {
     if (username === validUsername && password === validPassword) {
       // Save the login status to local storage
       localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('username', username);
       navigate('/');
       // Redirect to the desired page (e.g., dashboard or home page)
       // Use React Router or any other method to handle page navigation

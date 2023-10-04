@@ -12,11 +12,8 @@ import BottomNavbar from '../../components/BottomNavbar/BottomNavbar';
 export const List = () => {
 
   
-
-
-    const username = localStorage.getItem("username")
     const navigate = useNavigate();
-    
+    const username = localStorage.getItem('username');
     const handleLogout = () => {
       // Reset the local storage session and navigate to the login page
       localStorage.removeItem('isLoggedIn');

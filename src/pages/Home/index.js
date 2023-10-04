@@ -27,7 +27,7 @@ export const Home = () => {
     navigate('/login');
   };
 
-  const fridgeTitle = username ? `${username}'s fridge` : '';
+  const fridgeTitle = username ? `${username}'s` : '';
 
   return (
     <>
