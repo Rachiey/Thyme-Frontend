@@ -1,0 +1,12 @@
+.bottomNavBarItems {
+
+    width: 320px; /* Full width */
+    background-color: #374ba6;
+    color: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 50px;
+    padding: 15px; /* Add padding for better appearance */
+  
+  }

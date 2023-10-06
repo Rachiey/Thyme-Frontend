@@ -157,19 +157,19 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 30px;
+    margin-right: 15px;
   }
 
   .profilePicButton{
     font-family: 'AlphaFridgeMagnets';
     font-size: 25px;
-    color:#D5C5E8;
+    color:#ff8e1d;
     float: right;
   }
 
   .profilePicButton:hover{
     font-family: 'AlphaFridgeMagnets';
-    color:lightpink;
+    color:orangered;
     font-size:30px;
   }
 
@@ -200,7 +200,7 @@ body {
  .recipeTextButton{
     font-family: Permanent Marker;
     font-size: 16px;
-    color:#d71d43;
+    color:#ff770f;
   }
 
   .recipeEggs{
@@ -216,7 +216,7 @@ body {
 
   .recipeTextButton:hover{
     font-family: Permanent Marker;
-    color:lightskyblue;
+    color:orangered;
   }
 
   .fridgeHandle {
@@ -262,6 +262,7 @@ body {
     font-family: 'AlphaFridgeMagnets';
     font-weight:500;
     color: #f9ae2c;
+    -webkit-text-stroke: 1px #b34512;
   }
 
 .fridgeShelves {
@@ -471,6 +472,10 @@ body {
   .recipeimage {
     width: 150px;
     height: 150px;
+    margin-left:10px;
+    // transform: rotate(-10deg);
+  }
+  .recipeimage:hover {
     transform: rotate(-10deg);
   }
 

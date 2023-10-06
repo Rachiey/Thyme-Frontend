@@ -21,6 +21,7 @@ body {
   outline: 10px solid #5867a8;
   width: 390px;
   height: 844px;
+  justify-content: space-around;
 
 }
 
@@ -261,19 +262,6 @@ body {
  
   }
 
-  .bottomNavBarItems {
-
-    width: 320px; /* Full width */
-    background-color: #374ba6;
-    color: white;
-    border-radius: 20px;
-    display: flex;
-    justify-content: space-evenly;
-    font-size: 50px;
-    padding: 15px; /* Add padding for better appearance */
-    margin-bottom: 20px;
-    margin-top: 30px;
-  }
 
   .grid-item-card{
     font-size: 15px;

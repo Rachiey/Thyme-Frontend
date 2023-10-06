@@ -25,7 +25,7 @@ const App = () => {
           <Route path="/list" element={<Pages.List/>}/>
           <Route path="/recipefinder" element={<Pages.RecipeFinder />} />
           <Route path="/profile" element={<Pages.Profile />} />
-          <Route path="/savedrecipes" element={<Pages.SavedRecipes />} />
+          {/* <Route path="/savedrecipes" element={<Pages.SavedRecipes />} /> */}
           <Route path="/ingredients" element={<Pages.Ingredients />} /> 
           </Route>
         </Routes>

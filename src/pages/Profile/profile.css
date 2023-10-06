@@ -14,6 +14,7 @@
     align-items: center;
   }
 
+
   .profileTitle {
     margin: 15px;
     font-size: 32px;
@@ -23,7 +24,7 @@
   }
 
 .fridgeShelves {
-    display:flex;
+    display: flex; 
     flex-direction: column;
     align-items: center;
     flex-grow: 1;  
@@ -36,19 +37,6 @@
     border-radius: 20px;
   }
 
-  .bottomNavBarProfile {
-    position: absolute; /* Set position to absolute */
-    bottom: 0; /* Position it at the bottom of profileBackground */
-    width: 320px; /* Full width */
-    background-color: #374ba6;
-    color: white;
-    border-radius: 20px;
-    display: flex;
-    justify-content: space-evenly;
-    font-size: 50px;
-    padding: 15px; /* Add padding for better appearance */
-    margin-bottom: 20px;
-  }
  
   .homeIcon {
     display:flex;

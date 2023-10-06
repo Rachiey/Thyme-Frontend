@@ -4,7 +4,7 @@ import './profile.css';
 import 'semantic-ui-css/semantic.min.css'
 import { useNavigate } from 'react-router'
 
-import SavedRecipes from '../SavedRecipes';
+import SavedRecipes from '../../components/SavedRecipes';
 import BottomNavbar from '../../components/BottomNavbar/BottomNavbar'; 
 
 
@@ -84,6 +84,7 @@ useEffect(() => {
     <div className="savedRecipesContainer">
       <SavedRecipes />
       </div>
+    
       
       <BottomNavbar />
         </div>

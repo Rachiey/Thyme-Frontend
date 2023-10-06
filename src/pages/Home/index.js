@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 import profilepic from '../Home/images/profilepic.png';
 import fridgemagnet from '../Home/images/fridgemagnet.png';
-import fridgemagnets from '../Home/images/fridgemagnets.png';
 import note from '../Home/images/note.png';
 import fridgehandle from '../Home/images/fridgehandle.png';
+import thymesuplogo from '../Home/images/thymesup.png';
 import recipeimage from '../Home/images/recipe.png';
 import { useNavigate } from 'react-router';
+import Tooltip from '@mui/material/Tooltip';
 
 export const Home = () => {
   const [username, setUsername] = useState(localStorage.getItem('username'));
@@ -44,6 +45,9 @@ export const Home = () => {
           </div>
 
           <div className="fridgeRow">
+          <div className="logo">
+              <img src={thymesuplogo} alt="thyme's up logo" style={{ height: '180px'}} />
+            </div>
             <div className="fridgeHandle">
               {' '}
               <img src={fridgehandle} alt="fridge handle" style={{ height: '200px' }} />{' '}
@@ -51,15 +55,9 @@ export const Home = () => {
             <div className="fridgeMagnet">
               <img src={fridgemagnet} alt="fridge magnet" style={{ height: '150px', marginRight: '150px', marginTop: '20px' }} />
             </div>
+           
           </div>
 
-          <div className="fridgeMagnets">
-            {' '}
-            <Link to="/ingredients">
-              {' '}
-              <img src={fridgemagnets} alt="fruit fridge magnets" style={{ height: '100px' }} />{' '}
-            </Link>{' '}
-          </div>
         </div>
         <div className="door-back">
           <div className="fridgeTitleBack">
@@ -148,9 +146,12 @@ export const Home = () => {
             <div>
               <div className="recipeimage">
                 {' '}
+                <Tooltip title="Recipes">
+    
                 <Link to="/recipefinder">
-                  <img className="recipeimage" src={recipeimage} alt="recipe paper" />{' '}
+                  <img className="recipeimage" src={recipeimage} alt="recipe book" style={{ width: '120px' }}  />{' '}
                 </Link>
+                </Tooltip>
               </div>
 
               <div className="profilePic">

@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faRectangleList } from '@fortawesome/free-solid-svg-icons';
+import './style.css';
+
 
 const BottomNavbar = () => {
   const homeIcon = <FontAwesomeIcon icon={faHouse} />;
