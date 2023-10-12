@@ -25,7 +25,8 @@ const FridgeTitle = () => {
             <span style={{ color: '#0aa614' }}> d</span>
             <span style={{ color: '#9023d9' }}> g</span>
             <span style={{ color: '#ff0808' }}> e</span>
-<div class="logOutBox">
+            
+<div className="logOutBox">
       <button className="logOutButton" onClick={handleLogout}>
         <span style={{ color: '#FFAF68' }}> L</span>
         <span style={{ color: '#F6E683' }}> o</span>
