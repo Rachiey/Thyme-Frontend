@@ -11,6 +11,7 @@ import recipeimage from '../Home/images/recipe.png';
 import { useNavigate } from 'react-router';
 import Tooltip from '@mui/material/Tooltip';
 
+
 export const Home = () => {
   const [username, setUsername] = useState(localStorage.getItem('username'));
   const navigate = useNavigate();
@@ -36,12 +37,12 @@ export const Home = () => {
         <div className="door-front">
           <div className="fridgeTitle">
             {fridgeTitle} &nbsp;{' '}
-            <span style={{ color: '#31BFF3' }}> F</span>
-            <span style={{ color: '#A484E9' }}> r</span>
-            <span style={{ color: '#F4889A' }}> i</span>
-            <span style={{ color: '#FFAF68' }}> d</span>
-            <span style={{ color: '#F6E683' }}> g</span>
-            <span style={{ color: '#79D45E' }}> e</span>
+            <span style={{ color: '#9023d9' }}> F</span>
+            <span style={{ color: '#ffe524' }}> r</span>
+            <span style={{ color: '#ff0808' }}> i</span>
+            <span style={{ color: '#0aa614' }}> d</span>
+            <span style={{ color: '#9023d9' }}> g</span>
+            <span style={{ color: '#ff0808' }}> e</span>
           </div>
 
           <div className="fridgeRow">
@@ -60,13 +61,13 @@ export const Home = () => {
 
         </div>
         <div className="door-back">
-          <div className="fridgeTitleBack">
-            {fridgeTitle} &nbsp; <span style={{ color: '#31BFF3' }}> F</span>
-            <span style={{ color: '#A484E9' }}> r</span>
-            <span style={{ color: '#F4889A' }}> i</span>
-            <span style={{ color: '#FFAF68' }}> d</span>
-            <span style={{ color: '#F6E683' }}> g</span>
-            <span style={{ color: '#79D45E' }}> e</span>
+         <div className="fridgeTitleBack">
+            {fridgeTitle} &nbsp; <span style={{ color: '#9023d9' }}> F</span>
+            <span style={{ color: '#ffe524' }}> r</span>
+            <span style={{ color: '#ff0808' }}> i</span>
+            <span style={{ color: '#0aa614' }}> d</span>
+            <span style={{ color: '#9023d9' }}> g</span>
+            <span style={{ color: '#ff0808' }}> e</span>
           </div>
 
           <button className="logOutButton" onClick={handleLogout}>
