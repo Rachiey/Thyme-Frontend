@@ -317,3 +317,7 @@ body {
   .grid-item-card:hover .trashButton {
     display: block; /* Show on hover */
   }
+
+  .textInputField {
+    padding-left: 10px;
+  }
