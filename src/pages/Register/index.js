@@ -1,67 +1,94 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import './register.css';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import * as urls from '../../Urls';
+
 
 const RegistrationForm = () => {
-  const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-  });
+  const [username, setUsername] = useState('');
+  const [password1, setPassword1] = useState('');
+  const [password2, setPassword2] = useState('');
+  const [errors, setErrors] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  const [isRegistered, setIsRegistered] = useState(false); // State to track registration status
-  const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Save registration data to local storage (You can add any validation or data processing here)
-
-    // Check password boundaries before registration
-    if (!isPasswordValid(formData.password)) {
-      alert('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.');
-      return;
+  useEffect(() => {
+    if (localStorage.getItem('token') !== null) {
+      window.location.replace(`${urls.origin}/`);
+    } else {
+      setLoading(false);
     }
+  }, []);
 
-    localStorage.setItem('username', formData.username);
-    localStorage.setItem('password', formData.password);
-
-    // Update state to indicate successful registration
-    setIsRegistered(true);
-
-    // Log in the user immediately after successful registration
-    localStorage.setItem('isLoggedIn', 'true');
-
-    // Redirect the user to the home page or any other desired page after registration
-    navigate('/');
-  };
-
-  // Password validation function
-  const isPasswordValid = (password) => {
-    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-    return passwordRegex.test(password);
-  };
+  const onSubmit = e => {
+    e.preventDefault();
+  
+    const user = {
+      username: username,
+      password1: password1,
+      password2: password2
+    };
+  
+    fetch(`${urls.api}teathyme/auth/register/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+      .then(res => {
+        if (res.ok) {
+          window.location.replace(`${urls.origin}/login`);
+          return res.json(); // Add 'return' here
+        } else {
+          throw new Error('Registration failed.'); // Handle the error case
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        setErrors(true); // Set errors to true to display the error message to the user
+      });
+  }
 
   return (
 
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={onSubmit}>
         <div className="door">
         <div className="backLogin">
       <div>
         <h1>Register</h1>
+        {loading === false && <div style={{ display: 'flex', justifyContent: 'center', fontSize: '20px', color: 'white', margin: '10px' }}>Sign Up</div>}
+      {errors === true && <h2 style={{ textAlign: 'center', color: 'white' }}>Oops! You cannot signup with provided credentials.</h2>}
+      {/* <div style={{ display: 'flex', justifyContent: 'center', fontSize: '20px', color: 'white' }}> */}
         <label>
           Username:
-          <input type="text" name="username" value={formData.username} onChange={handleChange} />
+          <input type="text" name="username"  value={username}  onChange={e => setUsername(e.target.value)}/>
         </label>
       </div>
       <div>
-        <label>
-          Password:
-          <input type="password" name="password" value={formData.password} onChange={handleChange} />
-        </label>
+      <label htmlFor='password1'>Password:</label> <br />
+          <input
+            name='password1'
+            type='password'
+            value={password1}
+            placeholder={'Enter password'}
+            style={{ color: 'black' }}
+            onChange={e => setPassword1(e.target.value)}
+            required
+            autoComplete="on"
+            minLength='8'
+          />{' '}
+          <br />
+          <label htmlFor='password2'>Confirm password:</label> <br />
+          <input
+            name='password2'
+            type='password'
+            value={password2}
+            placeholder={'Re-enter password'}
+            style={{ color: 'black' }}
+            onChange={e => setPassword2(e.target.value)}
+            required
+            autoComplete="on"
+          />{' '}
+          <br />
       </div>
       <div className="buttonMenu">
       <button type="submit" className= "logOutButton" ><span style= {{color: "#FFAF68"}}> R</span>
@@ -81,8 +108,8 @@ const RegistrationForm = () => {
       </div>
 
 
-      {/* Display success message if user is registered */}
-      {isRegistered && <div>User registered successfully!</div>}
+      {/* Display success message if user is registered
+      {isRegistered && <div>User registered successfully!</div>} */}
       </div>
     </div>
     </form>

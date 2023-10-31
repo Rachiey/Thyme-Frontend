@@ -1,58 +1,92 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './loginForm.css';
-
+import * as urls from '../../Urls';
 
 const LoginForm = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [errors, setErrors] = useState('');
+  const [loading, setLoading] = useState(true);
 
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
+  const checkTokenInLocalStorage = () => {
+    return localStorage.getItem('token');
   };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+ 
+  useEffect(() => {
+    const tokenInLocalStorage = checkTokenInLocalStorage();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  
-    // Assuming there is a predefined valid username and password
-    const validUsername = 'admin';
-    const validPassword = 'password';
-  
-    if (username === validUsername && password === validPassword) {
-      // Save the login status to local storage
-      localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('username', username);
-      navigate('/');
-      // Redirect to the desired page (e.g., dashboard or home page)
-      // Use React Router or any other method to handle page navigation
-      // For example: history.push('/dashboard');
+    if (tokenInLocalStorage) {
+      window.location.replace(`${urls.origin}/`);
     } else {
-      alert('Invalid username or password. Please try again.');
+      setLoading(false);
     }
+  }, [checkTokenInLocalStorage()]);
+
+  const onSubmit = e => {
+    e.preventDefault();
+    let firstCap = username.charAt(0).toUpperCase() + username.slice(1);
+    const user = {
+      username: firstCap,
+      password: password,
+    };
+
+    fetch(`${urls.api}teathyme/auth/login/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.key) {
+          localStorage.clear();
+          localStorage.setItem('token', data.key);
+          localStorage.setItem('userName', firstCap);
+
+          // Redirect to the main page or dashboard
+          navigate('/');
+        } else {
+          setUsername('');
+          setPassword('');
+          localStorage.clear();
+          setErrors(true);
+        }
+
+        // Storing the token in local storage
+localStorage.setItem('authToken', data.token);
+
+// Checking if the token exists
+const authToken = localStorage.getItem('authToken');
+if (authToken) {
+  console.log('Token found in local storage:', authToken);
+}
+      });
   };
-  
 
   return (
     <div>
        <div className="door">
         <div className="backLogin">
       <h1>Login Page</h1>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
+      {loading === false && <div style={{ display: 'flex', justifyContent: 'center', fontSize: '20px', color: 'white', margin: '10px' }}>Login</div>}
+      {errors === true && <h2 style={{ textAlign: 'center', color: 'white' }}>Username/Password does not exist.</h2>}
+      {/* {loading === false && (
+        <div style={{ display: 'flex', justifyContent: 'center', fontSize: '20px', color: 'white' }}> */}
+{/* NEED TO INTEGRATE ABOVE CODE!!!!! */}
+
+      <form onSubmit={onSubmit}>
         <label>
           Username:
-          <input type="text" value={username} autoComplete="current-username" onChange={handleUsernameChange} />
+          <input type="text" value={username} autoComplete="current-username" onChange={e => setUsername(e.target.value)}/>
         </label>
         <br />
         <label>
           Password:
-          <input type="password" value={password} autoComplete="current-password" onChange={handlePasswordChange} />
+          <input type="password" value={password} autoComplete="current-password"  onChange={e => setPassword(e.target.value)} />
         </label>
         <br />
         <div className="buttonMenu">

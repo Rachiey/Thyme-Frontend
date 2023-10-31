@@ -4,6 +4,7 @@ import 'semantic-ui-css/semantic.min.css';
 import { useNavigate } from 'react-router';
 import { useItemContext } from '../itemcontext/itemcontext';
 import BottomNavbar from '../../components/BottomNavbar/BottomNavbar'; 
+import axios from "axios";
 
 export const Ingredients = () => {
   const { items, setItems, filterItemsExpiringSoon } = useItemContext();
@@ -102,56 +103,125 @@ export const Ingredients = () => {
     }
   };
   
+  // local storage method
+  // useEffect(() => {
+  //   const savedItems = JSON.parse(localStorage.getItem('items'));
+  //   if (savedItems) {
+  //     setItems(savedItems);
+  //     setDisplayedItems(savedItems); // Initialize displayedItems with saved items
+  //   }
+  // }, [setItems]);
   useEffect(() => {
-    const savedItems = JSON.parse(localStorage.getItem('items'));
-    if (savedItems) {
-      setItems(savedItems);
-      setDisplayedItems(savedItems); // Initialize displayedItems with saved items
-    }
+    // Make a GET request to retrieve the user's ingredients from the backend
+    axios
+      .get('/api/ingredients') // Replace with the actual endpoint
+      .then((response) => {
+        const ingredients = response.data;
+        setItems(ingredients);
+        setDisplayedItems(ingredients);
+      })
+      .catch((error) => {
+        // Handle any errors
+      });
   }, [setItems]);
 
+  // local storage version
+  // const handleDeleteItem = (itemToDelete) => {
+  //   // Filter out the item to delete based on the previous state
+  //   setItems((prevItems) => prevItems.filter((item) => item.id !== itemToDelete.id));
+    
+  //   // Update displayedItems based on the filtered items using a functional update
+  //   setDisplayedItems((prevDisplayedItems) => prevDisplayedItems.filter((item) => item.id !== itemToDelete.id));
+
+  //   // Save the updated items to local storage
+  //   saveItemsToLocalStorage(items.filter((item) => item.id !== itemToDelete.id));
+  
+  //   // Filter items expiring soon
+  //   const expiringSoonItems = filterItemsExpiringSoon(items);
+  //   setItems(expiringSoonItems); // Update the 'items' state
+  //   setDisplayedItems(expiringSoonItems); // Update the displayedItems state
+  // };
+
   const handleDeleteItem = (itemToDelete) => {
-    // Filter out the item to delete based on the previous state
-    setItems((prevItems) => prevItems.filter((item) => item.id !== itemToDelete.id));
-    
-    // Update displayedItems based on the filtered items using a functional update
-    setDisplayedItems((prevDisplayedItems) => prevDisplayedItems.filter((item) => item.id !== itemToDelete.id));
-
-    // Save the updated items to local storage
-    saveItemsToLocalStorage(items.filter((item) => item.id !== itemToDelete.id));
-  
-    // Filter items expiring soon
-    const expiringSoonItems = filterItemsExpiringSoon(items);
-    setItems(expiringSoonItems); // Update the 'items' state
-    setDisplayedItems(expiringSoonItems); // Update the displayedItems state
+    // Use Axios to send a DELETE request to the backend to delete the item
+    axios
+      .delete(`/api/ingredients/${itemToDelete.id}`) // Replace with the actual endpoint
+      .then((response) => {
+        // On successful deletion, update the local state
+        setItems((prevItems) => prevItems.filter((item) => item.id !== itemToDelete.id));
+        setDisplayedItems((prevDisplayedItems) =>
+          prevDisplayedItems.filter((item) => item.id !== itemToDelete.id)
+        );
+      })
+      .catch((error) => {
+        // Handle any errors
+      });
   };
 
-  const saveItemsToLocalStorage = (items) => {
-    localStorage.setItem('items', JSON.stringify(items));
+
+  // const saveItemsToLocalStorage = (items) => {
+  //   localStorage.setItem('items', JSON.stringify(items));
+  // };
+
+  const saveItemsToBackend = (items) => {
+    // Use Axios to send the updated ingredients to the backend
+    axios
+      .put('/api/ingredients', items) // Replace with the actual endpoint
+      .then((response) => {
+        // Handle the response if needed
+      })
+      .catch((error) => {
+        // Handle any errors
+      });
   };
+// localstorageversion
+  // const submitItemHandler = (event) => {
+  //   event.preventDefault();
+  
+  //   const newId = items.length > 0 ? Math.max(...items.map((item) => item.id)) + 1 : 1;
+  
+  //   // Use the replaceTextWithEmoji function to convert the inputText to an emoji
+  //   const newItem = {
+  //     text: replaceTextWithEmoji(inputText),
+  //     id: newId,
+  //     quantity: quantityValue,
+  //     expiryDate: expiryDate,
+  //     expiresIn: expiresIn,
+  //   };
+  
+  //   // Update the items state with the new item using a functional update
+  //   setItems((prevItems) => [...prevItems, newItem]);
 
-  const submitItemHandler = (event) => {
-    event.preventDefault();
+  //   // Update displayedItems with the new item using a functional update
+  //   setDisplayedItems((prevDisplayedItems) => [...prevDisplayedItems, newItem]);
   
-    const newId = items.length > 0 ? Math.max(...items.map((item) => item.id)) + 1 : 1;
-  
-    // Use the replaceTextWithEmoji function to convert the inputText to an emoji
-    const newItem = {
-      text: replaceTextWithEmoji(inputText),
-      id: newId,
-      quantity: quantityValue,
-      expiryDate: expiryDate,
-      expiresIn: expiresIn,
-    };
-  
-    // Update the items state with the new item using a functional update
-    setItems((prevItems) => [...prevItems, newItem]);
-
-    // Update displayedItems with the new item using a functional update
-    setDisplayedItems((prevDisplayedItems) => [...prevDisplayedItems, newItem]);
-    
     // Save the updated items to local storage
-    saveItemsToLocalStorage([...items, newItem]);
+
+    const submitItemHandler = (event) => {
+      event.preventDefault();
+      const newId = items.length > 0 ? Math.max(...items.map((item) => item.id)) + 1 : 1;
+      const newItem = {
+        text: replaceTextWithEmoji(inputText),
+        id: newId,
+        quantity: quantityValue,
+        expiryDate: expiryDate,
+        expiresIn: expiresIn,
+      };
+  
+      // Use Axios to add the new item to the backend
+      axios
+        .post('/api/ingredients', newItem) // Replace with the actual endpoint
+        .then((response) => {
+          // On successful addition, update the local state
+          setItems((prevItems) => [...prevItems, newItem]);
+          setDisplayedItems((prevDisplayedItems) => [...prevDisplayedItems, newItem]);
+        })
+        .catch((error) => {
+          // Handle any errors
+        });
+
+        // not sure if this is needed
+    saveItemsToBackend([...items, newItem]);
   
     // Clear the input fields
     setInputText('');
