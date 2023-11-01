@@ -1,25 +1,22 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate, Outlet } from 'react-router-dom';
 
-// const PrivateRoute = ({ element: Element, ...rest }) => {
-    const PrivateRoute = () => {
-  // Check if the user is logged in using local storage or any other authentication logic
-  const isLoggedIn = !!localStorage.getItem('isLoggedIn');
+const PrivateRoute = () => {
+  // Check if the user is logged in by checking local storage
+  const isLoggedIn = !!localStorage.getItem('isLoggedIn'); // Check if the item exists
+
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!isLoggedIn) {
+      // If the user is not logged in, redirect to the login page
+      navigate('/login', { replace: true });
+    }
+  }, [isLoggedIn, navigate]);
 
-useEffect (() => {
-  if (!isLoggedIn) {
-    // If user is not logged in, redirect to login page
-    navigate('/login', {replace: true});
-  }
-}, [isLoggedIn, navigate]);
-
-
-  // If user is logged in, render the child routes inside Outlet
+  // If the user is logged in, render the child routes inside Outlet
   return (
     <>
-      {/* <Element /> */}
       <Outlet />
     </>
   );
