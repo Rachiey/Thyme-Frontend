@@ -13,30 +13,12 @@ export const List = () => {
 
   
     const navigate = useNavigate();
-    const username = localStorage.getItem('username');
+    const username = localStorage.getItem('userName');
     const handleLogout = () => {
       // Reset the local storage session and navigate to the login page
       localStorage.removeItem('isLoggedIn');
       navigate('/login');
     };
-
-   
-    // const animateButton = function(e)  {
-    //   e.preventDefault();
-    //   //reset animation
-    //   e.target.classList.remove('animate');
-      
-    //   e.target.classList.add('animate');
-    //   setTimeout(function(){
-    //     e.target.classList.remove('animate');
-    //   },700);
-    // };
-    
-    // const bubblyButtons = document.getElementsByClassName("addItemBtn");
-    
-    // for (var i = 0; i < bubblyButtons.length; i++) {
-    //   bubblyButtons[i].addEventListener('click', animateButton, false);
-    // }
 
 
     const arr = () => {

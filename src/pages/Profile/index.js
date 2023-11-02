@@ -9,12 +9,12 @@ import BottomNavbar from '../../components/BottomNavbar/BottomNavbar';
 
 export const Profile = () => {
 
-  const [username, setUsername] = useState(localStorage.getItem('username'));
+  const [username, setUsername] = useState(localStorage.getItem('userName'));
   const navigate = useNavigate();
 
   useEffect(() => {
     // Update the username when it changes in localStorage
-    setUsername(localStorage.getItem('username'));
+    setUsername(localStorage.getItem('userName'));
   }, []);
 
   const { items, filterItemsExpiringSoon } = useItemContext();

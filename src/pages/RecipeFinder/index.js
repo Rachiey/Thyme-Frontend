@@ -13,7 +13,7 @@ import BottomNavbar from '../../components/BottomNavbar/BottomNavbar';
 export const RecipeFinder = () => {
 
 
-    const username = localStorage.getItem("username")
+    const username = localStorage.getItem("userName")
     const navigate = useNavigate();
     
     const handleLogout = () => {

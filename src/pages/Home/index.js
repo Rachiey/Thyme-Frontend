@@ -13,12 +13,13 @@ import Tooltip from '@mui/material/Tooltip';
 
 
 export const Home = () => {
-  const [username, setUsername] = useState(localStorage.getItem('username'));
+  const [username, setUsername] = useState(localStorage.getItem('userName'));
   const navigate = useNavigate();
 
   useEffect(() => {
     // Update the username when it changes in localStorage
-    setUsername(localStorage.getItem('username'));
+    setUsername(localStorage.getItem('userName'));
+   
   }, []);
 
   const handleLogout = () => {
@@ -29,7 +30,7 @@ export const Home = () => {
     navigate('/login');
   };
 
-  const fridgeTitle = username ? `${username}'s` : '';
+  const fridgeTitle = username ? `${username}'s` : "Thyme's Up";
 
   return (
     <>
