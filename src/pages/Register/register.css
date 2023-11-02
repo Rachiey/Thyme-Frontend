@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
+
 .thymeLogo {
     margin: 25px;
     margin-top: 50px;
@@ -58,6 +59,25 @@
     align-items: center;
   }
 
+  .registerInput {
+    height: 40px;
+    width: 75%;
+    border-radius: 10px;
+    margin: 12px;
+    padding-left:10px;
+
+  }
+
+  .eye {
+  position: relative;
+  cursor: pointer;
+}
+
+.eye1 {
+  position: relative;
+  cursor: pointer;
+  color:#6171b7;
+}
 
   .registrationButton {
     font-family: AlphaFridgeMagnets;
@@ -65,6 +85,25 @@
     color: orange;
     margin: 0px;
     margin-top: 20px;
+
+  }
+
+  .password-strength-meter {
+    font-size: 14px;
+    margin: 5px;
+    height: 10px;
+    display:flex;
+    justify-content: center;
+  
+
+  }
+
+  .password-strength-meter-label {
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+
   }
 
   .registrationButton:hover {

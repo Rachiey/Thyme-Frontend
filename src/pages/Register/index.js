@@ -4,6 +4,10 @@ import * as urls from '../../Urls';
 import { Icon } from 'react-icons-kit';
 import { eyeOff } from 'react-icons-kit/feather/eyeOff';
 import { eye } from 'react-icons-kit/feather/eye';
+import PasswordStrength from '../../components/PasswordStrength/PasswordStrength';
+import './register.css';
+import thymesuplogo from '../Home/images/thymesup.png';
+
 
 const RegistrationForm = () => {
   const [username, setUsername] = useState('');
@@ -73,8 +77,11 @@ const RegistrationForm = () => {
     <form onSubmit={onSubmit}>
       <div className="door">
         <div className="backLogin">
+        <div className="logo">
+              <img src={thymesuplogo} alt="thyme's up logo" style={{ height: '180px'}} />
+            </div>
           <div>
-            <h1>Register</h1>
+            <h1 className='registerTitle'>Register</h1>
             {loading === false && (
               <div
                 style={{
@@ -93,26 +100,31 @@ const RegistrationForm = () => {
                 Oops! You cannot signup with provided credentials.
               </h2>
             )}
-            <label htmlFor="username">Username:</label>
+
             <input
               type="text"
               id="username"
               name="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              placeholder="Choose a username!"
+              className="registerInput" 
+              
             />
+               <Icon className="eye1" icon={icon2} size={25} />
             <br />
-            <label htmlFor="email">Email:</label>
             <input
               type="email"
               id="email"
               name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              className="registerInput" 
             />
+               <Icon className="eye1" icon={icon2} size={25} />
           </div>
           <div>
-            <label htmlFor="password1">Password:</label> <br />
             <input
               id="password1"
               name="password1"
@@ -124,15 +136,16 @@ const RegistrationForm = () => {
               required
               autoComplete="on"
               minLength="8"
+              className="registerInput" 
             />{' '}
             <span
               className="flex justify-around items-center"
               onClick={() => togglePasswordVisibility('password1')}
             >
-              <Icon className="absolute mr-10" icon={icon1} size={25} />
+              <Icon className="eye" icon={icon1} size={25} />
             </span>
             <br />
-            <label htmlFor="password2">Confirm password:</label> <br />
+            <PasswordStrength password={password1} className="passwordStrength" />
             <input
               id="password2"
               name="password2"
@@ -143,12 +156,13 @@ const RegistrationForm = () => {
               onChange={(e) => setPassword2(e.target.value)}
               required
               autoComplete="on"
+              className="registerInput" 
             />{' '}
             <span
               className="flex justify-around items-center"
               onClick={() => togglePasswordVisibility('password2')}
             >
-              <Icon className="absolute mr-10" icon={icon2} size={25} />
+              <Icon className="eye" icon={icon2} size={25} />
             </span>
             <br />
           </div>
