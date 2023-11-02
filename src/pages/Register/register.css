@@ -38,6 +38,7 @@
     padding-left: 15px;
     font-weight: bold;
   }
+  
   .passwordStrength {
     display: flex;
     justify-content: center;

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './loginForm.css';
 import * as urls from '../../Urls';
+import thymesuplogo from '../../pages/Home/images/thymesup.png';
 
 const LoginForm = () => {
   // const navigate = useNavigate();
@@ -56,18 +57,19 @@ const LoginForm = () => {
     <div>
       <div className="door">
         <div className="backLogin">
-          <h1>Login Page</h1>
+        <div className="logo">
+              <img src={thymesuplogo} alt="thyme's up logo" style={{ height: '180px'}} />
+            </div>
+          <h1 className="loginTitle">Login Page</h1>
           {error && <h2 style={{ textAlign: 'center', color: 'white' }}>{error}</h2>}
-          <form onSubmit={onSubmit}>
-            <label>
-              Username:
-              <input type="text" value={username} autoComplete="current-username" onChange={(e) => setUsername(e.target.value)} />
-            </label>
+          <form className="loginForm"onSubmit={onSubmit}>
+           
+              <input className="loginInput"type="text" value={username} autoComplete="current-username" onChange={(e) => setUsername(e.target.value)} placeholder="Enter your username" />
+       
             <br />
-            <label>
-              Password:
-              <input type="password" value={password} autoComplete="current-password" onChange={(e) => setPassword(e.target.value)} />
-            </label>
+          
+              <input className="loginInput"type="password" value={password} autoComplete="current-password" onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" />
+           
             <br />
             <div className="buttonMenu">
               <button className="logOutButton" type="submit">
