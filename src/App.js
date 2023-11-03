@@ -5,12 +5,12 @@ import * as Pages from './pages';
 import { PrivateRoute } from './components/index';
 import Login from './components/LoginForm';
 import { ItemProvider } from './pages/itemcontext/itemcontext';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-toast.configure();
 
 const App = () => {
+
   return (
     <div className="App">
       <ItemProvider>
@@ -32,7 +32,16 @@ const App = () => {
           </Routes>
         </Router>
       </ItemProvider>
-      <ToastContainer />
+      <ToastContainer position="top-center"
+autoClose={10000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="colored" />
     </div>
   );
 };

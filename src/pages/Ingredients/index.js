@@ -6,6 +6,8 @@ import { useItemContext } from '../itemcontext/itemcontext';
 import BottomNavbar from '../../components/BottomNavbar/BottomNavbar'; 
 import axios from "axios";
 import * as urls from '../../Urls';
+import { toast } from 'react-toastify';
+import ItemWarning from '../../components/ItemWarning/';
 
 
 
@@ -19,8 +21,9 @@ export const Ingredients = () => {
   // const [expiresIn, setExpiresIn] = useState('');
   const username = localStorage.getItem('userName');
   const userAuthToken = localStorage.getItem('token');
-  toast.configure();
 
+  const customId = "warning-ingredient";
+ 
 
   const navigate = useNavigate();
 
@@ -147,23 +150,35 @@ export const Ingredients = () => {
   };
   
 
-  const saveItemsToBackend = (items) => {
+  const saveItemsToBackend = (item) => {
+    const ingredientId = item.id;
+  
+    // Define the updated item data (e.g., changed fields) here
+    const updatedItemData = {
+      // Include the fields you want to update, e.g., text, quantity, expiry_date, etc.
+      text: item.text,
+      quantity: item.quantity,
+      expiry_date: item.expiry_date,
+    };
+  
     axios
-      .put(`${urls.api}ingredients/api/ingredients/${username}/`, items) // Replace with the actual endpoint
+      .put(`${urls.api}ingredients/api/ingredients/${username}/${ingredientId}/`, updatedItemData, {
+        headers: {
+          Authorization: `Token ${userAuthToken}`,
+          'Content-Type': 'application/json',
+        },
+      })
       .then((response) => {
-        if (response.status === 200) {
-          // Request was successful, you can handle success actions here
-          console.log('Ingredients saved successfully.');
-        } else {
-          // Handle other success statuses if needed
-          console.log('Ingredients save status:', response.status);
-        }
+        // Handle the successful response here
+        console.log('Ingredient updated successfully:', response.data);
       })
       .catch((error) => {
         // Handle errors here
-        console.error('Error while saving ingredients:', error);
+        console.error('Error while updating ingredient:', error);
       });
   };
+  
+  
 
   const submitItemHandler = (event) => {
     event.preventDefault();
@@ -187,12 +202,17 @@ export const Ingredients = () => {
   
     if (days === 0) {
       newItem.expiresIn = 'eat today';
+      toast.warning(`Item '${newItem.text}' expires today! Eat soon!`, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+
     } else if (days < 0) {
       newItem.expiresIn = `expired ${Math.abs(days)} day${Math.abs(days) === 1 ? '' : 's'} ago`;
     } else if (days === 1) {
       newItem.expiresIn = 'expires tomorrow';
       toast.warning(`Item '${newItem.text}' expires tomorrow!`, {
         position: toast.POSITION.TOP_CENTER,
+        toastId: customId,
       });
 
     } else {
@@ -225,6 +245,8 @@ export const Ingredients = () => {
         setItems(expiringSoonItems); // Update the 'items' state
         setDisplayedItems(expiringSoonItems);
       })
+      window.location.reload()
+
       .catch((error) => {
         // Handle any errors
         console.error('Error while adding ingredient:', error);
@@ -301,6 +323,9 @@ return (
           <p className={isEmoji(item.text) ? 'emoji' : 'text'}>{item.text}</p>
           <p className="expire">{item.expiresIn}</p> 
           <button className="trashButton" onClick={() => handleDeleteItem(item)}>🗑</button>
+          {item.expiresIn === 'eat today' || item.expiresIn === 'expires tomorrow' ? (
+        <ItemWarning item={item} />
+      ) : null}
         </div>
       </div>
     ))}
