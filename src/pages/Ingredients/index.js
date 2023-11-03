@@ -7,16 +7,20 @@ import BottomNavbar from '../../components/BottomNavbar/BottomNavbar';
 import axios from "axios";
 import * as urls from '../../Urls';
 
+
+
+
 export const Ingredients = () => {
   const { items, setItems, filterItemsExpiringSoon } = useItemContext();
   const [displayedItems, setDisplayedItems] = useState([]); // Initialize displayedItems state
   const [inputText, setInputText] = useState('');
   const [quantityValue, setQuantityValue] = useState(1);
   const [expiryDate, setExpiryDate] = useState('');
-  const [expiresIn, setExpiresIn] = useState('');
+  // const [expiresIn, setExpiresIn] = useState('');
   const username = localStorage.getItem('userName');
   const userAuthToken = localStorage.getItem('token');
-  console.log(userAuthToken)
+  toast.configure();
+
 
   const navigate = useNavigate();
 
@@ -78,72 +82,74 @@ export const Ingredients = () => {
   };
 
   const dateValueHandler = (e) => {
-    const selectedDate = e.target.value; // Store the selected date as entered by the user
-    const currentDate = new Date(); // Get the current date
-    
+    // Store the selected date as entered by the user
+    const selectedDate = e.target.value;
+    // Update the expiryDate state with the selected date
     setExpiryDate(selectedDate);
-  
-    const final = new Date(selectedDate);
-    final.setHours(23, 59, 59, 999); // Set time to the last millisecond of the day
-  
-    // Calculate expiresIn based on the selected date
-    const diff = final.getTime() - currentDate.getTime();
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  
-    if (days === 0) {
-      setExpiresIn('eat today');
-    } else if (days < 0) {
-      setExpiresIn(`expired ${Math.abs(days)} day${Math.abs(days) === 1 ? '' : 's'} ago`);
-    } else if (days === 1) {
-      setExpiresIn('expires tomorrow');
-    } else {
-      setExpiresIn(`expires in ${days} day${days === 1 ? '' : 's'}`);
-    }
   };
-  
-  // local storage method
-  // useEffect(() => {
-  //   const savedItems = JSON.parse(localStorage.getItem('items'));
-  //   if (savedItems) {
-  //     setItems(savedItems);
-  //     setDisplayedItems(savedItems); // Initialize displayedItems with saved items
-  //   }
-  // }, [setItems]);
+
   useEffect(() => {
-    console.log(username);
     // Make a GET request to retrieve the user's ingredients from the backend
     axios
-      .get(`${urls.api}api/Ingredientss/${username}/`) // Replace with the actual endpoint
+      .get(`${urls.api}ingredients/api/ingredients/${username}/`)
       .then((response) => {
         const ingredients = response.data;
-        setItems(ingredients);
-        setDisplayedItems(ingredients);
+  
+        // Calculate and set expiresIn for each item
+        const itemsWithExpiresIn = ingredients.map((item) => {
+          const final = new Date(item.expiry_date);
+          final.setHours(23, 59, 59, 999);
+          const currentDate = new Date();
+          const diff = final.getTime() - currentDate.getTime();
+          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  
+          if (days === 0) {
+            item.expiresIn = 'eat today';
+          } else if (days < 0) {
+            item.expiresIn = `expired ${Math.abs(days)} day${Math.abs(days) === 1 ? '' : 's'} ago`;
+          } else if (days === 1) {
+            item.expiresIn = 'expires tomorrow';
+          } else {
+            item.expiresIn = `expires in ${days} day${days === 1 ? '' : 's'}`;
+          }
+  
+          return item;
+        });
+  
+        setItems(itemsWithExpiresIn);
+        setDisplayedItems(itemsWithExpiresIn);
       })
       .catch((error) => {
         // Handle any errors
       });
-  }, [setItems]);
+  }, [setItems, username]);
+  
 
   const handleDeleteItem = (itemToDelete) => {
-    // Use Axios to send a DELETE request to the backend to delete the item
+    const ingredientId = itemToDelete.id; // Get the ID of the item to delete
+  
+    // Replace 'path-to-your-delete-endpoint' with the actual delete endpoint
+    const deleteUrl = `${urls.api}ingredients/api/ingredients/${username}/${ingredientId}/`;
+  
     axios
-      .delete(`${urls.api}api/Ingredientss/${username}/${itemToDelete.id}`) // Replace with the actual endpoint
+      .delete(deleteUrl)
       .then((response) => {
         // On successful deletion, update the local state
-        setItems((prevItems) => prevItems.filter((item) => item.id !== itemToDelete.id));
+        setItems((prevItems) => prevItems.filter((item) => item.id !== ingredientId));
         setDisplayedItems((prevDisplayedItems) =>
-          prevDisplayedItems.filter((item) => item.id !== itemToDelete.id)
+          prevDisplayedItems.filter((item) => item.id !== ingredientId)
         );
       })
       .catch((error) => {
         // Handle any errors
+        console.error('Error deleting ingredient:', error);
       });
   };
-
+  
 
   const saveItemsToBackend = (items) => {
     axios
-      .put(`${urls.api}api/Ingredientss/${username}/`, items) // Replace with the actual endpoint
+      .put(`${urls.api}ingredients/api/ingredients/${username}/`, items) // Replace with the actual endpoint
       .then((response) => {
         if (response.status === 200) {
           // Request was successful, you can handle success actions here
@@ -158,72 +164,74 @@ export const Ingredients = () => {
         console.error('Error while saving ingredients:', error);
       });
   };
-// localstorageversion
-  // const submitItemHandler = (event) => {
-  //   event.preventDefault();
-  
-  //   const newId = items.length > 0 ? Math.max(...items.map((item) => item.id)) + 1 : 1;
-  
-  //   // Use the replaceTextWithEmoji function to convert the inputText to an emoji
-  //   const newItem = {
-  //     text: replaceTextWithEmoji(inputText),
-  //     id: newId,
-  //     quantity: quantityValue,
-  //     expiryDate: expiryDate,
-  //     expiresIn: expiresIn,
-  //   };
-  
-  //   // Update the items state with the new item using a functional update
-  //   setItems((prevItems) => [...prevItems, newItem]);
 
-  //   // Update displayedItems with the new item using a functional update
-  //   setDisplayedItems((prevDisplayedItems) => [...prevDisplayedItems, newItem]);
+  const submitItemHandler = (event) => {
+    event.preventDefault();
   
-    // Save the updated items to local storage
-
-    const submitItemHandler = (event) => {
-      event.preventDefault();
-
-      const newId = items.length > 0 ? Math.max(...items.map((item) => item.id)) + 1 : 1;
-      const newItem = {
-        text: replaceTextWithEmoji(inputText),
-        id: newId,
-        quantity: quantityValue,
-        expiryDate: expiryDate,
-        expiresIn: expiresIn,
-        user: username, // Pass the username or user ID
-      };
-    
-      // Use Axios to add the new item to the backend
-      axios
-        .post(`${urls.api}api/Ingredientss/${username}/`, newItem, {
-          headers: {
-            Authorization: `Token ${userAuthToken}`,
-          },
-        })
-        .then((response) => {
-          // On successful addition, update the local state
-          setItems((prevItems) => [...prevItems, newItem]);
-          setDisplayedItems((prevDisplayedItems) => [...prevDisplayedItems, newItem]);
-        })
-        .catch((error) => {
-          // Handle any errors
-        });
-    
-      // Save the updated items to the backend
-      saveItemsToBackend([...items, newItem]);
-    
-      // Clear the input fields and update the displayed items
-      setInputText('');
-      setQuantityValue(1);
-      setExpiryDate('');
+    const newId = items.length > 0 ? Math.max(...items.map((item) => item.id)) + 1 : 1;
   
-    // Filter items expiring soon
-    const expiringSoonItems = filterItemsExpiringSoon([...items, newItem]);
-    setItems(expiringSoonItems); // Update the 'items' state
-    setDisplayedItems(expiringSoonItems);
+    // Calculate expiresIn based on the selected date
+    const final = new Date(expiryDate);
+    final.setHours(23, 59, 59, 999);
+    const currentDate = new Date();
+    const diff = final.getTime() - currentDate.getTime();
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  
+    let newItem = {
+      text: replaceTextWithEmoji(inputText),
+      id: newId,
+      quantity: quantityValue,
+      expiry_date: expiryDate,
+      user: username,
+    };
+  
+    if (days === 0) {
+      newItem.expiresIn = 'eat today';
+    } else if (days < 0) {
+      newItem.expiresIn = `expired ${Math.abs(days)} day${Math.abs(days) === 1 ? '' : 's'} ago`;
+    } else if (days === 1) {
+      newItem.expiresIn = 'expires tomorrow';
+      toast.warning(`Item '${newItem.text}' expires tomorrow!`, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+
+    } else {
+      newItem.expiresIn = `expires in ${days} day${days === 1 ? '' : 's'}`;
+    }
+
+    console.log('Calculated expiresIn:', newItem.expiresIn);
+  
+    axios
+      .post(`${urls.api}ingredients/api/ingredients/${username}/`, newItem, {
+        headers: {
+          Authorization: `Token ${userAuthToken}`,
+        },
+      })
+      .then((response) => {
+        // On successful addition, update the local state
+        setItems((prevItems) => [...prevItems, newItem]);
+        setDisplayedItems((prevDisplayedItems) => [...prevDisplayedItems, newItem]);
+  
+        // Save the updated items to the backend (you can remove this if you want to save it elsewhere)
+        saveItemsToBackend([...items, newItem]);
+  
+        // Clear the input fields and update the displayed items
+        setInputText('');
+        setQuantityValue(1);
+        setExpiryDate('');
+  
+        // Filter items expiring soon
+        const expiringSoonItems = filterItemsExpiringSoon([...items, newItem]);
+        setItems(expiringSoonItems); // Update the 'items' state
+        setDisplayedItems(expiringSoonItems);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error('Error while adding ingredient:', error);
+      });
   };
-
+  
+  
 
 return (
 <>    
@@ -285,24 +293,22 @@ return (
             <div className="itemShelfItems">
   <ul>
 
-    {displayedItems && displayedItems.length > 0 ? (
-      <div className="grid-container">
-        {displayedItems.map((item, index) => (
-          <div className="grid-item-card" key={`${item.id}_${index}`}>
-            <div className="card-content">
-              <p className={isEmoji(item.text) ? 'emoji' : 'text'}>{item.text}</p>
-              <button className="trashButton" onClick={() => handleDeleteItem(item)}>🗑</button>
-            </div>
-  
-            <p className='expire'>
-              <span className="expires-in-colour" data-status={item.expiresIn}>{item.expiresIn}</span>
-            </p>
-          </div>
-        ))}
+  {displayedItems && displayedItems.length > 0 ? (
+  <div className="grid-container">
+    {displayedItems.map((item, newItem, index) => (
+      <div className="grid-item-card" key={`${item.id}_${index}`}>
+        <div className="card-content" data-expiration={item.expiresIn}>
+          <p className={isEmoji(item.text) ? 'emoji' : 'text'}>{item.text}</p>
+          <p className="expire">{item.expiresIn}</p> 
+          <button className="trashButton" onClick={() => handleDeleteItem(item)}>🗑</button>
+        </div>
       </div>
-    ) : (
-      <p className="noItemsMessage">No items to display.</p>
-    )}
+    ))}
+  </div>
+) : (
+  <p className="noItemsMessage">No items to display.</p>
+)}
+
   </ul>
 </div>
 
