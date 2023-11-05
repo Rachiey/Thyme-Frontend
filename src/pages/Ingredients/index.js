@@ -56,6 +56,7 @@ export const Ingredients = () => {
       'peas':'🫛',
       'lettuce':'🥬',
       'chilli':'🌶️',
+      'chillies':'🌶️',
       
       // Add more mappings as needed
     };
