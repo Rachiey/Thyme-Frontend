@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from "uuid";
 import Item from "../../components/Item";
 import './shoppinglist.scss';
 import 'semantic-ui-css/semantic.min.css'
 import { useNavigate } from 'react-router'
 import BottomNavbar from '../../components/BottomNavbar/BottomNavbar'; 
+import axios from 'axios';
+import * as urls from '../../Urls';
 
 
 
@@ -20,66 +22,95 @@ export const List = () => {
       navigate('/login');
     };
 
+    const fetchShoppingList = React.useCallback(() => {
+      return axios.get(`${urls.api}shopping-list/${username}/`);
+    }, [username]);
 
-    const arr = () => {
-      let data = localStorage.getItem("data");
-      if (data) return JSON.parse(localStorage.getItem("data"));
-      else return [];
-    };
+ 
+        useEffect(() => {
+          // Fetch the shopping list when the component mounts
+          const fetchData = async () => {
+            try {
+              const response = await fetchShoppingList();
+              const shoppingList = response.data;
+              setList(shoppingList);
+            } catch (error) {
+              console.error("Error fetching shopping list:", error);
+            }
+          };
+        
+          fetchData(); // Call the async function
+        
+        }, [fetchShoppingList, username]);
+      
 
-    const [item, setItem] = useState("");
-    const [edit, setEdit] = useState(false);
-    const [editId, setEditId] = useState();
-    const [list, setList] = useState(arr);
-    const [error, setError] = useState("");
-  
-    const handleSubmit = (e) => {
-      const newItem = {
-        id: uuidv4(),
-        item: item,
-        complete: false,
+        const [item, setItem] = useState("");
+        const [edit, setEdit] = useState(false);
+        const [editId, setEditId] = useState();
+        const [list, setList] = useState([]);
+        const [error, setError] = useState("");
+
+        useEffect(() => {
+          const fetchData = async () => {
+            try {
+              const response = await fetchShoppingList();
+              const shoppingList = response.data;
+              setList(shoppingList);
+            } catch (error) {
+              console.error("Error fetching shopping list:", error);
+            }
+          };
+        
+          fetchData();
+        }, [fetchShoppingList, username]);
+      
+        const handleSubmit = (e) => {
+          const newItem = {
+            id: uuidv4(),
+            item: item,
+            complete: false,
+          };
+          e.preventDefault();
+        if (item && item.length <= 25 && !edit) {
+          setList([...list, newItem]);
+          setItem("");
+          setError("");
+        } else if (item && item.length <= 25 && edit && editId) {
+          setList(
+            list.map((el) => {
+              if (el.id === editId) {
+                return { ...el, item: item };
+              }
+              return el;
+            })
+          );
+          setItem("");
+          setEditId(null);
+          setEdit(false);
+          setError("");
+        } else if (!item) setError("Item cannot be blank.");
+        else if (item.length > 25) setError("Character limit is 25.");
       };
-      e.preventDefault();
-    if (item && item.length <= 25 && !edit) {
-      setList([...list, newItem]);
-      setItem("");
-      setError("");
-    } else if (item && item.length <= 25 && edit && editId) {
-      setList(
-        list.map((el) => {
-          if (el.id === editId) {
-            return { ...el, item: item };
-          }
-          return el;
-        })
-      );
-      setItem("");
-      setEditId(null);
-      setEdit(false);
-      setError("");
-    } else if (!item) setError("Item cannot be blank.");
-    else if (item.length > 25) setError("Character limit is 25.");
-  };
 
-  React.useEffect(() => {
-    localStorage.setItem("data", JSON.stringify(list));
-  }, [list]);
+      React.useEffect(() => {
+        localStorage.setItem("data", JSON.stringify(list));
+      }, [list]);
 
-  const handleChange = (e) => {
-    setItem(e.target.value);
-  };
+      const handleChange = (e) => {
+        setItem(e.target.value);
+      };
 
 
-    
-    return (
+        
+        return (
 
-        <>
-<div className="shoppingListBackground">  
-<div className="fridgeTitleBack"> {username}'s  &nbsp; <span style= {{color: "#31BFF3"}}> F</span>
-                                            <span style= {{color: "#A484E9"}}> r</span>
-                                            <span style= {{color: "#F4889A"}}> i</span>
-                                            <span style= {{color: "#FFAF68"}}> d</span>
-                                            <span style= {{color: "#F6E683"}}> g</span>
+            <>
+    <div className="shoppingListBackground">  
+    <div className="fridgeTitleBack"> {username}'s  &nbsp; <span style= {{color: "#31BFF3"}}> F</span>
+                                                <span style= {{color: "#A484E9"}}> r</span>
+                                                <span style= {{color: "#F4889A"}}> i</span>
+                                                <span style= {{color: "#FFAF68"}}> d</span>
+                                                <span style= {{color: "#F6E683"}}> g</span>
                                             <span style= {{color: "#79D45E"}}> e</span>
                                             </div>
                                             <div className ="logOutBox">
@@ -114,6 +145,7 @@ export const List = () => {
         )}
         {error && <p style={{ color: "red" }}>{error}</p>}
       </form>
+      
       <div>
         {list.map((c, id) => (
            
@@ -131,6 +163,7 @@ export const List = () => {
         
         ))}
       </div>
+
     </div>
     
 
