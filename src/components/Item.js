@@ -1,25 +1,29 @@
-import React from "react";
+import React, { useEffect } from 'react';
 import "./Item.css";
 import axios from "axios";
 import urls from "../Urls";
 
-const Item = ({
-  id,
-  item,
-  list,
-  setEdit,
-  setEditId,
-  setItem,
-  setList,
-  complete,
-}) => {
+const Item = ({ id, item, list, setList, setEdit, setEditId, setItem, complete }) => {
+  // Fetch the initial state from localStorage when the component mounts
+  useEffect(() => {
+    const storedList = localStorage.getItem('shoppingList');
+    if (storedList) {
+      setList(JSON.parse(storedList));
+    }
+  }, [setList]);
+
+
   //Delete Item
   const username = localStorage.getItem('userName');
 
   const remove = async (id) => {
     try {
       // Update the local state
-      setList(list.filter((el) => el.id !== id));
+      const updatedList = list.filter((el) => el.id !== id);
+      setList(updatedList);
+  
+      // Update the list in localStorage
+      localStorage.setItem('shoppingList', JSON.stringify(updatedList));
   
       // Send the delete request to the backend
       await axios.delete(`${urls.api}shopping-list/${username}/${id}`);
@@ -29,19 +33,30 @@ const Item = ({
   };
 
   //Mark Item completed
-  const handleComplete = (id) => {
-    setList(
-      list.map((item) => {
-        if (item.id === id) {
-          return {
-            ...item,
-            complete: !item.complete,
-          };
-        }
-        return item;
-      })
-    );
-  };
+const handleComplete = (id) => {
+  setList((prevList) => {
+    const updatedList = prevList.map((item) => {
+      if (item.id === id) {
+        const updatedItem = {
+          ...item,
+          complete: !item.complete,
+        };
+
+        // Update the completion status in localStorage
+        const storedList = JSON.parse(localStorage.getItem('shoppingList')) || [];
+        const updatedStoredList = storedList.map((storedItem) =>
+          storedItem.id === id ? updatedItem : storedItem
+        );
+        localStorage.setItem('shoppingList', JSON.stringify(updatedStoredList));
+
+        return updatedItem;
+      }
+      return item;
+    });
+
+    return updatedList;
+  });
+};
 
   //Edit Item
   const handleItem = (id) => {
@@ -60,9 +75,9 @@ const Item = ({
 
   return (
     <div className="item">
-      <input
+     <input
         type="text"
-        value={item}
+        value={item} // Use the item prop here
         style={{
           border: "none",
           outline: "none",

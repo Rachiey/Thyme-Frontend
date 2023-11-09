@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 import Item from "../../components/Item";
 import './shoppinglist.scss';
 import 'semantic-ui-css/semantic.min.css'
@@ -27,23 +27,31 @@ export const List = () => {
     }, [username]);
 
  
-        useEffect(() => {
-          // Fetch the shopping list when the component mounts
-          const fetchData = async () => {
-            try {
-              const response = await fetchShoppingList();
-              const shoppingList = response.data;
-              setList(shoppingList);
-            } catch (error) {
-              console.error("Error fetching shopping list:", error);
-            }
-          };
-        
-          fetchData(); // Call the async function
-        
-        }, [fetchShoppingList, username]);
-      
-
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetchShoppingList();
+          const shoppingList = response.data;
+    
+          // Retrieve completion status from local storage
+          const storedList = JSON.parse(localStorage.getItem('shoppingList')) || [];
+          const mergedList = shoppingList.map((item) => {
+            const storedItem = storedList.find((stored) => stored.id === item.id);
+            const complete = storedItem ? storedItem.complete : false; // Set to false if undefined
+            return { ...item, complete };
+          });
+    
+          console.log("MergedList:", mergedList);
+    
+          setList(mergedList);
+        } catch (error) {
+          console.error("Error fetching shopping list:", error);
+        }
+      };
+    
+      fetchData();
+    }, [fetchShoppingList, username]);
+    
         const [item, setItem] = useState("");
         const [edit, setEdit] = useState(false);
         const [editId, setEditId] = useState();
@@ -63,31 +71,35 @@ export const List = () => {
         
           fetchData();
         }, [fetchShoppingList, username]);
-      
+
         const handleAddItem = async () => {
           try {
-            // Perform validation checks
-            if (item && item.length <= 25) {
-              // Update the local state for adding a new item
-              setList([...list, { id: uuidv4(), item: item, complete: false }]);
-              setItem("");
-              setError("");
+            // Declare newItem (replace this with your actual logic for creating a new item)
+            const newItem = {
+              item: item,
+              complete: false,
+            };
         
-              // Send the new item to the backend
-              await axios.post(`${urls.api}shopping-list/${username}/`, {
-                item: item,
-                user: username, // Include the user information here
-              });
-              
-            } else {
-              // Handle validation errors
-              if (!item) setError("Item cannot be blank.");
-              else if (item.length > 25) setError("Character limit is 25.");
-            }
+            // Make the API call to add the item
+            const response = await axios.post(`${urls.api}shopping-list/${username}/`, {
+              item: newItem.item,
+              // add other properties as needed
+            });
+        
+            // Update the local state with the item received from the backend
+            const addedItem = response.data;
+            setList([...list, addedItem]);
+        
+            // Update the list in localStorage
+            localStorage.setItem('shoppingList', JSON.stringify([...list, addedItem]));
+        
+            // Clear the input field
+            setItem("");
           } catch (error) {
             console.error("Error adding shopping list item:", error);
           }
         };
+        
         
         // Function to handle the editing of an existing item
         const handleEditItem = async () => {
@@ -107,7 +119,7 @@ export const List = () => {
               await axios.put(`${urls.api}shopping-list/${username}/${editId}/`, {
                 item: item,
               });
-              
+
             } else {
               // Handle validation errors or missing editId
               if (!item) setError("Item cannot be blank.");
