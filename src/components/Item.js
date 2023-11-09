@@ -1,5 +1,7 @@
 import React from "react";
 import "./Item.css";
+import axios from "axios";
+import urls from "../Urls";
 
 const Item = ({
   id,
@@ -12,8 +14,18 @@ const Item = ({
   complete,
 }) => {
   //Delete Item
-  const remove = (id) => {
-    setList(list.filter((el) => el.id !== id));
+  const username = localStorage.getItem('userName');
+
+  const remove = async (id) => {
+    try {
+      // Update the local state
+      setList(list.filter((el) => el.id !== id));
+  
+      // Send the delete request to the backend
+      await axios.delete(`${urls.api}shopping-list/${username}/${id}`);
+    } catch (error) {
+      console.error("Error deleting shopping list item:", error);
+    }
   };
 
   //Mark Item completed
@@ -33,6 +45,7 @@ const Item = ({
 
   //Edit Item
   const handleItem = (id) => {
+    console.log('Editing item with id:', id);
     const editItem = list.find((el) => el.id === id);
     setItem(editItem.item);
     setEdit(true);

@@ -64,33 +64,72 @@ export const List = () => {
           fetchData();
         }, [fetchShoppingList, username]);
       
+        const handleAddItem = async () => {
+          try {
+            // Perform validation checks
+            if (item && item.length <= 25) {
+              // Update the local state for adding a new item
+              setList([...list, { id: uuidv4(), item: item, complete: false }]);
+              setItem("");
+              setError("");
+        
+              // Send the new item to the backend
+              await axios.post(`${urls.api}shopping-list/${username}/`, {
+                item: item,
+                user: username, // Include the user information here
+              });
+              
+            } else {
+              // Handle validation errors
+              if (!item) setError("Item cannot be blank.");
+              else if (item.length > 25) setError("Character limit is 25.");
+            }
+          } catch (error) {
+            console.error("Error adding shopping list item:", error);
+          }
+        };
+        
+        // Function to handle the editing of an existing item
+        const handleEditItem = async () => {
+          try {
+            // Perform validation checks
+            if (item && item.length <= 25 && editId) {
+              // Update the local state for editing
+              setList(
+                list.map((el) => (el.id === editId ? { ...el, item: item } : el))
+              );
+              setItem("");
+              setEditId(null);
+              setEdit(false);
+              setError("");
+        
+              // Send the edited item to the backend
+              await axios.put(`${urls.api}shopping-list/${username}/${editId}/`, {
+                item: item,
+              });
+              
+            } else {
+              // Handle validation errors or missing editId
+              if (!item) setError("Item cannot be blank.");
+              else if (item.length > 25) setError("Character limit is 25.");
+              else setError("Edit ID is missing.");
+            }
+          } catch (error) {
+            console.error("Error editing shopping list item:", error);
+          }
+        };
+        
+        // Common function for form submission
         const handleSubmit = (e) => {
-          const newItem = {
-            id: uuidv4(),
-            item: item,
-            complete: false,
-          };
           e.preventDefault();
-        if (item && item.length <= 25 && !edit) {
-          setList([...list, newItem]);
-          setItem("");
-          setError("");
-        } else if (item && item.length <= 25 && edit && editId) {
-          setList(
-            list.map((el) => {
-              if (el.id === editId) {
-                return { ...el, item: item };
-              }
-              return el;
-            })
-          );
-          setItem("");
-          setEditId(null);
-          setEdit(false);
-          setError("");
-        } else if (!item) setError("Item cannot be blank.");
-        else if (item.length > 25) setError("Character limit is 25.");
-      };
+          if (edit && editId) {
+            // If in edit mode, call the edit function
+            handleEditItem();
+          } else {
+            // If not in edit mode, call the add item function
+            handleAddItem();
+          }
+        };
 
       React.useEffect(() => {
         localStorage.setItem("data", JSON.stringify(list));
