@@ -1,41 +1,51 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import axios from 'axios'; // Import Axios or your preferred HTTP client library
+import urls from '../../Urls'
 
 const ItemContext = createContext();
+const username = localStorage.getItem('userName');
 
 export const useItemContext = () => {
   return useContext(ItemContext);
 };
 
 export const ItemProvider = ({ children }) => {
-    const initialItems = JSON.parse(localStorage.getItem('items')) || [];
+  const [items, setItems] = useState([]);
 
-    const [items, setItems] = useState(initialItems);
-
-  // Load items from local storage on component mount
+  // Load items from the backend on component mount
   useEffect(() => {
-    const savedItems = JSON.parse(localStorage.getItem('items'));
-    if (savedItems) {
-      setItems(savedItems);
-    }
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${urls.api}ingredients/api/ingredients/${username}/`);
+        const ingredients = response.data;
+        setItems(ingredients);
+      } catch (error) {
+        // Handle errors, e.g., log or show a notification
+        console.error('Error fetching ingredients:', error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   // Create a function to filter items expiring soon
   const filterItemsExpiringSoon = (items) => {
     const today = new Date();
-    const thresholdDays = 7; // You can adjust this threshold as needed
-
-    return items.filter((item) => {
-      // Parse the item's expiryDate as a Date object
-      const expiryDate = new Date(item.expiryDate);
-
-      // Calculate the difference in days between today and the expiry date
+    const thresholdDays = 3; // Change this to 2 for items expiring in 2 days or less
+  
+    const expiringSoonItems = items.filter((item) => {
+      const expiryDate = new Date(item.expiry_date);
       const diffInDays = Math.floor((expiryDate - today) / (1000 * 60 * 60 * 24));
+  
 
-      // Filter items that expire within the threshold
+      
       return diffInDays >= 0 && diffInDays <= thresholdDays;
     });
-  };
+  
 
+  
+    return expiringSoonItems;
+  };
 
   const saveItemsToLocalStorage = (items) => {
     localStorage.setItem('items', JSON.stringify(items));
@@ -54,3 +64,4 @@ export const ItemProvider = ({ children }) => {
     </ItemContext.Provider>
   );
 };
+

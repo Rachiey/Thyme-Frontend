@@ -60,7 +60,6 @@ const handleComplete = (id) => {
 
   //Edit Item
   const handleItem = (id) => {
-    console.log('Editing item with id:', id);
     const editItem = list.find((el) => el.id === id);
     setItem(editItem.item);
     setEdit(true);

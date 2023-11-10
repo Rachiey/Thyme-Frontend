@@ -220,7 +220,7 @@ export const Ingredients = () => {
       newItem.expiresIn = `expires in ${days} day${days === 1 ? '' : 's'}`;
     }
 
-    console.log('Calculated expiresIn:', newItem.expiresIn);
+
   
     axios
       .post(`${urls.api}ingredients/api/ingredients/${username}/`, newItem, {
@@ -324,7 +324,7 @@ return (
             </form>
 
             <div className="itemShelfItems">
-  <ul>
+  <ul className='ingredientsItems'>
 
   {displayedItems && displayedItems.length > 0 ? (
   <div className="grid-container">

@@ -5,7 +5,7 @@ import 'semantic-ui-css/semantic.min.css'
 import { useNavigate } from 'react-router'
 import SavedRecipes from '../../components/SavedRecipes';
 import BottomNavbar from '../../components/BottomNavbar/BottomNavbar'; 
-// import FridgeTitle from '../../components/FridgeTitle/FridgeTitle';
+
 
 export const Profile = () => {
 
@@ -17,7 +17,7 @@ export const Profile = () => {
     setUsername(localStorage.getItem('userName'));
   }, []);
 
-  const { items, filterItemsExpiringSoon } = useItemContext();
+const {items, filterItemsExpiringSoon } = useItemContext();
 const [expiringSoonItems, setExpiringSoonItems] = useState([]);
 
 useEffect(() => {
@@ -35,9 +35,6 @@ const handleLogout = () => {
 };
 
 const fridgeTitle = username ? `${username}'s` : '';
-
-
-
 
     
     return (
@@ -69,30 +66,29 @@ const fridgeTitle = username ? `${username}'s` : '';
    <div> <div className="fridgeShelves">
    <h2 className="expiringTitle">Items Expiring Soon (2 days or less)</h2>
   
-   <div className="shelfOne">
-  
-
-        <div>
-   
+   <div className="profileShelfItems">
           <ul>
-          <div className="grid-container">
+          <div className="profile-grid-container">
             {expiringSoonItems && expiringSoonItems.length > 0 ? (
               expiringSoonItems.map((item) => (
                 <li key={item.id}>
                   {/* Render item information */}
-                  <p>{item.text} x{item.quantity}</p>
-                  <p>🔔 Expires by: {item.expiryDate}</p>
+                  <p className="itemText">{item.text} x{item.quantity}</p>
+                  <p>🔔 Expires by: {item.expiry_date}</p>
                   <br />
                   {/* Add any additional actions or UI elements */}
                 </li>
               ))
+              
             ) : (
               <p>No items expiring soon.</p>
             )}
+            
             </div>
           </ul>
-        </div>
+        
       </div>
+      
  
     
     <div className="savedRecipesContainer">

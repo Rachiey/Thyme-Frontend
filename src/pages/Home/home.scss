@@ -68,13 +68,12 @@ body {
     font-size: 32px;
     font-family: "AlphaFridgeMagnets";
     font-weight: 500;
-    color: #e9e6dd;
-  
+    color: #3d79e1;
+    text-shadow: 2px 2px #153873;
   }
 
   .fridgeTitleBack {
     height: 75px;
- 
     text-align: center;
     display:flex;
     align-items: center;
@@ -82,7 +81,8 @@ body {
     font-size: 32px;
     font-family: 'AlphaFridgeMagnets';
     font-weight:500;
-    color: #e9e6dd;
+    color: #3d79e1;
+    text-shadow: 2px 2px #153873;
   }
 
   .fridgeMagnets {

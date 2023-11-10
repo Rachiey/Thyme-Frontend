@@ -19,7 +19,7 @@ const LoginForm = () => {
       password: password,
     };
 
-    console.log('User object before sending:', user); 
+
 
     try {
       const response = await fetch(`${urls.api}users/auth/login/`, {
@@ -29,7 +29,7 @@ const LoginForm = () => {
         },
         body: JSON.stringify(user),
       });
-      console.log('Before checking response.ok');
+  
 
       if (response.ok) {
         const data = await response.json();
@@ -37,11 +37,11 @@ const LoginForm = () => {
         localStorage.setItem('userName', firstCap);
         localStorage.setItem('isLoggedIn', 'true');
       
-        console.log('success');
+
 
         // navigate('/');
         window.location.replace(`${urls.origin}/`);
-        console.log('navigate');
+      
       } else {
         setError('Username/Password does not exist.');
         setUsername('');

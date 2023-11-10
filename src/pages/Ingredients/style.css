@@ -63,7 +63,6 @@ body {
 
   .fridgeTitleItems {
     height: 75px;
-    /* margin: 15px; */
     text-align: center;
     display:flex;
     align-items: center;
@@ -72,9 +71,6 @@ body {
     font-family: 'AlphaFridgeMagnets';
     font-weight:500;
     color: #e9e6dd;
-    
-    
-   
   }
 
   .formInput{
@@ -180,9 +176,6 @@ body {
    
   }
 
-  
- 
-
   .itemShelfItems{
     width: 340px;
     height: 130px;
@@ -262,6 +255,15 @@ body {
  
   }
 
+  .grid-container {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns:33% 33% 33%;   
+    grid-gap: 0.5rem;
+    grid-row-gap: 3.5rem;
+    justify-content: space-evenly;
+    margin-top: 15px;
+  }
 
   .grid-item-card{
     font-size: 15px;
