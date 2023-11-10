@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './loginForm.css';
 import * as urls from '../../Urls';
 import thymesuplogo from '../../pages/Home/images/thymesup.png';
+import fridgehandle from '../../pages/Home/images/fridgehandle.png';
 
 const LoginForm = () => {
   // const navigate = useNavigate();
@@ -59,6 +60,11 @@ const LoginForm = () => {
         <div className="backLogin">
         <div className="logo">
               <img src={thymesuplogo} alt="thyme's up logo" style={{ height: '180px'}} />
+            
+            </div>
+            <div className="fridgeLogInHandle">
+              {' '}
+              <img src={fridgehandle} alt="fridge handle" style={{ height: '200px' }} />{' '}
             </div>
           <h1 className="loginTitle">Login Page</h1>
           {error && <h2 style={{ textAlign: 'center', color: 'white' }}>{error}</h2>}

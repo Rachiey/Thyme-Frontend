@@ -102,27 +102,27 @@ body {
     height: 75px;
     width: 75px;
     align-items: flex-end;
-    margin-top: 20px;
-  
+    margin-top:40px;
   }
 
   .profilePicButton{
-    font-family: 'AlphaFridgeMagnets';
-    font-size: 25px;
+    font-family: 'Valoon';
+    font-size: 35px;
     color:#ff8e1d;
+    text-shadow: 2px 2px #953c00;
     float: right;
   }
 
   .profilePicButton:hover{
-    font-family: 'AlphaFridgeMagnets';
     color:orangered;
-    font-size:30px;
+    font-size:40px;
   }
 
  
   .note {
     float: left;
     text-align: center;
+    margin-top:10px;
     
    
   }
@@ -136,8 +136,8 @@ body {
 
   .noteWriting {
     position: absolute;
-    top: 510px;
-    left:130px;
+    top: 500px;
+    left:125px;
     padding: 4px;
     font-size: 17px;
     line-height: 18px;
@@ -145,8 +145,8 @@ body {
 
  .recipeTextButton{
     font-family: Permanent Marker;
-    font-size: 16px;
-    color:#ff770f;
+    font-size: 17px;
+    color:#2d14b9;
   }
 
   .recipeEggs{
@@ -162,7 +162,7 @@ body {
 
   .recipeTextButton:hover{
     font-family: Permanent Marker;
-    color:orangered;
+    color:rgb(0, 9, 178);
   }
 
   .fridgeHandle {
@@ -202,13 +202,9 @@ body {
   }
 
   .ingredientsTitle {
-
     margin: 15px;
-    font-size: 32px;
-    font-family: 'AlphaFridgeMagnets';
-    font-weight:500;
-    color: #f9ae2c;
-    -webkit-text-stroke: 1px #b34512;
+    font-size: 40px;
+    font-family: 'ButterCookie';
   }
 
 .fridgeShelves {

@@ -48,10 +48,6 @@ export const RecipeFinder = () => {
     
 
 };
-
- 
-
-
     
     return (
 
@@ -75,9 +71,12 @@ export const RecipeFinder = () => {
                                             <span style= {{color: "#F4889A"}}> t</span> </button>
     </div>
     <div className="shoppingList">
-      <h1 className="shoppingTitle">Recipe Finder</h1>
-      <div className="recipeBox">
+    <div className="recipeBox">
     
+      <h1 className="recipeFinderTitle">Recipe Finder</h1>
+      <div className="recipeFinderInfo">Need inspiration? Enter your ingredients into the box below to generate 5 recipes that use those ingredients!</div>
+    
+
     <input
       className="enterIngredients"
       type="text"

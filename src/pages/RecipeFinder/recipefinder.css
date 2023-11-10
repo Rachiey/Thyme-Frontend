@@ -20,9 +20,6 @@
     width: 250px;
   }
 
-
-
-
   .link {
     position: absolute;
     width: 100%;
@@ -32,13 +29,24 @@
     z-index: 1;
   }
 
+  .recipeFinderTitle {
+    margin-top: 15px;
+    margin-bottom: 0px;
+    font-size: 40px;
+    font-family: 'Valoon';
+    font-weight:500;
+    color: #8b32de;
+    text-shadow: 2px 2px #3f0052;
+  }
+
   .recipeTitle {
     margin-top: 15px;
     margin-bottom: 0px;
     font-size: 32px;
-    font-family: 'AlphaFridgeMagnets';
+    font-family: 'Valoon';
     font-weight:500;
     color: #e9e6dd;
+    text-shadow: 2px 2px #030303;
   }
 
   .shoppingInput {
@@ -61,26 +69,35 @@
 .enterIngredientsButton{
   border-radius: 10px;
   padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   cursor: pointer;
   font-family: "AlphaFridgeMagnets";
-  color:#374ba6;
+  color:white;
+  background-color:#8b32de;
 }
 
 .enterIngredientsButton:hover{
   border-radius: 10px;
+  color: #8b32de;
+  background-color: white;
   padding: 5px;
   cursor: pointer;
-  font-size: 20px;
   font-family: "AlphaFridgeMagnets";
   box-shadow: 0 5px 15px rgba(255, 255, 255, 0.4);
-
-
 }
-
 
   a { 
     color:white;
   }
+
+.recipeFinderInfo{
+  color: white;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-family: 'Tealand';
+  padding-bottom: 3px;
+}
 
 .recipeBox{
     display:flex;
@@ -95,13 +112,15 @@
 
 ul {
     padding: 0px;
+    margin-top:0;
+    margin-bottom: 0;
 }
  
 
 .saveRecipeButton {
   appearance: button;
   backface-visibility: hidden;
-  background-color: #405cf5;
+  background-color:#8b32de;
   border-radius: 6px;
   border-width: 0;
   box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
@@ -130,12 +149,11 @@ ul {
 }
 
 .saveRecipeButton:hover {
-  color:#374ba6;
-  background-color: white;
-  color: inherit;
+  color:#8b32de;
+  background-color:white;
   text-decoration: none;
-
   }
+
 ul {
   list-style: none;
   padding: 0;
@@ -143,15 +161,30 @@ ul {
 
 li {
   margin-bottom: 20px;
+
+}
+li:link {
+  color: red;
+}
+
+/* visited link */
+li:visited {
+  color: green;
+}
+
+/* mouse over link */
+a:hover {
+  color: orange;
+}
+
+/* selected link */
+li:active {
+  color: blue;
 }
 
 .recipe-container {
   display: flex;
   flex-direction: column;
-}
-
-button {
-  margin-top: 10px;
 }
 
 .saveRecipeButton:disabled {

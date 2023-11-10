@@ -82,7 +82,17 @@ export const Home = () => {
             <span style={{ color: '#F4889A' }}> t</span>{' '}
           </button>
 
-          <div className="ingredientsTitle"> Ingredients </div>
+          <div className="ingredientsTitle">  <span style={{ color: '#9023d9' }}> I</span>
+            <span style={{ color: '#ffe524' }}> N</span>
+            <span style={{ color: '#ff0808' }}> G</span>
+            <span style={{ color: '#0aa614' }}> R</span>
+            <span style={{ color: '#9023d9' }}> E</span>
+            <span style={{ color: '#ff0808' }}> D</span>
+            <span style={{ color: '#ffe524' }}> I</span>
+            <span style={{ color: '#ff0808' }}> E</span>
+            <span style={{ color: '#0aa614' }}> N</span>
+            <span style={{ color: '#9023d9' }}> T</span>
+            <span style={{ color: '#ff0808' }}> S</span></div>
           <div>
             {' '}
             <Link to="/ingredients">
@@ -121,7 +131,8 @@ export const Home = () => {
             <div className="bottomFridge">
               <div className="note">
                 {' '}
-                <img className="notePic" src={note} alt="post it note" />{' '}
+                <Link to="/list" style={{ color: 'inherit', textDecoration: 'inherit' }}>
+                <img className="notePic" src={note} alt="post it note" />{' '}</Link>
                 <div className="noteWriting">
                   <div className="recipeEggs">
                     {' '}

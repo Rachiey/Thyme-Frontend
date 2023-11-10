@@ -157,12 +157,12 @@ export const List = () => {
 
             <>
     <div className="shoppingListBackground">  
-    <div className="fridgeTitleBack"> {username}'s  &nbsp; <span style= {{color: "#31BFF3"}}> F</span>
-                                                <span style= {{color: "#A484E9"}}> r</span>
-                                                <span style= {{color: "#F4889A"}}> i</span>
-                                                <span style= {{color: "#FFAF68"}}> d</span>
-                                                <span style= {{color: "#F6E683"}}> g</span>
-                                            <span style= {{color: "#79D45E"}}> e</span>
+    <div className="fridgeTitleBack"> {username}'s  &nbsp; <span style={{ color: '#9023d9' }}> F</span>
+            <span style={{ color: '#ffe524' }}> r</span>
+            <span style={{ color: '#ff0808' }}> i</span>
+            <span style={{ color: '#0aa614' }}> d</span>
+            <span style={{ color: '#9023d9' }}> g</span>
+            <span style={{ color: '#ff0808' }}> e</span>
                                             </div>
                                             <div className ="logOutBox">
     <button className="logOutButton" onClick={handleLogout}> <span style= {{color: "#FFAF68"}}> L</span>

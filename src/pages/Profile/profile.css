@@ -17,10 +17,11 @@
 
   .profileTitle {
     margin: 15px;
-    font-size: 32px;
-    font-family: 'AlphaFridgeMagnets';
+    font-size: 40px;
+    font-family: 'Valoon';
     font-weight:500;
-    color: #e9e6dd;
+    color:#ff8e1d;
+    text-shadow: 2px 2px #953c00;
   }
 
 .fridgeShelves {
@@ -50,4 +51,5 @@
 
   .expiringTitle {
     font-size: 20px;
+    font-family: 'Tealand';
   }

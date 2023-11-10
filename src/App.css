@@ -50,3 +50,19 @@ body {
   src: local("AlphaFridgeMagnets"), url('./fonts/AlphaFridgeMagnets.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: "Tealand";
+  src: local("Tealand"), url('./fonts/Tealand.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "ButterCookie";
+  src: local("ButterCookie"), url('./fonts/ButterCookie-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: "Valoon";
+  src: local("Valoon"), url('./fonts/Valoon.ttf') format('truetype');
+}
+
+

@@ -44,7 +44,8 @@ export const SavedRecipes = () => {
               <a href={recipeURL} target="_blank" rel="noopener noreferrer">
                 {recipeURL}
               </a>
-              <button className="deleteRecipeButton" onClick={() => handleDeleteRecipe(index)}>Delete</button>
+              <div>
+              <button className="deleteRecipeButton" onClick={() => handleDeleteRecipe(index)}>Delete</button></div>
             </li>
           ))}
         </ul>

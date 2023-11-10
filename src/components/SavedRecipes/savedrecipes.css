@@ -2,3 +2,8 @@
     margin: 30px;
 }
 
+.deleteRecipeButton {
+    cursor: pointer;
+    padding-left: 15px;
+    padding-right: 15px;
+}

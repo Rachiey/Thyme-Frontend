@@ -268,7 +268,17 @@ return (
             <span style={{ color: '#9023d9' }}> g</span>
             <span style={{ color: '#ff0808' }}> e</span>
             </div>
-            <div className="ingredientsTitle"> Ingredients </div>
+            <div className="ingredientsTitle">  <span style={{ color: '#9023d9' }}> I</span>
+            <span style={{ color: '#ffe524' }}> N</span>
+            <span style={{ color: '#ff0808' }}> G</span>
+            <span style={{ color: '#0aa614' }}> R</span>
+            <span style={{ color: '#9023d9' }}> E</span>
+            <span style={{ color: '#ff0808' }}> D</span>
+            <span style={{ color: '#ffe524' }}> I</span>
+            <span style={{ color: '#ff0808' }}> E</span>
+            <span style={{ color: '#0aa614' }}> N</span>
+            <span style={{ color: '#9023d9' }}> T</span>
+            <span style={{ color: '#ff0808' }}> S</span></div>
             
             <button className="logOutButton" onClick={handleLogout}>
             <span style= {{color: "#FFAF68"}}> L</span>
