@@ -2,13 +2,15 @@
     display: flex;
     flex-direction: column;
    }
+
 .loginTitle {
   margin: 25px;
   margin-top: 100px;
   font-size: 32px;
   font-family: 'AlphaFridgeMagnets';
   font-weight:500;
-  color: #e9e6dd;
+  color: #f06000;
+  text-shadow: 2px 2px #7c2700;
 }
 
   .loginInput {
