@@ -7,7 +7,7 @@ import BottomNavbar from '../../components/BottomNavbar/BottomNavbar';
 import axios from "axios";
 import * as urls from '../../Urls';
 import { toast } from 'react-toastify';
-import ItemWarning from '../../components/ItemWarning/';
+import ItemWarning from '../../components/ItemWarning';
 
 
 
