@@ -7,6 +7,7 @@ import { eye } from 'react-icons-kit/feather/eye';
 import PasswordStrength from '../../components/PasswordStrength/PasswordStrength';
 import './register.css';
 import thymesuplogo from '../Home/images/thymesup.png';
+import fridgehandle from '../Home/images/fridgehandle.png';
 
 
 const RegistrationForm = () => {
@@ -78,10 +79,14 @@ const RegistrationForm = () => {
       <div className="door">
         <div className="backLogin">
         <div className="logo">
-              <img src={thymesuplogo} alt="thyme's up logo" style={{ height: '180px'}} />
+              <img src={thymesuplogo} alt="thyme's up logo" style={{ height: '140px'}} />
+            </div>
+            <div className="fridgeRegisterHandle">
+              {' '}
+              <img src={fridgehandle} alt="fridge handle" style={{ height: '150px' }} />{' '}
             </div>
           <div>
-            <h1 className='registerTitle'>Register</h1>
+            <h1 className='registerTitle'>Register Page</h1>
             {loading === false && (
               <div
                 style={{
@@ -167,7 +172,7 @@ const RegistrationForm = () => {
             <br />
           </div>
           <div className="buttonMenu">
-            <button type="submit" className="logOutButton">
+            <button type="submit" className="registerButton" style={{ marginBottom: '0px'}}> 
               <span style={{ color: '#FFAF68' }}> R</span>
               <span style={{ color: '#F6E683' }}> e</span>
               <span style={{ color: '#A484E9' }}> g</span>
@@ -177,7 +182,7 @@ const RegistrationForm = () => {
               <span style={{ color: '#31BFF3' }}> e</span>
               <span style={{ color: '#79D45E' }}> r</span>
             </button>
-            <button className="logOutButton">
+            <button className="logInButton">
               <Link to="/login">
                 <span style={{ color: '#FFAF68' }}> L</span>
                 <span style={{ color: '#F6E683' }}> o</span>

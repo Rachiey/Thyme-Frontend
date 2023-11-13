@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './loginForm.css';
+import './loginForm.scss';
 import * as urls from '../../Urls';
 import thymesuplogo from '../../pages/Home/images/thymesup.png';
 import fridgehandle from '../../pages/Home/images/fridgehandle.png';
@@ -59,12 +59,12 @@ const LoginForm = () => {
       <div className="door">
         <div className="backLogin">
         <div className="logo">
-              <img src={thymesuplogo} alt="thyme's up logo" style={{ height: '180px'}} />
+              <img src={thymesuplogo} alt="thyme's up logo" style={{ height: '140px'}} />
             
             </div>
             <div className="fridgeLogInHandle">
               {' '}
-              <img src={fridgehandle} alt="fridge handle" style={{ height: '200px' }} />{' '}
+              <img src={fridgehandle} alt="fridge handle" style={{ height: '150px' }} />{' '}
             </div>
           <h1 className="loginTitle">Login Page</h1>
           {error && <h2 style={{ textAlign: 'center', color: 'white' }}>{error}</h2>}
@@ -78,7 +78,7 @@ const LoginForm = () => {
            
             <br />
             <div className="buttonMenu">
-              <button className="logOutButton" type="submit">
+              <button className="logInButton" type="submit">
                 <span style={{ color: "#FFAF68" }}> L</span>
                 <span style={{ color: "#F6E683" }}> o</span>
                 <span style={{ color: "#A484E9" }}> g</span>
@@ -86,7 +86,7 @@ const LoginForm = () => {
                 <span style={{ color: "#31BFF3" }}> I</span>
                 <span style={{ color: "#79D45E" }}> n</span>
               </button>
-              <button className="logOutButton">
+              <button className="registerButton">
                 <Link to="/register">
                   <span style={{ color: "#FFAF68" }}> R</span>
                   <span style={{ color: "#F6E683" }}> e</span>
