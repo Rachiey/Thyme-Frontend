@@ -67,7 +67,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
+    font-size: 25px;
     font-family: "AlphaFridgeMagnets";
     font-weight: 500;
     color: #3d79e1;
@@ -80,7 +80,7 @@ body {
     display:flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
+    font-size: 25px;
     font-family: 'AlphaFridgeMagnets';
     font-weight:500;
     color: #3d79e1;
@@ -132,7 +132,7 @@ body {
     height: 135px;
     display: inline-block;
     position: relative;
-    // margin-top:20px;
+    margin-left: 90px;
   }
 
   .noteWriting {
@@ -212,6 +212,7 @@ body {
 .bottomFridge {
   margin-top: 20px;
 }
+
   .ingredientsTitle {
     margin-top: 25px;
     margin-bottom: 20px;
@@ -220,7 +221,7 @@ body {
     text-shadow: 2px 2px #000000;
   }
 
-.fridgeShelves {
+.fridgeHomeShelves {
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -429,35 +430,13 @@ body {
   .recipeimage {
     width: 85px;
     height: 100px;
-    margin-left:10px;
+    margin-left: 10px;
     // transform: rotate(-10deg);
   }
+
   .recipeimage:hover {
     transform: rotate(-10deg);
   }
-
-  .bottomFridge{
-    margin-left: 90px;
-  }
-  
-  // .shelfThree {
-  //   width: 320px;
-  //   height: 100px;
-  //   background-color: #e9e6dd;
-  //   border-radius: 20px;
-  //   margin-top: 35px;
-  // }
-
-  // .shelfFour {
-  //   width: 320px;
-  //   height: 100px;
-  //   background-color: #e9e6dd;
-  //   border-radius: 20px;
-  //   margin-top: 35px;
-  //   display: flex;
-  //   justify-content: flex-end;
-  // }
- 
   
 .logOutButton {
   position: relative;

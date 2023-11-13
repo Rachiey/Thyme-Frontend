@@ -174,7 +174,7 @@ export const List = () => {
                                             <span style= {{color: "#F4889A"}}> t</span> </button>
     </div>
     <div className="shoppingList">
-      <h1 className="shoppingTitle"> Shopping List</h1>
+      <h1 className="shoppingListTitle"> Shopping List</h1>
   
       <form onSubmit={handleSubmit}>
         <input
@@ -197,7 +197,7 @@ export const List = () => {
         {error && <p style={{ color: "red" }}>{error}</p>}
       </form>
       
-      <div>
+      <div className="listBox">
         {list.map((c, id) => (
            
           <Item

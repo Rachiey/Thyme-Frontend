@@ -73,7 +73,7 @@ export const RecipeFinder = () => {
     <div className="shoppingList">
     <div className="recipeBox">
     
-      <h1 className="recipeFinderTitle">Recipe Finder</h1>
+      <div className="recipeFinderTitle">Recipe Finder</div>
       <div className="recipeFinderInfo">Need inspiration? Enter your ingredients into the box below to generate 5 recipes that use those ingredients!</div>
     
 

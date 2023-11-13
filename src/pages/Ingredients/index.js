@@ -260,7 +260,7 @@ return (
 <>    
 <div className="fridgeItemBackground">  
 
-    <div className="fridgeTitleItems"> {username}'s  &nbsp; 
+    <div className="fridgeTitle"> {username}'s  &nbsp; 
     <span style={{ color: '#9023d9' }}> F</span>
             <span style={{ color: '#ffe524' }}> r</span>
             <span style={{ color: '#ff0808' }}> i</span>
@@ -268,17 +268,7 @@ return (
             <span style={{ color: '#9023d9' }}> g</span>
             <span style={{ color: '#ff0808' }}> e</span>
             </div>
-            <div className="ingredientsTitle">  <span style={{ color: '#9023d9' }}> I</span>
-            <span style={{ color: '#ffe524' }}> N</span>
-            <span style={{ color: '#ff0808' }}> G</span>
-            <span style={{ color: '#0aa614' }}> R</span>
-            <span style={{ color: '#9023d9' }}> E</span>
-            <span style={{ color: '#ff0808' }}> D</span>
-            <span style={{ color: '#ffe524' }}> I</span>
-            <span style={{ color: '#ff0808' }}> E</span>
-            <span style={{ color: '#0aa614' }}> N</span>
-            <span style={{ color: '#9023d9' }}> T</span>
-            <span style={{ color: '#ff0808' }}> S</span></div>
+        
             
             <button className="logOutButton" onClick={handleLogout}>
             <span style= {{color: "#FFAF68"}}> L</span>
@@ -289,6 +279,18 @@ return (
                                             <span style= {{color: "#79D45E"}}> u</span>
                                             <span style= {{color: "#F4889A"}}> t</span> 
             </button>
+
+            <div className="ingredientsPageTitle">  <span style={{ color: '#9023d9' }}> I</span>
+            <span style={{ color: '#ffe524' }}> N</span>
+            <span style={{ color: '#ff0808' }}> G</span>
+            <span style={{ color: '#0aa614' }}> R</span>
+            <span style={{ color: '#9023d9' }}> E</span>
+            <span style={{ color: '#ff0808' }}> D</span>
+            <span style={{ color: '#ffe524' }}> I</span>
+            <span style={{ color: '#ff0808' }}> E</span>
+            <span style={{ color: '#0aa614' }}> N</span>
+            <span style={{ color: '#9023d9' }}> T</span>
+            <span style={{ color: '#ff0808' }}> S</span></div>
 
             <form className='formInput' onSubmit={(e) => {
 
@@ -352,6 +354,9 @@ return (
 
 </div>
             <div className="itemShelfThree">
+            </div>
+            
+            <div className="itemShelfFour">
             </div>
 
             <BottomNavbar />

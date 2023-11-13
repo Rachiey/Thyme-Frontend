@@ -11,6 +11,14 @@ body {
   background-image: url('../Home/images/background.jpg');
 }
 
+.ingredientsPageTitle {
+  margin-top: 20px;
+  font-size: 20px;
+  font-family: 'ButterCookie';
+  text-shadow: 2px 2px #000000;
+}
+
+
 .fridgeItemBackground {
   display: flex;
   align-items: center;
@@ -21,7 +29,7 @@ body {
   outline: 10px solid #5867a8;
   width: 300px;
   height: 650px;
-  justify-content: space-around;
+
 
 }
 
@@ -74,11 +82,12 @@ body {
   }
 
   .formInput{
-    width: 95%;
+    width: 300px;
+    font-size: 10px;
     display: grid;
     justify-content: stretch;
     grid-template-rows: auto;
-    grid-template-columns:50% 15% 25% 10%; 
+    grid-template-columns:40% 15% 30% 15%;
     margin-bottom: 1rem;
     margin-top: 1rem;
   }
@@ -114,7 +123,6 @@ body {
   }
 
   .addButton {
-    width: 3rem;
     height: 3rem;
     background-color: #93c572;
     border-radius: 10px;
@@ -132,6 +140,8 @@ body {
 
   .addButton:hover{
     cursor: pointer;
+    background-color: white;
+    color:#93c572;
   }
 
   .shelfOne {
@@ -149,15 +159,15 @@ body {
 
 
   .itemShelfItems{
-    width: 340px;
-    height: 130px;
+    width: 85%;
+    height: 70px;
     background-color: #e9e6dd;
     border-radius: 20px;
   }
 
   .itemShelfTwo {
-    width: 340px;
-    height: 130px;
+    width: 85%;
+    height: 70px;
     background-color: #e9e6dd;
     border-radius: 20px;
     margin-top: 15px;
@@ -167,8 +177,8 @@ body {
   }
 
   .itemShelfThree {
-    width: 340px;
-    height: 130px;
+    width: 85%;
+    height: 70px;
     background-color: #e9e6dd;
     border-radius: 20px;
     margin-top: 15px;
@@ -177,6 +187,19 @@ body {
     position: relative;
   }
 
+  .itemShelfFour {
+    width: 85%;
+    height: 70px;
+    background-color: #e9e6dd;
+    border-radius: 20px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    margin-bottom: 30px;
+  }
+
+ 
 
   .bottomMenu {
     width: 320px;
@@ -231,10 +254,9 @@ body {
     display: grid;
     grid-template-rows: auto;
     grid-template-columns:33% 33% 33%;   
-    grid-gap: 0.5rem;
-    grid-row-gap: 3.5rem;
+    grid-row-gap: 2.5rem;
     justify-content: space-evenly;
-    margin-top: 15px;
+    margin-top: 10px;
   }
 
   .grid-item-card{
@@ -249,13 +271,12 @@ body {
   }
   
   .expire{
-    font-size: 20px;
+    font-size: 12px;
     font-family: 'Courgette', sans-serif;
     color: black;
     margin: -8px 0;
-    padding: 40px;
+    padding: 20px;
     z-index: 1;
-    
   }
 
   .expire,
@@ -274,11 +295,11 @@ body {
   .trashButton {
     cursor: pointer;
     z-index: 2;
-    margin-top: 45px;
+    margin-top: 25px;
   }
 
   .emoji {
-    font-size: 65px;
+    font-size: 35px;
     margin: 0px;
   }
 

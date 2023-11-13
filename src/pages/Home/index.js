@@ -93,10 +93,10 @@ export const Home = () => {
             <span style={{ color: '#0aa614' }}> N</span>
             <span style={{ color: '#9023d9' }}> T</span>
             <span style={{ color: '#ff0808' }}> S</span></div>
-          <div>
+          
             {' '}
             <Link to="/ingredients">
-              <div className="fridgeShelves">
+              <div className="fridgeHomeShelves">
                 <div className="homeShelfOne">
                   <div className="carrot">
                     {' '}
@@ -154,7 +154,7 @@ export const Home = () => {
                   </div>
                 </div>
               </div>
-            </div>
+      
 
             <div>
               <div className="recipeimage">

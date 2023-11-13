@@ -82,7 +82,7 @@ const handleComplete = (id) => {
           outline: "none",
           backgroundColor: "transparent",
           color: "white",
-          fontSize: "20px",
+          fontSize: "15px",
           fontFamily: "Permanent Marker",
         }}
         className={complete ? "complete" : ""}

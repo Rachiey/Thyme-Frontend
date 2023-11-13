@@ -14,9 +14,9 @@
     align-items: center;
   }
 
-
   .profileTitle {
-    margin: 15px;
+    margin-top: 25px;
+    margin-bottom: 10px;
     font-size: 30px;
     font-family: 'Valoon';
     font-weight:500;
@@ -24,14 +24,25 @@
     text-shadow: 2px 2px #953c00;
   }
 
+  .shoppingTitle {
+    font-size: 30px;
+    font-family: 'Valoon';
+    font-weight:500;
+    color: #2c1cdc;
+    text-shadow: 2px 2px #1e0095;
+  }
+
 .fridgeShelves {
     display: flex; 
     flex-direction: column;
     align-items: center;
-    flex-grow: 1;  
+    /* flex-grow: 1;   */
+    height: 100%;
+    width: 100%;
+
 }
 
-  .shelfOne {
+  .shelfOne{
     width: 320px;
     height: 200px;
     background-color: #e9e6dd;
@@ -40,7 +51,6 @@
     grid-template-columns: 33% 33% 33%;
   }
 
- 
   .homeIcon {
     display:flex;
   }
@@ -48,11 +58,12 @@
   .savedRecipesContainer {
     margin-top: 20px;
     margin-bottom:40px;
+    height: 150px;
     
   }
 
   .expiringTitle {
-    font-size: 20px;
+    font-size: 15px;
     font-family: 'Tealand';
   }
 
@@ -63,8 +74,8 @@
 }
 
 .profileShelfItems {
-  width: 380px;
-  height: 300px;
+  width: 280px;
+  height: 200px;
   background-color: #e9e6dd;
   border-radius: 20px;
 }
