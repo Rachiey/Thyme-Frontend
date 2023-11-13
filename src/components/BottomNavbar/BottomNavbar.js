@@ -17,17 +17,17 @@ const BottomNavbar = () => {
   return (
     <div className="bottomNavBarItems">
       <Tooltip title="Home">
-        <IconButton style={{ color: 'white', fontSize: '50px' }}>
+        <IconButton style={{ color: 'white', fontSize: '30px' }}>
           <Link to='/'>{homeIcon} </Link>
         </IconButton>
       </Tooltip>
       <Tooltip title="Recipes">
-        <IconButton style={{ color: 'white', fontSize: '50px' }}>
+        <IconButton style={{ color: 'white', fontSize: '30px' }}>
           <Link to='/recipefinder'>{recipesIcon} </Link>
         </IconButton>
       </Tooltip>
       <Tooltip title="Profile">
-        <IconButton style={{ color: 'white', fontSize: '50px' }}>
+        <IconButton style={{ color: 'white', fontSize: '30px' }}>
           <Link to='/profile'>{profileIcon} </Link>
         </IconButton>
       </Tooltip>
