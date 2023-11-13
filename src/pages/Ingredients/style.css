@@ -146,35 +146,7 @@ body {
   
    
   }
-  .carrot {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-content: center;
-    height: 75px;
-    width: 75px;
 
-  }
-
-  .cheese {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-content: center;
-    height: 75px;
-    width: 75px;
-  }
-
-  .milk {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-content: center;
-    height: 50px;
-    width: 50px;
-    object-fit: contain;
-   
-  }
 
   .itemShelfItems{
     width: 340px;

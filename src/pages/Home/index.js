@@ -48,14 +48,14 @@ export const Home = () => {
 
           <div className="fridgeRow">
           <div className="logo">
-              <img src={thymesuplogo} alt="thyme's up logo" style={{ height: '180px'}} />
+              <img src={thymesuplogo} alt="thyme's up logo" style={{ height: '120px'}} />
             </div>
             <div className="fridgeHandle">
               {' '}
-              <img src={fridgehandle} alt="fridge handle" style={{ height: '200px' }} />{' '}
+              <img src={fridgehandle} alt="fridge handle" style={{ height: '150px' }} />{' '}
             </div>
             <div className="fridgeMagnet">
-              <img src={fridgemagnet} alt="fridge magnet" style={{ height: '150px', marginRight: '150px', marginTop: '20px' }} />
+              <img src={fridgemagnet} alt="fridge magnet" style={{ height: '120px', marginRight: '150px', marginTop: '20px' }} />
             </div>
            
           </div>
@@ -100,15 +100,15 @@ export const Home = () => {
                 <div className="homeShelfOne">
                   <div className="carrot">
                     {' '}
-                    <img style={{ objectFit: 'fill' }} src={require('../Ingredients/images/carrot.png')} alt="carrot" />{' '}
+                    <img src={require('../Ingredients/images/carrot.png')} alt="carrot" />{' '}
                   </div>
                   <div className="cheese">
                     {' '}
-                    <img style={{ objectFit: 'fill' }} src={require('../Ingredients/images/cheese.png')} alt="cheese" />{' '}
+                    <img src={require('../Ingredients/images/cheese.png')} alt="cheese" />{' '}
                   </div>
                   <div className="milk">
                     {' '}
-                    <img style={{ objectFit: 'fill' }} src={require('../Ingredients/images/milk.png')} alt="milk" />{' '}
+                    <img src={require('../Ingredients/images/milk.png')} alt="milk" />{' '}
                   </div>
                 </div>
                 <div className="homeShelfTwo">
@@ -148,8 +148,8 @@ export const Home = () => {
                   </div>
                   <div className="recipeTextButton">
                     {' '}
-                    <Link to="/list" style={{ color: 'inherit', textDecoration: 'inherit' }}>
-                      Shopping List
+                    <Link to="/list"  style={{ color: 'inherit', textDecoration: 'inherit'}}>   
+                    <span className="recipeText">Shopping List</span>
                     </Link>
                   </div>
                 </div>
@@ -162,7 +162,7 @@ export const Home = () => {
                 <Tooltip title="Recipes">
     
                 <Link to="/recipefinder">
-                  <img className="recipeimage" src={recipeimage} alt="recipe book" style={{ width: '120px' }}  />{' '}
+                  <img className="recipeimage" src={recipeimage} alt="recipe book" />{' '}
                 </Link>
                 </Tooltip>
               </div>
@@ -170,7 +170,7 @@ export const Home = () => {
               <div className="profilePic">
                 {' '}
                 <Link to="/profile">
-                  <img src={profilepic} alt="polaroid photos" style={{ height: '150px' }} />{' '}
+                  <img className="profilePic" src={profilepic} alt="polaroid photos"/>{' '}
                 </Link>
     <div className="profilePicButton"> <Link to="/profile" style={{ color: 'inherit', textDecoration: 'inherit'}}>Profile </Link></div></div></div></div>
     </div></div>
