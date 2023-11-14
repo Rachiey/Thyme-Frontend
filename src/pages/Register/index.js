@@ -97,11 +97,11 @@ const RegistrationForm = () => {
                   margin: '10px',
                 }}
               >
-                Sign Up
+   
               </div>
             )}
             {errors === true && (
-              <h2 style={{ textAlign: 'center', color: 'white' }}>
+              <h2 className="oops" style={{ textAlign: 'center', color: 'white',  fontFamily:'Tealand' }}>
                 Oops! You cannot signup with provided credentials.
               </h2>
             )}

@@ -67,7 +67,7 @@ const LoginForm = () => {
               <img src={fridgehandle} alt="fridge handle" style={{ height: '150px' }} />{' '}
             </div>
           <h1 className="loginTitle">Login Page</h1>
-          {error && <h2 style={{ textAlign: 'center', color: 'white' }}>{error}</h2>}
+          {error && <h2 style={{ textAlign: 'center', color: 'white', fontFamily:'Tealand' }}>{error}</h2>}
           <form className="loginForm"onSubmit={onSubmit}>
            
               <input className="loginInput"type="text" value={username} autoComplete="current-username" onChange={(e) => setUsername(e.target.value)} placeholder="Enter your username" />

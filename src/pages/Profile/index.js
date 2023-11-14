@@ -81,7 +81,7 @@ const fridgeTitle = username ? `${username}'s` : '';
               ))
               
             ) : (
-              <p>No items expiring soon.</p>
+              <div className="noItemsExpire">No items expiring soon.</div>
             )}
             
             </div>

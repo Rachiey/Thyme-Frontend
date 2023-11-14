@@ -344,7 +344,7 @@ return (
     ))}
   </div>
 ) : (
-  <p className="noItemsMessage">No items to display.</p>
+  <div className="noItemsMessage">No items to display.</div>
 )}
 
   </ul>
@@ -355,7 +355,7 @@ return (
 </div>
             <div className="itemShelfThree">
             </div>
-            
+
             <div className="itemShelfFour">
             </div>
 
