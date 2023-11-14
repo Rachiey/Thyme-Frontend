@@ -246,7 +246,7 @@ export const Ingredients = () => {
         setItems(expiringSoonItems); // Update the 'items' state
         setDisplayedItems(expiringSoonItems);
       })
-      window.location.reload()
+      // window.location.reload()
 
       .catch((error) => {
         // Handle any errors
