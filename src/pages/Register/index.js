@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+// import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as urls from '../../Urls';
 import { Icon } from 'react-icons-kit';
 import { eyeOff } from 'react-icons-kit/feather/eyeOff';
@@ -21,6 +22,7 @@ const RegistrationForm = () => {
   const [icon2, setIcon2] = useState(eyeOff);
   const [email, setEmail] = useState('');
   const [errors, setErrors] = useState(false);
+  // const [errors, setErrors] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -34,7 +36,7 @@ const RegistrationForm = () => {
       }
     }, []);
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -53,31 +55,42 @@ const RegistrationForm = () => {
       },
       body: JSON.stringify(user),
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else if (res.status === 400) {
-          return res.json().then((data) => {
-            if (data.username && data.username.includes('already exists')) {
-              throw new Error('Username already exists.');
-            } else {
-              throw new Error('Registration failed.');
-            }
-          });
-        } else {
-          throw new Error('Registration failed.');
-        }
-      })
-      .then((data) => {
-        console.log('Registration successful:', data);
-        // Redirect to the login page using the history object
-       navigate('/login');
-      })
-      .catch((error) => {
+    .then(res => {
+      window.location.replace(`${urls.origin}/login`);
+      res.json()
+    })
+    .catch((error) => {
         console.error('Error:', error);
         setErrors(true);
       });
+    
   };
+
+      // .then((res) => {
+      //   if (res.ok) {
+      //     return res.json();
+      //   } else if (res.status === 400) {
+      //     return res.json().then((data) => {
+      //       if (data.username && data.username.includes('already exists')) {
+      //         throw new Error('Username already exists.');
+      //       } else {
+      //         throw new Error('Registration failed.');
+      //       }
+      //     });
+      //   } else {
+      //     throw new Error('Registration failed.');
+      //   }
+      // })
+      // .then((data) => {
+      //   console.log('Registration successful:', data);
+      //   // Redirect to the login page using the history object
+      //  navigate('/login');
+      // })
+      // .catch((error) => {
+      //   console.error('Error:', error);
+      //   setErrors(true);
+      // });
+  // };
 
   const togglePasswordVisibility = (field) => {
     if (field === 'password1') {
