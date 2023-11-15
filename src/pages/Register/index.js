@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import * as urls from '../../Urls';
 import { Icon } from 'react-icons-kit';
 import { eyeOff } from 'react-icons-kit/feather/eyeOff';
@@ -8,6 +8,7 @@ import PasswordStrength from '../../components/PasswordStrength/PasswordStrength
 import './register.css';
 import thymesuplogo from '../Home/images/thymesup.png';
 import fridgehandle from '../Home/images/fridgehandle.png';
+
 
 
 const RegistrationForm = () => {
@@ -33,49 +34,50 @@ const RegistrationForm = () => {
       }
     }, []);
 
-    const onSubmit = (e) => {
-      e.preventDefault();
-    
-      const user = {
-        username: username,
-        password1: password1,
-        password2: password2,
-        email: email,
-      };
-    
-      fetch(`${urls.api}users/auth/register/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(user),
-      })
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          } else if (res.status === 400) {
-            // Check if the error is due to existing username
-            return res.json().then((data) => {
-              if (data.username && data.username.includes('already exists')) {
-                throw new Error('Username already exists.');
-              } else {
-                throw new Error('Registration failed.');
-              }
-            });
-          } else {
-            throw new Error('Registration failed.');
-          }
-        })
-        .then((data) => {
-          console.log('Registration successful:', data);
-          // Redirect to the login page
-          window.location.replace(`${urls.origin}/login`);
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-          setErrors(true);
-        });
+    const history = useHistory();
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const user = {
+      username: username,
+      password1: password1,
+      password2: password2,
+      email: email,
     };
+
+    fetch(`${urls.api}users/auth/register/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else if (res.status === 400) {
+          return res.json().then((data) => {
+            if (data.username && data.username.includes('already exists')) {
+              throw new Error('Username already exists.');
+            } else {
+              throw new Error('Registration failed.');
+            }
+          });
+        } else {
+          throw new Error('Registration failed.');
+        }
+      })
+      .then((data) => {
+        console.log('Registration successful:', data);
+        // Redirect to the login page using the history object
+        history.push('/login');
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        setErrors(true);
+      });
+  };
 
   const togglePasswordVisibility = (field) => {
     if (field === 'password1') {
