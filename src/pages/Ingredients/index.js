@@ -87,7 +87,6 @@ export const Ingredients = () => {
       'pork chop':'🍖',
       'pork chops':'🍖',
       'soup':'🥣',
-      'avocado':'🥑',
       'yogurt':'🥛',
       'greek yogurt':'🥛',
     
