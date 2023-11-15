@@ -33,36 +33,43 @@ const RegistrationForm = () => {
       }
     }, []);
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-
-    const user = {
-      username: username,
-      password1: password1,
-      password2: password2,
-      email: email,
-    };
-
-    fetch(`${urls.api}users/auth/register/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(user),
-    })
-      .then((res) => {
-        if (res.ok) {
-          window.location.replace(`${urls.origin}/login`);
-          return res.json();
-        } else {
-          throw new Error('Registration failed.');
-        }
+    const onSubmit = (e) => {
+      e.preventDefault();
+    
+      const user = {
+        username: username,
+        password1: password1,
+        password2: password2,
+        email: email,
+      };
+    
+      fetch(`${urls.api}users/auth/register/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
       })
-      .catch((error) => {
-        console.error('Error:', error);
-        setErrors(true);
-      });
-  };
+        .then((res) => {
+          if (res.ok) {
+            return res.json(); // Move the return statement here
+          } else {
+            throw new Error('Registration failed.');
+          }
+        })
+        .then((data) => {
+          // Handle the response data if needed
+          console.log('Registration successful:', data);
+    
+          // Redirect to the login page
+          window.location.replace(`${urls.origin}/login`);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          setErrors(true);
+        });
+    };
+    
 
   const togglePasswordVisibility = (field) => {
     if (field === 'password1') {
