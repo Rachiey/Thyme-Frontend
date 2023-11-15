@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as urls from '../../Urls';
 import { Icon } from 'react-icons-kit';
 import { eyeOff } from 'react-icons-kit/feather/eyeOff';
@@ -34,7 +34,7 @@ const RegistrationForm = () => {
       }
     }, []);
 
-    const history = useHistory();
+    const navigate = useNavigate();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -71,7 +71,7 @@ const RegistrationForm = () => {
       .then((data) => {
         console.log('Registration successful:', data);
         // Redirect to the login page using the history object
-        history.push('/login');
+       navigate('/login');
       })
       .catch((error) => {
         console.error('Error:', error);
