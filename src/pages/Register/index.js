@@ -52,15 +52,22 @@ const RegistrationForm = () => {
       })
         .then((res) => {
           if (res.ok) {
-            return res.json(); // Move the return statement here
+            return res.json();
+          } else if (res.status === 400) {
+            // Check if the error is due to existing username
+            return res.json().then((data) => {
+              if (data.username && data.username.includes('already exists')) {
+                throw new Error('Username already exists.');
+              } else {
+                throw new Error('Registration failed.');
+              }
+            });
           } else {
             throw new Error('Registration failed.');
           }
         })
         .then((data) => {
-          // Handle the response data if needed
           console.log('Registration successful:', data);
-    
           // Redirect to the login page
           window.location.replace(`${urls.origin}/login`);
         })
@@ -69,7 +76,6 @@ const RegistrationForm = () => {
           setErrors(true);
         });
     };
-    
 
   const togglePasswordVisibility = (field) => {
     if (field === 'password1') {
