@@ -151,37 +151,7 @@ export const Ingredients = () => {
   };
   
 
-  const saveItemsToBackend = (item) => {
-    const ingredientId = item.id;
-  
-    // Define the updated item data (e.g., changed fields) here
-    const updatedItemData = {
-      // Include the fields you want to update, e.g., text, quantity, expiry_date, etc.
-      text: item.text,
-      quantity: item.quantity,
-      expiry_date: item.expiry_date,
-    };
-  
-    axios
-      .put(`${urls.api}ingredients/api/ingredients/${username}/${ingredientId}/`, updatedItemData, {
-        headers: {
-          Authorization: `Token ${userAuthToken}`,
-          'Content-Type': 'application/json',
-        },
-      })
-      .then((response) => {
-        // Handle the successful response here
-        console.log('Ingredient updated successfully:', response.data);
-      })
-      .catch((error) => {
-        // Handle errors here
-        console.error('Error while updating ingredient:', error);
-      });
-  };
-  
-  
-
-  const submitItemHandler = (event) => {
+  const submitItemHandler = async (event) => {
     event.preventDefault();
   
     const newId = items.length > 0 ? Math.max(...items.map((item) => item.id)) + 1 : 1;
@@ -206,7 +176,6 @@ export const Ingredients = () => {
       toast.warning(`Item '${newItem.text}' expires today! Eat soon!`, {
         position: toast.POSITION.TOP_CENTER,
       });
-
     } else if (days < 0) {
       newItem.expiresIn = `expired ${Math.abs(days)} day${Math.abs(days) === 1 ? '' : 's'} ago`;
     } else if (days === 1) {
@@ -215,45 +184,55 @@ export const Ingredients = () => {
         position: toast.POSITION.TOP_CENTER,
         toastId: customId,
       });
-
     } else {
       newItem.expiresIn = `expires in ${days} day${days === 1 ? '' : 's'}`;
     }
-
-
   
-    axios
-      .post(`${urls.api}ingredients/api/ingredients/${username}/`, newItem, {
-        headers: {
-          Authorization: `Token ${userAuthToken}`,
-        },
-      })
-      .then((response) => {
-        // On successful addition, update the local state
-        setItems((prevItems) => [...prevItems, newItem]);
-        setDisplayedItems((prevDisplayedItems) => [...prevDisplayedItems, newItem]);
+    try {
+      // Make the API request to add the new item
+      axios
+        .post(`${urls.api}ingredients/api/ingredients/${username}/`, newItem, {
+          headers: {
+            Authorization: `Token ${userAuthToken}`,
+          },
+        })
+        .then((response) => {
+          // Check if the item is already in the list
+          const isItemInList = items.some((item) => item.id === newItem.id);
   
-        // Save the updated items to the backend (you can remove this if you want to save it elsewhere)
-        saveItemsToBackend([...items, newItem]);
+          if (!isItemInList) {
+            // On successful addition, update the local state
+            setItems((prevItems) => [...prevItems, newItem]);
+            setDisplayedItems((prevDisplayedItems) => [...prevDisplayedItems, newItem]);
   
-        // Clear the input fields and update the displayed items
-        setInputText('');
-        setQuantityValue(1);
-        setExpiryDate('');
+            // Clear the input fields and update the displayed items
+            setInputText('');
+            setQuantityValue(1);
+            setExpiryDate('');
   
-        // Filter items expiring soon
-        const expiringSoonItems = filterItemsExpiringSoon([...items, newItem]);
-        setItems(expiringSoonItems); // Update the 'items' state
-        setDisplayedItems(expiringSoonItems);
-      })
-      // window.location.reload()
-
-      .catch((error) => {
-        // Handle any errors
-        console.error('Error while adding ingredient:', error);
-      });
+            // Filter items expiring soon
+            const expiringSoonItems = filterItemsExpiringSoon([...items, newItem]);
+            setItems(expiringSoonItems); // Update the 'items' state
+            setDisplayedItems(expiringSoonItems);
+  
+            console.log('Ingredient added successfully:', response.data);
+  
+            // // Reload the page
+            // window.location.reload();
+          } else {
+            console.log('Ingredient is already in the list.');
+            // You can handle this case as needed
+          }
+        })
+        .catch((error) => {
+          // Handle errors here
+          console.error('Error while adding ingredient:', error);
+        });
+    } catch (error) {
+      // Handle any errors in the try block
+      console.error('Error in try block:', error);
+    }
   };
-  
   
 
 return (

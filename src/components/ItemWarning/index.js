@@ -4,6 +4,12 @@ import { useEffect } from 'react';
 
 const ItemWarning = ({ item }) => {
   useEffect(() => {
+    const handleButtonClick = (event) => {
+      // Your logic here
+      event.preventDefault();
+      toast.dismiss(`warning_${item.id}`);
+    };
+
     if (item.expiresIn === 'eat today') {
       toast.warning(`Item '${item.text}' expires today! Eat soon!`, {
         position: toast.POSITION.TOP_CENTER,
@@ -15,6 +21,20 @@ const ItemWarning = ({ item }) => {
         toastId: `warning_${item.id}`, // Use a custom toastId
       });
     }
+
+    // Attach an event listener for the "x" button
+    const closeButton = document.querySelector(`#warning_${item.id} .Toastify__close-button`);
+
+    if (closeButton) {
+      closeButton.addEventListener('click', handleButtonClick, { passive: false });
+    }
+
+    // Cleanup: remove the event listener when the component unmounts
+    return () => {
+      if (closeButton) {
+        closeButton.removeEventListener('click', handleButtonClick);
+      }
+    };
   }, [item]);
 
   return null;
