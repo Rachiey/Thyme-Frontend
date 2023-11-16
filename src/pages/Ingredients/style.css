@@ -288,16 +288,33 @@ body {
     left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Center it perfectly */
     text-align: center; /* Center the text horizontally */
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
-    border-radius: 15px;
+    border-radius: 5px;
+
   }
-  
+
+  .expire{
+    background-color:rgba(255, 255, 255, 0.3);
+  }
+ 
 
   .trashButton {
     cursor: pointer;
     z-index: 2;
-    margin-top: 25px;
+    margin-top: 30px;
+
   }
+
+
+  .trashButton:hover {
+    cursor: pointer;
+    z-index: 2;
+    margin-top: 30px;
+    background-color: black;
+  }
+
+  .fa-trash-can:hover {
+    color: white;
+}
 
   .emoji {
     font-size: 35px;
@@ -321,3 +338,9 @@ body {
   .textInputField {
     padding-left: 10px;
   }
+
+  .loading-spinner {
+    margin-top: 20px;
+  }
+
+  

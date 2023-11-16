@@ -11,7 +11,7 @@ const ItemWarning = ({ item }) => {
     };
 
     if (item.expiresIn === 'eat today') {
-      toast.warning(`Item '${item.text}' expires today! Eat soon!`, {
+      toast.warning(`Item '${item.text}' expires today! Use it soon!`, {
         position: toast.POSITION.TOP_CENTER,
         toastId: `warning_${item.id}`, // Use a custom toastId
       });

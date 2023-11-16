@@ -6,8 +6,11 @@ import { useItemContext } from '../itemcontext/itemcontext';
 import BottomNavbar from '../../components/BottomNavbar/BottomNavbar'; 
 import axios from "axios";
 import * as urls from '../../Urls';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import ItemWarning from '../../components/ItemWarning';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+
 
 
 
@@ -22,7 +25,7 @@ export const Ingredients = () => {
   const username = localStorage.getItem('userName');
   const userAuthToken = localStorage.getItem('token');
 
-  const customId = "warning-ingredient";
+  // const customId = "warning-ingredient";
  
 
   const navigate = useNavigate();
@@ -206,17 +209,12 @@ export const Ingredients = () => {
   
     if (days === 0) {
       newItem.expiresIn = 'eat today';
-      toast.warning(`Item '${newItem.text}' expires today! Eat soon!`, {
-        position: toast.POSITION.TOP_CENTER,
-      });
+  
     } else if (days < 0) {
       newItem.expiresIn = `expired ${Math.abs(days)} day${Math.abs(days) === 1 ? '' : 's'} ago`;
     } else if (days === 1) {
       newItem.expiresIn = 'expires tomorrow';
-      toast.warning(`Item '${newItem.text}' expires tomorrow!`, {
-        position: toast.POSITION.TOP_CENTER,
-        toastId: customId,
-      });
+  
     } else {
       newItem.expiresIn = `expires in ${days} day${days === 1 ? '' : 's'}`;
     }
@@ -230,6 +228,7 @@ export const Ingredients = () => {
           },
         })
         .then((response) => {
+          window.location.reload();
           // Check if the item is already in the list
           const isItemInList = items.some((item) => item.id === newItem.id);
   
@@ -251,7 +250,7 @@ export const Ingredients = () => {
             console.log('Ingredient added successfully:', response.data);
   
             // // Reload the page
-            // window.location.reload();
+           
           } else {
             console.log('Ingredient is already in the list.');
             // You can handle this case as needed
@@ -338,29 +337,34 @@ return (
             </form>
 
             <div className="itemShelfItems">
-  <ul className='ingredientsItems'>
-
-  {displayedItems && displayedItems.length > 0 ? (
-  <div className="grid-container">
-    {displayedItems.map((item, newItem, index) => (
+  <ul className="ingredientsItems">
+    {items.length === 0 ? (
+      <div className="loading-spinner">Loading...</div>
+    ) : (
+      <>
+         {displayedItems && displayedItems.length > 0 ? (
+          <div className="grid-container">
+  {displayedItems.map((item, index) => (
       <div className="grid-item-card" key={`${item.id}_${index}`}>
         <div className="card-content" data-expiration={item.expiresIn}>
           <p className={isEmoji(item.text) ? 'emoji' : 'text'}>{item.text}</p>
           <p className="expire">{item.expiresIn}</p> 
-          <button className="trashButton" onClick={() => handleDeleteItem(item)}>🗑</button>
+          <button className="trashButton" onClick={() => handleDeleteItem(item)}><FontAwesomeIcon icon={faTrashCan} /></button>
           {item.expiresIn === 'eat today' || item.expiresIn === 'expires tomorrow' ? (
         <ItemWarning item={item} />
       ) : null}
         </div>
       </div>
     ))}
-  </div>
-) : (
-  <div className="noItemsMessage">No items to display.</div>
+    </div>
+  ) : (
+    <div className="noItemsMessage">No items to display.</div>
+  )}
+</>
 )}
-
-  </ul>
+</ul>
 </div>
+
 
             <div className="itemShelfTwo">
 
