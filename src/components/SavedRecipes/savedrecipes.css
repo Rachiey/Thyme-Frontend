@@ -1,9 +1,24 @@
-.recipeList {
-    margin: 30px;
-}
 
 .deleteRecipeButton {
     cursor: pointer;
     padding-left: 15px;
     padding-right: 15px;
 }
+
+.linkUrl{
+    font-size: 10px;
+    margin-bottom: 5px;
+    line-height:normal;
+}
+
+.recipeList ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .recipeList li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  

@@ -2,24 +2,40 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 import './savedrecipes.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
+import * as urls from '../../Urls';
+
 
 export const SavedRecipes = () => {
+  const username = localStorage.getItem('userName');
   const location = useLocation();
   const savedRecipeURL = new URLSearchParams(location.search).get('url');
   const [savedRecipes, setSavedRecipes] = useState([]);
 
   // Load saved recipes from session when the component mounts
-  useEffect(() => {
-    const savedRecipesFromSession = JSON.parse(sessionStorage.getItem('savedRecipes')) || [];
-    setSavedRecipes(savedRecipesFromSession);
-  }, []);
+  const fetchSavedRecipes = () => {
+    axios.get(`${urls.api}savedrecipes/${username}/`)
+      .then((response) => {
+        setSavedRecipes(response.data);
+      })
+      .catch((error) => {
+        // Handle error
+      });
+  };
 
   // Function to handle saving a recipe to session
   const handleSaveRecipe = () => {
     if (savedRecipeURL) {
-      const updatedRecipes = [...savedRecipes, savedRecipeURL];
-      setSavedRecipes(updatedRecipes);
-      sessionStorage.setItem('savedRecipes', JSON.stringify(updatedRecipes));
+      axios.post(`${urls.api}savedrecipes/`, { url: savedRecipeURL, user: username})
+        .then((response) => {
+          // Handle successful save
+          fetchSavedRecipes(); // Refresh saved recipes after saving
+        })
+        .catch((error) => {
+          // Handle error
+        });
     }
   };
 
@@ -28,8 +44,14 @@ export const SavedRecipes = () => {
     const updatedRecipes = [...savedRecipes];
     updatedRecipes.splice(index, 1); // Remove the recipe at the specified index
     setSavedRecipes(updatedRecipes);
-    sessionStorage.setItem('savedRecipes', JSON.stringify(updatedRecipes));
+    localStorage.setItem('savedRecipes', JSON.stringify(updatedRecipes));
   };
+
+
+  useEffect(() => {
+    fetchSavedRecipes(); // Fetch saved recipes when component mounts
+  }, []);
+
 
   return (
     <>
@@ -40,12 +62,12 @@ export const SavedRecipes = () => {
       <div className="recipeList">
         <ul>
           {savedRecipes.map((recipeURL, index) => (
-            <li key={index}>
+            <li className='linkUrl' key={index}>
               <a href={recipeURL} target="_blank" rel="noopener noreferrer">
                 {recipeURL}
               </a>
               <div>
-              <button className="deleteRecipeButton" onClick={() => handleDeleteRecipe(index)}>Delete</button></div>
+              <button className="deleteRecipeButton" onClick={() => handleDeleteRecipe(index)}><FontAwesomeIcon icon={faTrashCan} /></button></div>
             </li>
           ))}
         </ul>
@@ -58,77 +80,3 @@ export const SavedRecipes = () => {
 };
 
 export default SavedRecipes;
-
-
-// import React, {useEffect, useState } from 'react';
-// import { useLocation } from 'react-router-dom';
-// import 'semantic-ui-css/semantic.min.css'
-// import './savedrecipes.css';
-// import 'semantic-ui-css/semantic.min.css'
-
-
-
-
-
-// export const SavedRecipes = () => {
-
-  
-//     const location = useLocation();
-//     const savedRecipeURL = new URLSearchParams(location.search).get('url');
-//     const [savedRecipes, setSavedRecipes] = useState([]);
-
-//       // Load saved recipes from session when the component mounts
-//   useEffect(() => {
-//     const savedRecipesFromSession = JSON.parse(sessionStorage.getItem('savedRecipes')) || [];
-//     setSavedRecipes(savedRecipesFromSession);
-//   }, []);
-
-//    // Function to handle saving a recipe to session
-//    const handleSaveRecipe = () => {
-//     if (savedRecipeURL) {
-//       const updatedRecipes = [...savedRecipes, savedRecipeURL];
-//       setSavedRecipes(updatedRecipes);
-//       sessionStorage.setItem('savedRecipes', JSON.stringify(updatedRecipes));
-//     }
-//   };
-
-  
-
-    
-//     return (
-
-//         <>
-
-
-//     <div className="savedRecipesTitle">
-//       <h1 className="shoppingTitle">Saved Recipes</h1>
-//     </div>
-
-//     <div className= "recipeList">
-//       <ul>
-//         {savedRecipes.map((recipeURL, index) => (
-//           <li key={index}>
-//             <a href={recipeURL} target="_blank" rel="noopener noreferrer">
-//               {recipeURL}
-//             </a>
-//           </li>
-//         ))}
-//       </ul>
-//       {savedRecipeURL && (
-//         <button className="saveRecipeButton" onClick={handleSaveRecipe}>Save Recipe</button>
-//       )}
-//     </div>
-   
-
-
-  
- 
-    
-   
-
-//         </>
-    
-//    ) }
-
-
-// export default SavedRecipes;
