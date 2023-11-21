@@ -228,7 +228,6 @@ export const Ingredients = () => {
           },
         })
         .then((response) => {
-          window.location.reload();
           // Check if the item is already in the list
           const isItemInList = items.some((item) => item.id === newItem.id);
   
@@ -260,6 +259,7 @@ export const Ingredients = () => {
           // Handle errors here
           console.error('Error while adding ingredient:', error);
         });
+
     } catch (error) {
       // Handle any errors in the try block
       console.error('Error in try block:', error);
