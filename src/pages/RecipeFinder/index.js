@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom'
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouse } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faAppleWhole } from '@fortawesome/free-solid-svg-icons';
 
 
 
