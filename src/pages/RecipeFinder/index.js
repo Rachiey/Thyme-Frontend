@@ -15,6 +15,11 @@ export const RecipeFinder = () => {
 
     const username = localStorage.getItem("userName")
     const navigate = useNavigate();
+
+    const homeIcon = <FontAwesomeIcon icon={faHouse} />;
+    const profileIcon = <FontAwesomeIcon icon={faUser} />;
+    const ingredientsIcon = <FontAwesomeIcon icon={faAppleWhole} />;
+
     
     const handleLogout = () => {
       // Reset the local storage session and navigate to the login page
@@ -110,7 +115,25 @@ export const RecipeFinder = () => {
  
    
 
-    <BottomNavbar />
+
+    <div className="bottomNavBarItems">
+      <Tooltip title="Home">
+        <IconButton style={{ color: 'white', fontSize: '30px' }}>
+          <Link to='/'>{homeIcon} </Link>
+        </IconButton>
+      </Tooltip>
+      <Tooltip title="Ingredients">
+        <IconButton style={{ color: 'white', fontSize: '30px' }}>
+          <Link to='/ingredients'>{ingredientsIcon} </Link>
+        </IconButton>
+      </Tooltip>
+      <Tooltip title="Profile">
+        <IconButton style={{ color: 'white', fontSize: '30px' }}>
+          <Link to='/profile'>{profileIcon} </Link>
+        </IconButton>
+      </Tooltip>
+    </div>
+
  
     </div>
 
