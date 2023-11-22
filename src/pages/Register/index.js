@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import * as urls from '../../Urls';
 import { Icon } from 'react-icons-kit';
@@ -42,7 +41,7 @@ const RegistrationForm = () => {
     e.preventDefault();
 
     const user = {
-      username: username,
+      username: username.charAt(0).toUpperCase() + username.slice(1), 
       password1: password1,
       password2: password2,
       email: email,
@@ -66,31 +65,6 @@ const RegistrationForm = () => {
     
   };
 
-      // .then((res) => {
-      //   if (res.ok) {
-      //     return res.json();
-      //   } else if (res.status === 400) {
-      //     return res.json().then((data) => {
-      //       if (data.username && data.username.includes('already exists')) {
-      //         throw new Error('Username already exists.');
-      //       } else {
-      //         throw new Error('Registration failed.');
-      //       }
-      //     });
-      //   } else {
-      //     throw new Error('Registration failed.');
-      //   }
-      // })
-      // .then((data) => {
-      //   console.log('Registration successful:', data);
-      //   // Redirect to the login page using the history object
-      //  navigate('/login');
-      // })
-      // .catch((error) => {
-      //   console.error('Error:', error);
-      //   setErrors(true);
-      // });
-  // };
 
   const togglePasswordVisibility = (field) => {
     if (field === 'password1') {
