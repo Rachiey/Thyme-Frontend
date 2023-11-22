@@ -4,9 +4,10 @@ import './recipefinder.css';
 import 'semantic-ui-css/semantic.min.css'
 import { useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-
-import BottomNavbar from '../../components/BottomNavbar/BottomNavbar'; 
 
 
 
