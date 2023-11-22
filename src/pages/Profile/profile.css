@@ -67,13 +67,15 @@
     margin-left: 100px;
     margin-top: 50px;
     text-align: center;
-    display: inline-grid
+    display: inline-grid;
+    color: #5867a8;
 
   }
 
   .expiringTitle {
-    font-size: 15px;
+    font-size: 12px;
     font-family: 'Tealand';
+    margin-bottom: 0;
   }
 
   .itemText {
@@ -96,4 +98,47 @@
   grid-template-columns:25% 25% 25% 25%; 
   grid-gap: 0.2rem;
   justify-content: center;
+}
+
+.deleteProfileButton {
+  font-family: 'Tealand';
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: orangered;
+  color: white;
+  text-shadow: 2px 2px black;
+  padding: 3.5px;
+}
+
+.deleteProfileButton:hover {
+  font-family: 'Tealand';
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: red;
+  color: white;
+}
+
+.sureText {
+  font-family: 'Tealand';
+  font-size: 12px;
+  margin-bottom: 0;
+  color:white;
+}
+
+.modalAction1  {
+  font-family: 'Tealand';
+  background-color:orangered;
+  color:white;
+  text-shadow: 2px 2px black;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.modalAction2  {
+  font-family: 'Tealand';
+  background-color: grey;
+  color:white;
+  text-shadow: 2px 2px black;
+  cursor: pointer;
+  border-radius: 8px;
 }
