@@ -55,8 +55,6 @@ const LoginForm = () => {
   };
 
   return (
-    <div>
-      <div className="door">
         <div className="backLogin">
         <div className="logo">
               <img src={thymesuplogo} alt="thyme's up logo" style={{ height: '140px'}} />
@@ -101,8 +99,7 @@ const LoginForm = () => {
             </div>
           </form>
         </div>
-      </div>
-    </div>
+
   );
 };
 

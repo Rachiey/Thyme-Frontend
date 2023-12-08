@@ -8,7 +8,10 @@
     font-family: 'AlphaFridgeMagnets';
     font-size: 45px;
 }
-  .doorBack {
+  .doorBackRegister {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     position: relative;
     background:#6171b7;
     width: 300px;
@@ -16,6 +19,10 @@
     border-radius: 20px;
     overflow: hidden;
     outline: 10px solid #5867a8;
+  }
+  
+  .formContainer {
+    margin-bottom: 0; /* Set the desired margin-bottom value */
   }
 
   .registerForm {
@@ -27,8 +34,7 @@
   }
 
   .registerTitle {
-    margin-top: 100px;
-    font-size: 25px;
+    font-size: 28px;
     font-family: 'AlphaFridgeMagnets';
     font-weight:500;
     color: #c9033f;

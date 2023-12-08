@@ -77,9 +77,9 @@ const RegistrationForm = () => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <div className="door">
-        <div className="backLogin">
+    <form onSubmit={onSubmit} className="formContainer" >
+
+        <div className="doorBackRegister">
         <div className="logo">
               <img src={thymesuplogo} alt="thyme's up logo" style={{ height: '140px'}} />
             </div>
@@ -196,7 +196,7 @@ const RegistrationForm = () => {
             </button>
           </div>
         </div>
-      </div>
+
     </form>
   );
 };
